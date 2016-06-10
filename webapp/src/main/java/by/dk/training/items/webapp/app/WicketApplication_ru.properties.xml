@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="menu.home">Домашняя</entry>
+	<entry key="menu.products">Продукты</entry>
+	<entry key="menu.types-products">Типы продуктов</entry>
+	<entry key="menu.packages">Посылки</entry>
+	<entry key="menu.recipients">Получатели</entry>
+	<entry key="menu.new-pack">Новая посылка</entry>
+	<entry key="menu.profile">Профиль</entry>
+	<entry key="menu.profile-room">Кабинет</entry>
+	<entry key="menu.profile-logout">Выход</entry>
+	<entry key="menu.users">Пользователи</entry>
+
+	<entry key="US">Английский</entry>
+	<entry key="RU">Русский</entry>
+
+	<entry key="login.login">Логин</entry>
+	<entry key="login.password">Пароль</entry>
+	<entry key="login.registration">Регистрация нового пользователя</entry>
+	<entry key="login.restore">Восстановление пароля</entry>
+	<entry key="login.error1">Введите данные</entry>
+	<entry key="login.error2">Пользователя не существует!</entry>
+
+	<entry key="newlogin.registration">Регистрация нового пользователя</entry>
+	<entry key="newlogin.login">Логин</entry>
+	<entry key="newlogin.password">Пароль</entry>
+	<entry key="newlogin.fname">Имя</entry>
+	<entry key="newlogin.lname">Фамилия</entry>
+	<entry key="newlogin.email">email</entry>
+	<entry key="newlogin.post">Занемаемая должность</entry>
+	<entry key="newlogin.rank">Звание</entry>
+	<entry key="newlogin.save">Сохранить</entry>
+	<entry key="newlogin.cancel">Отменить</entry>
+	<entry key="newlogin.newuser.title">Придумайте имя пользователя.</entry>
+	<entry key="newlogin.newpass.title">Придумайте пароль</entry>
+	<entry key="newlogin.newfname.title">Введите имя</entry>
+	<entry key="newlogin.newlname.title">Фамилию</entry>
+	<entry key="newlogin.newemail.title">Электронная почта</entry>
+	<entry key="newlogin.newpost.title">Введите должность</entry>
+	<entry key="newlogin.newrank.title">Укажите звание</entry>
+	<entry key="newlogin.newsave.title">Сохранить</entry>
+	<entry key="newlogin.newcancel.title">Отменить</entry>
+	<entry key="newlogin.error1">Адрес уже используется</entry>
+	<entry key="newlogin.error2">Логин уже занят</entry>
+
+	<entry key="restore.title">Восстановление пароля</entry>
+	<entry key="restore.fieldname">Введите адрес email</entry>
+	<entry key="restore.button">Отправить</entry>
+	<entry key="restore.cancel">Отменить</entry>
+	<entry key="restore.title.field">Введите адрес электронной почты, по которому вы
+		регистрировались</entry>
+	<entry key="restore.error">Введенного адреса не существует.</entry>
+
+	<entry key="confirm.home">На страницу логина</entry>
+	<entry key="confirm.error">Пользователя с данным номером не существует.</entry>
+	<entry key="confirm.label">Спасибо за подтверждение. Теперь вы можете зайти под
+		своим именем и паролем</entry>
+	<entry key="confirm.email.text">Уважаемый</entry>
+	<entry key="confirm.email.text2">Вы только что подтвердли свою регистрацию на сервисе.
+		Ваши данные в сервисе</entry>
+	<entry key="confirm.email.text3">Подтвеждение регистрации в сервисе</entry>
+	<entry key="confirm.email.error2">Возможно Вы ошиблись адресом...</entry>
+
+	<entry key="redirect.sendmsg">Отправить письмо</entry>
+	<entry key="redirect.label">Извините, но вы были заблокированы или не подтвердили
+		почту! Если письмо не пришло, Вы можете отправить запрос повторно.</entry>
+
+	<entry key="send.message">Повторный запрос на почту</entry>
+	<entry key="send.message.text">Здравствуйте</entry>
+	<entry key="send.message.text2">Вы были зарегистрированы на сервисе. Пожалуйста не
+		отвечайте на это письмо. Перейдите по ссылке</entry>
+	<entry key="send.message.title">Регистрация в сервисе</entry>
+	<entry key="send.message.info">Проверьте почту.</entry>
+
+	<entry key="page.home.title">Добро пожаловать в систему. Вы зашли как</entry>
+	<entry key="page.home.title1">Для создания новой посылки, вы должны создать продукты
+		и получателя которые указаны в</entry>
+	<entry key="page.home.title2"> посылке или убедиться в том, что они уже созданы.</entry>
+	<entry key="page.home.packs">Посылок за все время(штуки):</entry>
+	<entry key="page.home.packs2">Посылок за предыдущий месяц(штук):</entry>
+	<entry key="page.home.packsfrom">Количество посылок с </entry>
+	<entry key="page.home.packsto">по</entry>
+	<entry key="page.home.packexpensive">Самая дорогая посылка за все время(бел.рубли):</entry>
+	<entry key="page.home.country">Страна, из которой чаще всего приходят посылки</entry>
+	<entry key="page.home.role1">администратор</entry>
+	<entry key="page.home.role2">командир</entry>
+	<entry key="page.home.role3">служаший</entry>
+	<entry key="page.home.chart1">Количество посылок</entry>
+	<entry key="page.home.chart2">Статистика посылок за год</entry>
+	<entry key="page.home.chart.month1">Янв</entry>
+	<entry key="page.home.chart.month2">Фев</entry>
+	<entry key="page.home.chart.month3">Мрт</entry>
+	<entry key="page.home.chart.month4">Апр</entry>
+	<entry key="page.home.chart.month5">Май</entry>
+	<entry key="page.home.chart.month6">Июн</entry>
+	<entry key="page.home.chart.month7">Июл</entry>
+	<entry key="page.home.chart.month8">Авг</entry>
+	<entry key="page.home.chart.month9">Сен</entry>
+	<entry key="page.home.chart.month10">Окт</entry>
+	<entry key="page.home.chart.month11">Нбр</entry>
+	<entry key="page.home.chart.month12">Дек</entry>
+
+	<entry key="page.products.title">База продуктов</entry>
+	<entry key="page.products.title2">(продуктом является любая еденица товара, которую
+		содержит посылка)</entry>
+	<entry key="page.products.find">Найти</entry>
+	<entry key="page.products.chk">Разрешенные</entry>
+	<entry key="page.products.chk1">Свои</entry>
+	<entry key="page.products.id">Номер ID</entry>
+	<entry key="page.products.name">Название продукта</entry>
+	<entry key="page.products.price">Цена(бел.руб.)</entry>
+	<entry key="page.products.weight">Вес продукта(кг)</entry>
+	<entry key="page.products.status">Статус</entry>
+	<entry key="page.products.creater">Создатель</entry>
+	<entry key="page.products.info.title">Информация о продукте</entry>
+	<entry key="page.products.id.title">Номер продукта</entry>
+	<entry key="page.products.name.title">Название продукта</entry>
+	<entry key="page.products.price.title">Цена продукта(в бел.руб.)</entry>
+	<entry key="page.products.weight.title">Вес продукта(кг)</entry>
+	<entry key="page.products.status.title">Статус ввоза продукта</entry>
+	<entry key="page.products.creater.title">Создатель продукта</entry>
+	<entry key="page.products.delete.title">Удалить продукт</entry>
+	<entry key="page.products.update.title">Обновить продукт</entry>
+	<entry key="page.products.sort.id">Сортировать по номеру</entry>
+	<entry key="page.products.sort.name">Сортировать по названию</entry>
+	<entry key="page.products.sort.price">Сортировать по цене</entry>
+	<entry key="page.products.sort.weight">Сортировать по весу</entry>
+	<entry key="page.products.sort.status">Сортировать по статусу</entry>
+	<entry key="page.products.sort.creater">Сортировать по создателю</entry>
+	<entry key="page.products.chk2">Выбрать только разрешенные</entry>
+	<entry key="page.products.chk3">Выбрать только свои</entry>
+	<entry key="page.products.placeholder.id">по id</entry>
+	<entry key="page.products.placeholder.name">по названию</entry>
+	<entry key="page.products.placeholder.price">по цене</entry>
+	<entry key="page.products.placeholder.weight">по весу</entry>
+	<entry key="page.products.placeholder.creater">по создателю</entry>
+	<entry key="page.products.create">Создать продукт</entry>
+	<entry key="page.products.info.title">Информация о продукте</entry>
+	<entry key="page.products.info.id">Номер продукта в базе</entry>
+	<entry key="page.products.info.name">Название продукта(марка и т.д.)</entry>
+	<entry key="page.products.info.price">Цена продукта которую заплатил получатель(бел.руб.)</entry>
+	<entry key="page.products.info.weight">Вес еденицы продукта(кг)</entry>
+	<entry key="page.products.info.status">Статус продукта для ввоза</entry>
+	<entry key="page.products.info.status1">(зеленый - разр., красный - запрещен)</entry>
+	<entry key="page.products.info.creator">Создатель продукта</entry>
+	<entry key="page.products.info.creator1">(номер и логин)</entry>
+	<entry key="page.products.info.types">Список типов продукта</entry>
+	<entry key="page.products.info.back">Назад</entry>
+	<entry key="page.products.info.title2">Ввоз разрешен</entry>
+	<entry key="page.products.info.title1">Ввоз запрещен</entry>
+	<entry key="page.products.info.title3">Типы к которым относится данный продукт</entry>
+	<entry key="page.products.reg.name">Полное название продукта</entry>
+	<entry key="page.products.reg.name1">(марка, серия и.т.д)</entry>
+	<entry key="page.products.reg.weight">Вес продукта(в кг)</entry>
+	<entry key="page.products.reg.price">Цена продукта(в бел.рублях)</entry>
+	<entry key="page.products.reg.status">Разрешен ли продукт</entry>
+	<entry key="page.products.reg.status1">для ввоза в РБ</entry>
+	<entry key="page.products.reg.type1">Выберите тип </entry>
+	<entry key="page.products.reg.type2">продукта:</entry>
+	<entry key="page.products.reg.type3">(существующие типы находятся</entry>
+	<entry key="page.products.reg.type4">с левой стороны, а добавляемые</entry>
+	<entry key="page.products.reg.type5"> с правой. Если не нашелся</entry>
+	<entry key="page.products.reg.type6">нужный тип, то выбирайте другие.)</entry>
+	<entry key="page.products.reg.type7">Назад</entry>
+	<entry key="page.products.reg.status2">Да</entry>
+	<entry key="page.products.reg.status3">Нет</entry>
+	<entry key="page.products.reg.title">Регистрация нового продукта.</entry>
+	<entry key="page.products.reg.title1">Изменение продукта.</entry>
+	<entry key="page.products.dialog.error.title">Удаление не возможно!</entry>
+	<entry key="page.products.dialog.error.message">Продукт используется в посылках. Найдите и удалите
+		сначало посылки.</entry>
+
+	<entry key="page.types.title">Дерево существующих типов</entry>
+	<entry key="page.types.subtitle">(для получения подробной информации о типах, кликайте
+		правой кнопкой мыши)</entry>
+	<entry key="page.types.create">Создать тип</entry>
+	<entry key="page.types.newtype.title">(форма предназначена только для командиров)</entry>
+	<entry key="page.types.newtype.name">Название типа</entry>
+	<entry key="page.types.newtype.parrent">Тип к которому относится данный подтип</entry>
+	<entry key="page.types.newtype.title1">Регистрация нового типа</entry>
+	<entry key="page.types.newtype.title2">Изменение типа</entry>
+	<entry key="page.types.newtype.error">Такой тип уже существует</entry>
+	<entry key="page.types.menu1">Информация о типе</entry>
+	<entry key="page.types.menu2">Продукты типа</entry>
+	<entry key="page.types.menu3">Удалить тип</entry>
+	<entry key="page.types.products.title">Названия созданных продуктов которые относятся к
+		выбранному типу</entry>
+	<entry key="page.types.info.title">Информация о типе</entry>
+	<entry key="page.types.info.id">Номер типа в базе(id)</entry>
+	<entry key="page.types.info.name">Название типа</entry>
+	<entry key="page.types.info.parrent1">Тип, к которому относится</entry>
+	<entry key="page.types.info.parrent2">данный тип:(родительский тип)</entry>
+	<entry key="page.types.info.user">Пользователь который создал тип</entry>
+	<entry key="page.types.error">Для удаления типа, сначало необходимо удалить все его
+		подтипы и продукты этого типа</entry>
+
+	<entry key="page.packages.create">Создать пакет</entry>
+	<entry key="page.packages.list.title">База посылок</entry>
+	<entry key="page.packages.list.placeholder.id">по id польз.</entry>
+	<entry key="page.packages.list.placeholder.code">по трек.коду</entry>
+	<entry key="page.packages.list.placeholder.fromdate">нач.дата</entry>
+	<entry key="page.packages.list.placeholder.todate">кон.дата</entry>
+	<entry key="page.packages.list.placeholder.desc">по описанию</entry>
+	<entry key="page.packages.list.placeholder.price">по цене</entry>
+	<entry key="page.packages.list.placeholder.country">по стране</entry>
+	<entry key="page.packages.list.placeholder.weight">по весу</entry>
+	<entry key="page.packages.list.placeholder.tax">по налогу</entry>
+	<entry key="page.packages.list.placeholder.recipient">по получателю</entry>
+	<entry key="page.packages.list.sort.chk1">Все оплаченные</entry>
+	<entry key="page.packages.list.sort.chk2">Все штрафные</entry>
+	<entry key="page.packages.list.sort.chk3">Не штрафные и не оплач.</entry>
+	<entry key="page.packages.list.sort.chk4">Вернуть посылки
+		пользователя</entry>
+	<entry key="page.packages.list.sort.id">Трекинг-код</entry>
+	<entry key="page.packages.list.sort.price">Стоимость</entry>
+	<entry key="page.packages.list.sort.price2">(рубли)</entry>
+	<entry key="page.packages.list.sort.weight">Вес(кг)</entry>
+	<entry key="page.packages.list.sort.tax">Налог</entry>
+	<entry key="page.packages.list.sort.deadline">До конца оплаты</entry>
+	<entry key="page.packages.list.sort.deadline1">(дни)</entry>
+	<entry key="page.packages.list.sort.fine">Штраф</entry>
+	<entry key="page.packages.list.sort.paid">Статус оплаты</entry>
+	<entry key="page.packages.list.paid">Оплачено</entry>
+	<entry key="page.packages.info.title">Информация о посылке</entry>
+	<entry key="page.packages.info.id">Номер получателя в базе(id)</entry>
+	<entry key="page.packages.info.price">Общая стоимость посылки(в бел.руб.)</entry>
+	<entry key="page.packages.info.weight">Вес(кг)</entry>
+	<entry key="page.packages.info.tax">Налог(в бел.руб.)</entry>
+	<entry key="page.packages.info.user">Номер создателя в базе(id)</entry>
+	<entry key="page.packages.info.date">Дата создания</entry>
+	<entry key="page.packages.info.description">Описание</entry>
+	<entry key="page.packages.info.country">Страна отправления</entry>
+	<entry key="page.packages.info.deadline">В какой срок необходимо оплатить</entry>
+	<entry key="page.packages.info.deadline1">(количество дней которые даются на оплату при
+		регистрации посылки.
+		Указываются в настройках командиром.)</entry>
+	<entry key="page.packages.info.fine">Штраф(в бел.рублях)</entry>
+	<entry key="page.packages.info.status">Статус оплаты(зел.-оплачено, красное-нет)</entry>
+	<entry key="page.packages.info.products">Список продуктов в посылке</entry>
+	<entry key="page.packages.reg.status">Оплачена</entry>
+	<entry key="page.packages.reg.status1">Не оплачена</entry>
+	<entry key="page.packages.reg.title">Регистрация новой посылки.</entry>
+	<entry key="page.packages.reg.title1">Изменение посылки.</entry>
+	<entry key="page.packages.reg.info">Важная информация!</entry>
+	<entry key="page.packages.reg.info1">Для
+		регистрации новой посылки, необходимо сначало
+		выбрать получателя и
+		продукты, которые содержатся в посылке.</entry>
+	<entry key="page.packages.reg.info2">Поля помеченные звездочками, обязательны для
+		заполнения.</entry>
+	<entry key="page.packages.reg.recipient">Выберите получателя из списка</entry>
+	<entry key="page.packages.reg.recipient1">(если получаетеля нет, то создайте</entry>
+	<entry key="page.packages.reg.recipient2">его в соответствующем разделе)</entry>
+	<entry key="page.packages.reg.code">Введите трекинг-код посылки(в</entry>
+	<entry key="page.packages.reg.code1">будушем код изменить нельзя без</entry>
+	<entry key="page.packages.reg.code2">удаления, поэтому вводите внимательно.Желательно
+		оставить код по умолчанию)</entry>
+	<entry key="page.packages.reg.price">Общая цена всех продуктов в посылке(определяется
+		автоматически в зависимости от продуктов в корзине)</entry>
+	<entry key="page.packages.reg.tax">Общий налог на посылку(определяется автоматически в
+		зависимости от цены и веса продуктов)</entry>
+	<entry key="page.packages.reg.weight">Общий вес всей посылки(определяется автоматически в
+		зависимости от продуктов в корзине)</entry>
+	<entry key="page.packages.reg.user">Инспектор посылки(если не выбрать, то установится
+		текущий)</entry>
+	<entry key="page.packages.reg.date">Дата прихода посылки(автоматически выберается
+		сегодняшняя
+		дата)</entry>
+	<entry key="page.packages.reg.desc">Дополнительное описание посылки(любая информация)</entry>
+	<entry key="page.packages.reg.country">Страна отправитель</entry>
+	<entry key="page.packages.reg.deadline">Количество дней на оплату посылки</entry>
+	<entry key="page.packages.reg.deadline1">(устанавливается автоматически в </entry>
+	<entry key="page.packages.reg.deadline2">зависимости от настроек)</entry>
+	<entry key="page.packages.reg.fine">Штраф(начисляется автоматически</entry>
+	<entry key="page.packages.reg.fine1">в зивасимости от настроек)</entry>
+	<entry key="page.packages.reg.status3">Статус посылки</entry>
+	<entry key="page.packages.reg.products">Выберите продукты и их количество</entry>
+	<entry key="page.packages.reg.products1">(если продукта нет, то создайте</entry>
+	<entry key="page.packages.reg.products2">его в соответствующем разделе.Количество выбирайте с
+		помощью стрелочек, иначе добавится только один) Продукты потом
+		изменить
+		нельзя</entry>
+	<entry key="page.packages.reg.addprod">Добавить продукт</entry>
+	<entry key="page.packages.reg.allprod">Продукты в корзине</entry>
+	<entry key="page.packages.reg.deleteprod">Удалить</entry>
+	<entry key="page.packages.reg.placeholder.country">Страна</entry>
+	<entry key="page.packages.reg.placeholder.desc">Описание</entry>
+	<entry key="page.packages.reg.placeholder.code">Трек код</entry>
+	<entry key="page.packages.reg.error">Посылка с таким кодом уже существует</entry>
+	<entry key="page.packages.reg.error1">Выберите сначало получателя!</entry>
+	<entry key="page.packages.placeholder.products">по продукту</entry>
+
+	<entry key="page.users.create">Создать пользователя</entry>
+	<entry key="page.users.base.title">База пользователей</entry>
+	<entry key="page.users.base.title2">(доступна только для админа)</entry>
+	<entry key="page.users.base.placeholder.id">по id</entry>
+	<entry key="page.users.base.placeholder.date">по дате регистр.</entry>
+	<entry key="page.users.base.placeholder.post">по должности</entry>
+	<entry key="page.users.base.placeholder.login">по логину</entry>
+	<entry key="page.users.base.placeholder.fname">по имени</entry>
+	<entry key="page.users.base.placeholder.lname">по фамилии</entry>
+	<entry key="page.users.base.placeholder.status">по роли</entry>
+	<entry key="page.users.base.placeholder.email">по почте</entry>
+	<entry key="page.users.base.placeholder.rank">по званию</entry>
+	<entry key="page.users.base.head.id">Номер ID</entry>
+	<entry key="page.users.base.head.login">Логин</entry>
+	<entry key="page.users.base.head.fname">Имя</entry>
+	<entry key="page.users.base.head.lname">Фамилия</entry>
+	<entry key="page.users.base.head.status">Роль пользователя</entry>
+	<entry key="page.users.base.head.email">Почта</entry>
+	<entry key="page.users.info.title">Информация о пользователе</entry>
+	<entry key="page.users.info.id">Номер пользователя в базе(id)</entry>
+	<entry key="page.users.info.login">Логин пользователя</entry>
+	<entry key="page.users.info.fname">Имя</entry>
+	<entry key="page.users.info.lname">Фамилия</entry>
+	<entry key="page.users.info.date">Дата регистрации</entry>
+	<entry key="page.users.info.status">Роль пользователя</entry>
+	<entry key="page.users.info.post">Должность</entry>
+	<entry key="page.users.info.rank">Звание</entry>
+	<entry key="page.users.info.email">Электронная почта</entry>
+	<entry key="page.users.info.packages">Список принятых посылок</entry>
+	<entry key="page.users.info.packages1">Информация о пакете</entry>
+	<entry key="page.users.info.products">Список созданных продуктов</entry>
+	<entry key="page.users.info.types">Список созданных типов</entry>
+	<entry key="page.users.info.recipients">Список созданных получателей</entry>
+	<entry key="page.users.info.error">Выберите пакет</entry>
+	<entry key="page.users.create.title1">Регистрация нового пользователя</entry>
+	<entry key="page.users.create.title2">Редактирование пользователя</entry>
+	<entry key="page.users.create.title3">(данная форма доступна только админам)</entry>
+	<entry key="page.users.create.login">Придумайте логин(изменять нельзя)</entry>
+	<entry key="page.users.create.password">Придумайте пароль(изменять нельзя)</entry>
+	<entry key="page.users.create.fname">Имя</entry>
+	<entry key="page.users.create.lname">Фамилия</entry>
+	<entry key="page.users.create.email">email(изменять нельзя)</entry>
+	<entry key="page.users.create.date">Дата создания</entry>
+	<entry key="page.users.create.status">Роль пользователя</entry>
+	<entry key="page.users.create.post">Занимаемая должность</entry>
+	<entry key="page.users.create.rank">Звание</entry>
+	<entry key="page.users.create.error1">Данный логин занят.</entry>
+	<entry key="page.users.create.error2">Почта уже используется.</entry>
+	<entry key="page.users.dialog.error.message">У пользователя слишком много посылок, продуктов, типов
+		и получателей. Перед удалением пользователя, необходимо удалить все
+		элементы. Вы можете забанить пользователя.</entry>
+
+	<entry key="page.recipients.create.title">Создать получателя</entry>
+	<entry key="page.recipients.list.title">Изменить получателя"</entry>
+	<entry key="page.recipients.base.title">База получателей</entry>
+	<entry key="page.recipients.base.placeholder.id">по id</entry>
+	<entry key="page.recipients.base.placeholder.name">по ФИО</entry>
+	<entry key="page.recipients.base.placeholder.city">по городу</entry>
+	<entry key="page.recipients.base.placeholder.address">по адресу</entry>
+	<entry key="page.recipients.base.placeholder.creator">по создателю</entry>
+	<entry key="page.recipients.base.head.id">Номер ID</entry>
+	<entry key="page.recipients.base.head.name">ФИО</entry>
+	<entry key="page.recipients.base.head.city">Город</entry>
+	<entry key="page.recipients.base.head.address">Адрес</entry>
+	<entry key="page.recipients.base.head.creator">Создатель</entry>
+	<entry key="page.recipients.base.sort">Сортировать по активности</entry>
+	<entry key="page.recipients.base.sort1">(по количеству посылок)</entry>
+	<entry key="page.recipients.info.title">Информация о получателе</entry>
+	<entry key="page.recipients.info.name">Имя пользователя</entry>
+	<entry key="page.recipients.info.city">Город получателя</entry>
+	<entry key="page.recipients.info.address">Адрес получателя</entry>
+	<entry key="page.recipients.info.creator">Создатель получателя</entry>
+	<entry key="page.recipients.info.packages">Список принятых посылок</entry>
+	<entry key="page.recipients.info.infopack">Информация о пакете</entry>
+	<entry key="page.recipients.info.error">Выберите пакет</entry>
+	<entry key="page.recipients.create.title1">Регистрация нового получателя.</entry>
+	<entry key="page.recipients.create.title2">Изменение получателя.</entry>
+	<entry key="page.recipients.create.name">Полное имя получателя(ФИО)</entry>
+	<entry key="page.recipients.create.city">Город или населенный пункт получателя</entry>
+	<entry key="page.recipients.create.address">Адрес получателя</entry>
+	<entry key="page.recipients.create.error">Такой получатель уже зарегистрирован.</entry>
+	<entry key="page.recipients.dialog.error.message">У данного получателя в базе существуют посылки. Для
+		того чтобы его удалить, необходимо сначало избавиться от посылок.</entry>
+	<entry key="page.recipients.info.statistic">Посмотреть статистику получателя по
+		посылкам</entry>
+
+	<entry key="profilemenu.title">Личный кабинет</entry>
+	<entry key="profilemenu.setting.title">Настройка системы</entry>
+	<entry key="profilemenu.setting.title1">Информация о пользователе</entry>
+	<entry key="profilemenu.setting.login">Логин</entry>
+	<entry key="profilemenu.setting.password">Пароль</entry>
+	<entry key="profilemenu.setting.fname">Имя</entry>
+	<entry key="profilemenu.setting.lname">Фамилия</entry>
+	<entry key="profilemenu.setting.change">Изменить</entry>
+	<entry key="profilemenu.setting.date">Дата регистрации</entry>
+	<entry key="profilemenu.setting.status">Роль</entry>
+	<entry key="profilemenu.setting.post">Должность</entry>
+	<entry key="profilemenu.setting.rank">Звание</entry>
+	<entry key="profilemenu.setting.email">Почта</entry>
+	<entry key="profilemenu.setting.packages">Оформленные посылки пользователя</entry>
+	<entry key="profilemenu.setting.packages1">Посмотреть информация о</entry>
+	<entry key="profilemenu.setting.packages2">выбранной посылке</entry>
+	<entry key="profilemenu.change">Введите новое значение</entry>
+
+	<entry key="settings.title">Настройка системы</entry>
+	<entry key="settings.price">Укажите максимальную цену для ввоза в месяц в
+		бел.рублях</entry>
+	<entry key="settings.weight">Укажите максимальный вес для ввоза в месяц(в кг)</entry>
+	<entry key="settings.price.kg">Укажите стоимость килограмма при привышении лимита(в
+		бел.руб.)</entry>
+	<entry key="settings.tax">Укажите размер налога от цены превышения(в %)</entry>
+	<entry key="settings.deadline">Укажите количество дней на оплату налога</entry>
+	<entry key="settings.fine">Укажите размер штрафа в день при просрочке оплаты(в %)</entry>
+	<entry key="settings.fine2">(Штраф высчитывается от суммы неоплаченного налога)</entry>
+	<entry key="settings.price2">Эта цена учитывается при начислении налога</entry>
+	<entry key="settings.weight2">При превышении веса, начисляется налог за лишние кг</entry>
+	<entry key="settings.kg2">x% от суммы превышения цены==налог</entry>
+
+
+</properties>

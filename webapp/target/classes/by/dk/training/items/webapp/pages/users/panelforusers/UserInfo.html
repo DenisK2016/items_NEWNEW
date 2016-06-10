@@ -1,0 +1,72 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<link rel="stylesheet" href="kendo.custom.css" type="text/css"
+		media="all" title="Stylesheet" />
+	<table class="regprod">
+		<tr>
+			<td colspan="2" align="center"><wicket:message
+					key="page.users.info.title" /></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.id" />:</td>
+			<td wicket:id="id"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.login" />:</td>
+			<td wicket:id="login"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.fname" />:</td>
+			<td wicket:id="fName"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.lname" />:</td>
+			<td wicket:id="lName"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.date" />:</td>
+			<td wicket:id="usercreated"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.status" />:</td>
+			<td wicket:id="status"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.post" />:</td>
+			<td wicket:id="post"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.rank" />:</td>
+			<td wicket:id="rank"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.email" />:</td>
+			<td wicket:id="mail"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.packages" />:</td>
+			<td><select class="field" wicket:id="packs"></select> <a
+				style="color: #0f0fd6" wicket:id="infoPackage"><wicket:message
+						key="page.users.info.packages1" /></a></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.products" />:</td>
+			<td><select class="field" wicket:id="listProd"></select></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.types" />:</td>
+			<td><select class="field" wicket:id="listType"></select></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.users.info.recipients" />:</td>
+			<td><select class="field" wicket:id="listRec"></select></td>
+		</tr>
+	</table>
+
+
+
+	<a wicket:id="back"><wicket:message key="page.products.info.back" /></a>
+	<div wicket:id="modal2"></div>
+	<div wicket:id="notification"></div>
+</wicket:panel>

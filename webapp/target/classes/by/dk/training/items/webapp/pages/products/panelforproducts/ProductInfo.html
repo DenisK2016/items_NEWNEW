@@ -1,0 +1,51 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<table class="regprod">
+		<tr>
+			<td colspan="2" align="center"><wicket:message
+					key="page.products.info.title" /></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.id" />:</td>
+			<td wicket:id="productid"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.name" />:</td>
+			<td wicket:id="productname"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.price" />:</td>
+			<td wicket:id="productprice"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.weight" />:</td>
+			<td wicket:id="productlimit"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.status" />:<br>
+				<wicket:message key="page.products.info.status1" /></td>
+			<td>
+				<div class="squaredOne">
+					<input id="squaredOne" type="checkbox" wicket:id="productstatus"></input>
+					<label for="squaredOne"></label>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.info.creator" />:<br>
+				<wicket:message key="page.products.info.creator1" /></td>
+			<td wicket:id="user"></td>
+		</tr>
+
+		<tr>
+			<td><wicket:message key="page.products.info.types" />:</td>
+			<td><select class="field" wicket:id="types"></select></td>
+		</tr>
+	</table>
+
+
+
+	<a wicket:id="back"><wicket:message key="page.products.info.back" /></a>
+
+</wicket:panel>

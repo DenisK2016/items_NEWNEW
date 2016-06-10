@@ -1,0 +1,64 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<table style="color: white; margin-left: 172px;">
+		<tr>
+			<th colspan="2" align="center"><wicket:message
+					key="page.home.title" /> <span wicket:id="role">[role]</span><br>
+				<span wicket:id="info1"></span><br> <span wicket:id="info2"></span></th>
+		</tr>
+		<wicket:enclosure child="allpacks">
+			<tr>
+				<td><wicket:message key="page.home.packs" /></td>
+				<td align="center"><p wicket:id="allpacks"></p></td>
+			</tr>
+		</wicket:enclosure>
+		<wicket:enclosure child="month">
+			<tr>
+				<td><wicket:message key="page.home.packs2" />:</td>
+				<td align="center"><p wicket:id="month"></p></td>
+			</tr>
+		</wicket:enclosure>
+
+		<tr>
+			<td><wicket:enclosure child="datestart">
+					<wicket:message key="page.home.packsfrom" />
+					<input type="text" style="width: 85px;" class="field"
+						wicket:id="datestart" />
+				</wicket:enclosure> <wicket:enclosure child="dateend">
+					<wicket:message key="page.home.packsto" />
+					<input type="text" style="width: 85px;" class="field"
+						wicket:id="dateend" />:</wicket:enclosure></td>
+			<wicket:enclosure child="quantity">
+				<td align="center"><p wicket:id="quantity"></p></td>
+			</wicket:enclosure>
+		</tr>
+		<wicket:enclosure child="maxprice">
+			<tr>
+				<td><wicket:message key="page.home.packexpensive" />:</td>
+				<td align="center"><p wicket:id="maxprice"></p></td>
+			</tr>
+		</wicket:enclosure>
+		<wicket:enclosure child="city">
+			<tr>
+				<td><wicket:message key="page.home.country" /></td>
+				<td align="center"><p wicket:id="city"></p></td>
+			</tr>
+		</wicket:enclosure>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	<div wicket:id="wmc">
+		<table style="width: 80%;">
+			<tr>
+				<td><select class="field" style="width: 170px"
+					wicket:id="years"></select></td>
+			</tr>
+
+			<tr>
+				<td><div wicket:id="chart"></div></td>
+			</tr>
+		</table>
+	</div>
+</wicket:extend>

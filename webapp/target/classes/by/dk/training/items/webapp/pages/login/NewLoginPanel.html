@@ -1,0 +1,48 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+
+	<table class="regprod">
+		<tr>
+			<p class="wcaptionText">
+				<wicket:message key="newlogin.registration" />
+			</p>
+		</tr>
+		<tr>
+			<td>
+				<form wicket:id="formRegUser" class="form_modal_window">
+					<label for="login"><wicket:message key="newlogin.login" />:
+					</label><input class="field" style="margin-left: 35%;" id="login"
+						type="text" wicket:id="login" /><br> <br> <label
+						for="pass"><wicket:message key="newlogin.password" />: </label><input
+						class="field" style="margin-left: 31.6%;" id="pass"
+						type="password" wicket:id="password" /><br> <br> <label
+						for="namee"><wicket:message key="newlogin.fname" />: </label><input
+						class="field" style="margin-left: 38%;" id="namee" type="text"
+						wicket:id="firstName" /><br> <br> <label for="lnamee"><wicket:message
+							key="newlogin.lname" />: </label><input class="field"
+						style="margin-left: 28.5%;" id="lnamee" type="text"
+						wicket:id="lastName" /><br> <br> <label for="emaill"><wicket:message
+							key="newlogin.email" />: </label><input class="field"
+						style="margin-left: 36.2%;" id="email" type="text"
+						wicket:id="email" /><br> <br> <label for="postt"><wicket:message
+							key="newlogin.post" />: </label><input class="field"
+						style="margin-left: 0%;" id="postt" type="text" wicket:id="post" /><br>
+					<br>
+					<wicket:message key="newlogin.rank" />
+					<br> <select class="field" style="width: 170px"
+						wicket:id="rank"></select><br> <br> <br> <br>
+					<button class="field" type="submit" wicket:id="save">
+						<wicket:message key="newlogin.save" />
+					</button>
+
+
+
+					<a wicket:id="cancel"><wicket:message key="newlogin.cancel" /></a>
+					<span wicket:id="feedback"></span>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<div wicket:id="notification"></div>
+</wicket:panel>

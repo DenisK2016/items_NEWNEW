@@ -1,0 +1,30 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<header>
+		<nav style="margin-top: 100px; margin-left: 13%;">
+			<ul class="menu">
+				<li><a class="active" wicket:id="Back"><wicket:message
+							key="menu.home" /></a></li>
+				<li><a wicket:id="linkproduct"><wicket:message
+							key="menu.products" /></a></li>
+				<li><a wicket:id="types"><wicket:message
+							key="menu.types-products" /></a></li>
+				<li><a wicket:id="packages"><wicket:message
+							key="menu.packages" /></a></li>
+				<li><a wicket:id="recipient"><wicket:message
+							key="menu.recipients" /></a></li>
+				<li><a wicket:id="newPack" style="color: rgb(242, 113, 113);"><wicket:message
+							key="menu.new-pack" /></a></li>
+				<li id="pr"><a><wicket:message key="menu.profile" /></a>
+					<ul class="submenu_admin">
+						<li class="submenu_collor" wicket:id="profile"><wicket:message
+								key="menu.profile-room" /></li>
+						<li class="submenu_collor" wicket:id="logout"><wicket:message
+								key="menu.profile-logout" /></li>
+					</ul></li>
+			</ul>
+		</nav>
+
+	</header>
+</wicket:panel>

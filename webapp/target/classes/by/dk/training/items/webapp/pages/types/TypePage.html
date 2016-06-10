@@ -1,0 +1,20 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="kendo.custom.css" type="text/css"
+		media="all" title="Stylesheet" />
+	<table>
+		<tr>
+			<td align="center"><span style="font-size: 14pt; color: white;"><wicket:message
+						key="page.types.title" /></span></td>
+		</tr>
+		<tr>
+			<td><span style="font-size: 10pt; color: white;"><wicket:message
+						key="page.types.subtitle" /></span></td>
+		</tr>
+	</table>
+
+	<div wicket:id="list-panel"></div>
+	<wicket:enclosure child="CreateType">
+		<a wicket:id="CreateType"><wicket:message key="page.types.create" /></a>
+	</wicket:enclosure>
+	<div wicket:id="modalCreate"></div>
+</wicket:extend>

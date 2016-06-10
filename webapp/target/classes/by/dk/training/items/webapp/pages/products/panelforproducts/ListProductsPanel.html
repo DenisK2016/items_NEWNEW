@@ -1,0 +1,90 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="kendo.custom.css" type="text/css"
+		media="all" title="Stylesheet" />
+	<table>
+
+	</table>
+
+
+	<table class="dataview-product">
+		<tr>
+			<td colspan="7" align="center"><h1 style="font-size: 15pt">
+					<wicket:message key="page.products.title" />
+					<br>
+					<span style="font-size: 11pt"> <wicket:message
+							key="page.products.title2" /></span>
+				</h1></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.find" /></td>
+			<td><input class="field-product" type="text"
+				wicket:id="idFilter" style="margin-left: 0px;"
+				wicket:message="placeholder:page.products.placeholder.id" /></td>
+			<td><input class="field-product " type="text"
+				wicket:id="nameFilter" style="margin-left: 29px;"
+				wicket:message="placeholder:page.products.placeholder.name" /></td>
+			<td><input class="field-product " type="text"
+				wicket:id="priceFilter" style="margin-left: 4px; width: 77px;"
+				wicket:message="placeholder:page.products.placeholder.price" /></td>
+			<td><input class="field-product " type="text"
+				wicket:id="weightFilter" style="margin-left: 22px;"
+				wicket:message="placeholder:page.products.placeholder.weight" /></td>
+			<td align="left" style="font-size: 9pt;"><input type="checkbox"
+				wicket:id="status" style="margin-left: 27px;" /> <wicket:message
+					key="page.products.chk" /></td>
+			<td><input class="field-product" type="text"
+				wicket:id="userFilter" style="margin-left: 19px;"
+				wicket:message="placeholder:page.products.placeholder.creater" /></td>
+			<td align="left" style="font-size: 9pt;"><wicket:enclosure
+					child="myProd">
+					<input type="checkbox" wicket:id="myProd"
+						style="margin-left: 40px;" />
+					<wicket:message key="page.products.chk1" />
+				</wicket:enclosure></td>
+		</tr>
+	</table>
+	<div wicket:id="container">
+		<table class="dataview-product">
+			<tr>
+				<th></th>
+				<th wicket:id="orderById"><wicket:message
+						key="page.products.id" /></th>
+				<th wicket:id="orderByProductName"><wicket:message
+						key="page.products.name" /></th>
+				<th wicket:id="orderByPrice"><wicket:message
+						key="page.products.price" /></th>
+				<th wicket:id="orderByWeight"><wicket:message
+						key="page.products.weight" /></th>
+				<th wicket:id="orderByStatus"><wicket:message
+						key="page.products.status" /></th>
+				<wicket:enclosure child="orderByUser">
+					<th wicket:id="orderByUser"><wicket:message
+							key="page.products.creater" /></th>
+				</wicket:enclosure>
+
+			</tr>
+			<tr wicket:id="productlist">
+				<td><a class="icon_select" wicket:id="infoProduct">&#10148;</a></td>
+				<td align="center"><span wicket:id="productid">[productid]</span></td>
+				<td align="center"><span wicket:id="productname">[productname]</span></td>
+				<td align="center"><span wicket:id="productprice">[productprice]</span></td>
+				<td align="center"><span wicket:id="productweight">[productweight]</span></td>
+				<td align="center"><div class="squaredOne">
+						<input id="squaredOne" type="checkbox" wicket:id="productstatus"></input>
+						<label for="squaredOne"></label>
+					</div></td>
+				<wicket:enclosure child="idUser">
+					<td align="center"><span wicket:id="idUser">[users]</span></td>
+				</wicket:enclosure>
+				<td align="center"><wicket:enclosure child="deletelink">
+						<a wicket:id="deletelink" class="icon_delete">&#10007;</a>
+					</wicket:enclosure></td>
+				<td align="center"><a class="icon-edit" wicket:id="updateLink">&#9997;</a></td>
+			</tr>
+		</table>
+		<span wicket:id="navigator">[dataview navigator]</span>
+	</div>
+	<div wicket:id="modal1"></div>
+	<div wicket:id="modalUpdate"></div>
+	<div wicket:id="errorDialog">[error]</div>
+</wicket:panel>

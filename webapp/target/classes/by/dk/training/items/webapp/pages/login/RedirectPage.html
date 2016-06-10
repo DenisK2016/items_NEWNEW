@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+<link
+	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold'
+	rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+	title="Stylesheet" />
+</head>
+<body style="width: 86%;">
+	<div align="center" id="bd" class="body-container"
+		style="margin-top: 270px;">
+		<table style="margin-left: -139px;">
+			<tr>
+				<td><span wicket:id="msg"></span></td>
+			</tr>
+			<tr>
+				<td><a wicket:id="send"><wicket:message
+							key="redirect.sendmsg" /></a></td>
+				<td><a style="margin-left: -184px;" wicket:id="home"><wicket:message
+							key="confirm.home" /></a></td>
+			</tr>
+		</table>
+		<div wicket:id="modalEmail"></div>
+	</div>
+	<div class="ft" wicket:id="footer">
+		<div class="copyright">
+			©<span wicket:id="current-year"></span>
+		</div>
+	</div>
+</body>
+</html>
