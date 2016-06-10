@@ -264,6 +264,7 @@ public class AllNew {
 
 		Package pack = new Package();
 		BigDecimal fine = new BigDecimal("0");
+		BigDecimal percentFine = new BigDecimal("20");
 		long idPack = System.currentTimeMillis();
 		for (int k = 1; k <= 10; k++) {
 			int n = 1;
@@ -273,12 +274,11 @@ public class AllNew {
 				pack.setId(idPack++);
 				pack.setCountrySender("Country " + i);
 				pack.setFine(fine);
+				pack.setPercentFine(percentFine);
 				if (i % 10 == 0) {
 					n++;
 					nn++;
 				}
-				System.out.println(n);
-				System.out.println(nn);
 				pack.setIdRecipient(recipientService.getRecipient((long) n));
 				pack.setIdUser(userProfileService.getUser((long) nn));
 				pack.setPaid(false);
