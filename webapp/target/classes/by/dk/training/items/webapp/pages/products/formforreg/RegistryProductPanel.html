@@ -1,0 +1,50 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="formreg">
+		<table class="regprod" style="width: 510px; margin-left: 45px;">
+			<tr>
+				<td colspan="2" align="center"><span wicket:id="regOrUpdate"></span></td>
+			</tr>
+			<tr>
+				<td><span wicket:id="feedback"></span></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="page.products.reg.name" /><br> <wicket:message
+						key="page.products.reg.name1" /></td>
+				<td><input class="field" type="text" wicket:id="nameProduct" /></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="page.products.reg.weight" /></td>
+				<td><input class="field" type="text" wicket:id="weight" /></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="page.products.reg.price" /></td>
+				<td><input class="field" type="text" wicket:id="priceProduct" /></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="page.products.reg.status" /><br>
+					<wicket:message key="page.products.reg.status1" /></td>
+				<td><span wicket:id="status"></span></td>
+			</tr>
+			<tr>
+				<td><b><wicket:message key="page.products.reg.type1" /><br>
+						<wicket:message key="page.products.reg.type2" /><br> <span
+						style="font-size: 8pt;"><wicket:message
+								key="page.products.reg.type3" /> <br> <wicket:message
+								key="page.products.reg.type4" /><br> <wicket:message
+								key="page.products.reg.type5" /><br> <wicket:message
+								key="page.products.reg.type6" /> </span> </b></td>
+				<td><span wicket:id="palleteType"></span></td>
+			</tr>
+			<tr>
+				<td><input class="field" type="submit" wicket:id="sendButton"
+					wicket:message="value:newlogin.newsave.title" /></td>
+			</tr>
+		</table>
+		<a wicket:id="BackToProducts"><wicket:message
+				key="page.products.reg.type7" /></a>
+	</form>
+	<div wicket:id="notification"></div>
+</wicket:panel>
+
+
+

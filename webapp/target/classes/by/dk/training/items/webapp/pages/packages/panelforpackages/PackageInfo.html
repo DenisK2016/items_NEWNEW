@@ -1,0 +1,72 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<table class="regprod">
+		<tr>
+			<td colspan="2" align="center"><wicket:message
+					key="page.packages.info.title" /></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.list.sort.id" />:</td>
+			<td align="center" wicket:id="id"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.id" />:</td>
+			<td align="center" wicket:id="idRec"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.price" />:</td>
+			<td align="center" wicket:id="price"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.weight" />:</td>
+			<td align="center" wicket:id="weight"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.tax" />:</td>
+			<td align="center" wicket:id="tax"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.user" />:</td>
+			<td align="center" wicket:id="idUser"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.date" />:</td>
+			<td align="center" wicket:id="date"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.description" />:</td>
+			<td align="center" wicket:id="descr"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.country" />:</td>
+			<td align="center" wicket:id="country"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.deadline" /><span
+				style="font-size: 9pt;"><wicket:message
+						key="page.packages.info.deadline1" /></span>:</td>
+			<td align="center" wicket:id="payment"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.fine" />:</td>
+			<td align="center" wicket:id="fine"></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.status" />:</td>
+			<td align="center"><div class="slideThree">
+					<input id="slideThree" type="checkbox" wicket:id="paid"
+						style="display: none;"></input><label for="slideThree"></label>
+				</div></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.packages.info.products" />:</td>
+			<td align="center"><select class="field" wicket:id="products"></select></td>
+		</tr>
+	</table>
+
+
+
+	<a wicket:id="back"><wicket:message key="page.products.info.back" /></a>
+
+</wicket:panel>

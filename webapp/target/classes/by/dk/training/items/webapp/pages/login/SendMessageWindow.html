@@ -1,0 +1,28 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<link rel="stylesheet" href="kendo.custom.css" type="text/css"
+		media="all" title="Stylesheet" />
+	<form wicket:id="formSend">
+		<table class="regprod">
+			<tr>
+				<td><p class="wcaptionText">
+						<wicket:message key="send.message" />
+					</p></td>
+			</tr>
+			<tr>
+				<td><span wicket:id="title"></span></td>
+			</tr>
+			<tr>
+				<td><input class="field" type="email" wicket:id="email"
+					placeholder="email" /></td>
+			</tr>
+			<tr>
+				<td><button wicket:id="send">
+						<wicket:message key="restore.button" />
+					</button></td>
+			</tr>
+		</table>
+	</form>
+	<div wicket:id="notification"></div>
+</wicket:panel>

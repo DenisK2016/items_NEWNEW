@@ -1,0 +1,79 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+
+	<table class="dataview-users">
+		<tr>
+			<td colspan="10" align="center"><h1 style="font-size: 15pt">
+					<wicket:message key="page.users.base.title" />
+					<br>
+					<span style="font-size: 11pt"><wicket:message
+							key="page.users.base.title2" /></span>
+				</h1></td>
+		</tr>
+		<tr>
+			<td><wicket:message key="page.products.find" /></td>
+			<td><input class="field-users" type="text"
+				wicket:id="dateFilter"
+				wicket:message="placeholder:page.users.base.placeholder.date" /><br>
+				<input class="field-users" type="text" wicket:id="idFilter"
+				wicket:message="placeholder:page.users.base.placeholder.id" /></td>
+			<td><input class="field-users" type="text"
+				wicket:id="postFilter"
+				wicket:message="placeholder:page.users.base.placeholder.post" /><br>
+				<input class="field-users" type="text" wicket:id="loginFilter"
+				wicket:message="placeholder:page.users.base.placeholder.login" /></td>
+			<td><input class="field-users" type="text"
+				wicket:id="fNameFilter"
+				wicket:message="placeholder:page.users.base.placeholder.fname" /></td>
+			<td><input class="field-users" type="text"
+				wicket:id="lNameFilter"
+				wicket:message="placeholder:page.users.base.placeholder.lname" /></td>
+			<td><span class="field-users" style="margin-left: 33px;"><wicket:message
+						key="page.users.base.placeholder.status" />:</span><br> <select
+				class="field-users" wicket:id="statusFilter"
+				style="margin-left: 33px; width: 110px;"></select></td>
+			<td><input class="field-users" type="text"
+				wicket:id="emailFilter" style="margin-left: 26px;"
+				wicket:message="placeholder:page.users.base.placeholder.email" /></td>
+			<td colspan="2"><span class="field-users"
+				style="margin-left: 0px;"><wicket:message
+						key="page.users.base.placeholder.rank" />:</span><br> <select
+				class="field-users" wicket:id="rankFilter" style="width: 109px;"></select></td>
+			<td></td>
+		</tr>
+	</table>
+	<div wicket:id="container">
+		<table class="dataview-users">
+			<tr>
+				<th></th>
+				<th wicket:id="orderById"><wicket:message
+						key="page.users.base.head.id" /></th>
+				<th wicket:id="orderByLogin"><wicket:message
+						key="page.users.base.head.login" /></th>
+				<th wicket:id="orderByFName"><wicket:message
+						key="page.users.base.head.fname" /></th>
+				<th wicket:id="orderByLName"><wicket:message
+						key="page.users.base.head.lname" /></th>
+				<th wicket:id="orderByStatus"><wicket:message
+						key="page.users.base.head.status" /></th>
+				<th wicket:id="orderByMail"><wicket:message
+						key="page.users.base.head.email" /></th>
+			</tr>
+			<tr wicket:id="userlist">
+				<td><a class="icon_select" wicket:id="infoUser">&#10148;</a></td>
+				<td align="center"><span wicket:id="userid">[userid]</span></td>
+				<td align="center"><span wicket:id="userlogin">[userlogin]</span></td>
+				<td align="center"><span wicket:id="userfname">[userfname]</span></td>
+				<td align="center"><span wicket:id="userlname">[userlname]</span></td>
+				<td align="center"><span wicket:id="userstatus">[userstatus]</span></td>
+				<td align="center"><span wicket:id="useremail">[useremail]</span></td>
+				<td align="center"><a class="icon_delete"
+					wicket:id="deletelink">&#10007;</a></td>
+				<td align="center"><a class="icon-edit" wicket:id="updateUser">&#9997;</a></td>
+			</tr>
+		</table>
+		<span wicket:id="navigator">[dataview navigator]</span>
+	</div>
+	<div wicket:id="modal1"></div>
+	<div wicket:id="modalUpdate"></div>
+	<div wicket:id="errorDialog">[error]</div>
+</wicket:panel>

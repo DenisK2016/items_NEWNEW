@@ -1,0 +1,53 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+		title="Stylesheet" />
+	<form wicket:id="formSetting">
+		<span wicket:id="feedback"></span>
+		<table class="regprod">
+			<tr>
+				<td colspan="2" align="center"><wicket:message
+						key="settings.title" /></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.price" />:<br> <span
+					style="font-size: 8pt;"><wicket:message
+							key="settings.price2" /></span></td>
+				<td align="center"><input type="text" wicket:id="maxPrice"></input></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.weight" />:<br> <span
+					style="font-size: 8pt;"> <wicket:message
+							key="settings.weight2" /></span></td>
+				<td align="center"><input type="text" wicket:id="maxWeight"></input></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.price.kg" />:</td>
+				<td align="center"><input type="text" wicket:id="priceWeight"></input></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.tax" />:<br> <span
+					style="font-size: 8pt;"> <wicket:message key="settings.kg2" /></span></td>
+				<td align="center"><input type="text" wicket:id="percent"></input></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.deadline" />:</td>
+				<td align="center"><input type="text"
+					wicket:id="paymentDeadline"></input></td>
+			</tr>
+			<tr>
+				<td><wicket:message key="settings.fine" />:<br> <span
+					style="font-size: 8pt;"><wicket:message key="settings.fine2" /></span></td>
+				<td align="center"><input type="text" wicket:id="percentFine"></input></td>
+			</tr>
+			<tr>
+				<td><button class="field" wicket:id="save">
+						<wicket:message key="newlogin.save" />
+					</button></td>
+				<td><a wicket:id="back"><wicket:message
+							key="page.products.info.back" /></a></td>
+			</tr>
+		</table>
+	</form>
+
+	<div wicket:id="notification"></div>
+</wicket:panel>

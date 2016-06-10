@@ -1,0 +1,47 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" media="screen"
+	title="Stylesheet" />
+<link rel="stylesheet" href="kendo.custom.css" type="text/css"
+	media="all" title="Stylesheet" />
+<div style="margin-left: 1200px;" wicket:id="language-select"
+	class="language-comp"></div>
+</head>
+<body style="height: 60%;">
+
+
+	<form wicket:id="form" class="login" autocomplete="off">
+		<p style="margin-left: 9.5px;">
+			<label for="login"> <wicket:message key="login.login" />:
+			</label> <input id="login" type="text" wicket:id="username"
+				autocomplete="off" value="Login" class="log_pass" />
+		</p>
+		<p>
+			<label for="login"><wicket:message key="login.password" />:</label>
+			<input type="password" wicket:id="password" value="Login"
+				class="log_pass" />
+		</p>
+		<p class="login-submit">
+			<button type="submit" class="login-button" wicket:id="submit-btn"
+				title="Войти">
+				<b>login</b>
+			</button>
+		</p>
+		<div wicket:id="feedbackpanel"></div>
+		<div wicket:id="notification"></div>
+	</form>
+	<p class="new-user">
+		<a style="color: #00a2d3;" wicket:id="newUser"><wicket:message
+				key="login.registration" /></a>
+	</p>
+	<div wicket:id="modal1"></div>
+	<br>
+	<p class="forgot-password">
+		<a style="color: #00a2d3;" wicket:id="passwordRestore"><wicket:message
+				key="login.restore" /></a>
+	</p>
+	<div wicket:id="modal2"></div>
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="btn.create.package">Create product</entry>
+
+	<entry key="menu.home">Home</entry>
+	<entry key="menu.products">Products</entry>
+	<entry key="menu.types-products">Types product</entry>
+	<entry key="menu.packages">Packages</entry>
+	<entry key="menu.recipients">Recipients</entry>
+	<entry key="menu.new-pack">New package</entry>
+	<entry key="menu.profile">Profile</entry>
+	<entry key="menu.profile-room">Room</entry>
+	<entry key="menu.profile-logout">Logout</entry>
+	<entry key="menu.users">Users</entry>
+
+	<entry key="US">English</entry>
+	<entry key="RU">Russian</entry>
+
+	<entry key="login.login">Login</entry>
+	<entry key="login.password">Password</entry>
+	<entry key="login.registration">New user</entry>
+	<entry key="login.restore">Password restore</entry>
+	<entry key="login.error1">Enter login and password!</entry>
+	<entry key="login.error2">"User nod found!"</entry>
+
+	<entry key="newlogin.registration">New user</entry>
+	<entry key="newlogin.login">Login</entry>
+	<entry key="newlogin.password">Password</entry>
+	<entry key="newlogin.fname">First name</entry>
+	<entry key="newlogin.lname">Last name</entry>
+	<entry key="newlogin.email">email</entry>
+	<entry key="newlogin.post">Post</entry>
+	<entry key="newlogin.rank">Rank</entry>
+	<entry key="newlogin.save">Save</entry>
+	<entry key="newlogin.cancel">Cancel</entry>
+	<entry key="newlogin.newuser.title">New User</entry>
+	<entry key="newlogin.newpass.title">New password</entry>
+	<entry key="newlogin.newfname.title">New first name</entry>
+	<entry key="newlogin.newlname.title">New last name</entry>
+	<entry key="newlogin.newemail.title">New email</entry>
+	<entry key="newlogin.newpost.title">Post</entry>
+	<entry key="newlogin.newrank.title">Rank</entry>
+	<entry key="newlogin.newsave.title">Save</entry>
+	<entry key="newlogin.newcancel.title">Cancel</entry>
+	<entry key="newlogin.error1">email not available</entry>
+	<entry key="newlogin.error2">Login not available</entry>
+
+	<entry key="restore.title">Password restore</entry>
+	<entry key="restore.fieldname">Enter your email</entry>
+	<entry key="restore.button">Send</entry>
+	<entry key="restore.cancel">Cancel</entry>
+	<entry key="restore.title.field">Enter you email</entry>
+	<entry key="restore.error">Email in base not exist</entry>
+
+	<entry key="confirm.home">To login page</entry>
+	<entry key="confirm.error">User not exist.</entry>
+	<entry key="confirm.label">Thank you for confirmation. Please login.</entry>
+	<entry key="confirm.email.text">Respected</entry>
+	<entry key="confirm.email.text2">You confirmation registration on service. Your
+		information:</entry>
+	<entry key="confirm.email.text3">Confirmation registration on service.</entry>
+	<entry key="confirm.email.error2">Maybe you have the wrong address...</entry>
+
+	<entry key="redirect.sendmsg">Send message</entry>
+	<entry key="redirect.label">Sorry, but you was banned or not confirmed email
+		address! If you have not received message, you can send repeated
+		request.</entry>
+
+	<entry key="send.message">Repeated request email address</entry>
+	<entry key="send.message.text">Hello</entry>
+	<entry key="send.message.text2">You have been registered on the service. Please not
+		response. Go to</entry>
+	<entry key="send.message.title">Registration</entry>
+	<entry key="send.message.info">Get your mail.</entry>
+
+	<entry key="page.home.title">Welcome. You role - </entry>
+	<entry key="page.home.title1">
+		To create a new parcel, you have to create the
+		products and recipient</entry>
+	<entry key="page.home.title2"> or make sure that they have been created.</entry>
+	<entry key="page.home.packs">All packages(units):</entry>
+	<entry key="page.home.packs2">Packages for the previous month(units):</entry>
+	<entry key="page.home.packsfrom">Quantity packages from </entry>
+	<entry key="page.home.packsto">to</entry>
+	<entry key="page.home.packexpensive">The most expensive package(BLR):</entry>
+	<entry key="page.home.country">The most popular country</entry>
+	<entry key="page.home.role1">admin</entry>
+	<entry key="page.home.role2">commander</entry>
+	<entry key="page.home.role3">officer</entry>
+	<entry key="page.home.chart1">Quantity packages</entry>
+	<entry key="page.home.chart2">Statistic packages for the year</entry>
+	<entry key="page.home.chart.month1">Jan</entry>
+	<entry key="page.home.chart.month2">Feb</entry>
+	<entry key="page.home.chart.month3">Mar</entry>
+	<entry key="page.home.chart.month4">Apr</entry>
+	<entry key="page.home.chart.month5">May</entry>
+	<entry key="page.home.chart.month6">Jun</entry>
+	<entry key="page.home.chart.month7">Jul</entry>
+	<entry key="page.home.chart.month8">Aug</entry>
+	<entry key="page.home.chart.month9">Sep</entry>
+	<entry key="page.home.chart.month10">Oct</entry>
+	<entry key="page.home.chart.month11">Nov</entry>
+	<entry key="page.home.chart.month12">Dec</entry>
+
+	<entry key="page.products.title">Base products</entry>
+	<entry key="page.products.title2">(the product is any product unit, which includes
+		package)</entry>
+	<entry key="page.products.find">Find</entry>
+	<entry key="page.products.chk">Allowed</entry>
+	<entry key="page.products.chk1">My products</entry>
+	<entry key="page.products.id">ID</entry>
+	<entry key="page.products.name">Name product</entry>
+	<entry key="page.products.price">Price(BLR)</entry>
+	<entry key="page.products.weight">Weight product(kg)</entry>
+	<entry key="page.products.status">Status</entry>
+	<entry key="page.products.creater">Creator</entry>
+	<entry key="page.products.info.title">Info product</entry>
+	<entry key="page.products.id.title">ID product</entry>
+	<entry key="page.products.name.title">Name product</entry>
+	<entry key="page.products.price.title">Price product(BLR)</entry>
+	<entry key="page.products.weight.title">Weight product(kg)</entry>
+	<entry key="page.products.status.title">Status product</entry>
+	<entry key="page.products.creater.title">Creator product</entry>
+	<entry key="page.products.delete.title">Delete product</entry>
+	<entry key="page.products.update.title">Update product</entry>
+	<entry key="page.products.sort.id">Sort by id</entry>
+	<entry key="page.products.sort.name">Sort by name</entry>
+	<entry key="page.products.sort.price">Sort by price</entry>
+	<entry key="page.products.sort.weight">Sort by weight</entry>
+	<entry key="page.products.sort.status">Sort by status</entry>
+	<entry key="page.products.sort.creater">Sort by creator</entry>
+	<entry key="page.products.chk2">Only allowes</entry>
+	<entry key="page.products.chk3">Only my products</entry>
+	<entry key="page.products.placeholder.id">by id</entry>
+	<entry key="page.products.placeholder.name">by name</entry>
+	<entry key="page.products.placeholder.price">by price</entry>
+	<entry key="page.products.placeholder.weight">by weight</entry>
+	<entry key="page.products.placeholder.creater">by creator</entry>
+	<entry key="page.products.create">Create product</entry>
+	<entry key="page.products.info.title">Product information</entry>
+	<entry key="page.products.info.id">Base number product</entry>
+	<entry key="page.products.info.name">Product name(brand, etc.)</entry>
+	<entry key="page.products.info.price">Price product(BLR)</entry>
+	<entry key="page.products.info.weight">Product unit weight(kg)</entry>
+	<entry key="page.products.info.status">Status product</entry>
+	<entry key="page.products.info.status1">(green - OK, red - NOT)</entry>
+	<entry key="page.products.info.creator">Product creator</entry>
+	<entry key="page.products.info.creator1">(id and login)</entry>
+	<entry key="page.products.info.types">List type product</entry>
+	<entry key="page.products.info.back">Back</entry>
+	<entry key="page.products.info.title2">Import is permitted</entry>
+	<entry key="page.products.info.title1">Import banned</entry>
+	<entry key="page.products.info.title3">Types product</entry>
+	<entry key="page.products.reg.name">Name product</entry>
+	<entry key="page.products.reg.name1">(brand, series etc)</entry>
+	<entry key="page.products.reg.weight">Weight(kg)</entry>
+	<entry key="page.products.reg.price">Price product(BLR)</entry>
+	<entry key="page.products.reg.status">Status product</entry>
+	<entry key="page.products.reg.status1">for import in Belarus</entry>
+	<entry key="page.products.reg.type1">Select type </entry>
+	<entry key="page.products.reg.type2">product:</entry>
+	<entry key="page.products.reg.type3">(existing types are</entry>
+	<entry key="page.products.reg.type4">the left side, and added</entry>
+	<entry key="page.products.reg.type5">right. If not found</entry>
+	<entry key="page.products.reg.type6">the desired type, then choose the other.)</entry>
+	<entry key="page.products.reg.type7">Back</entry>
+	<entry key="page.products.reg.status2">Yes</entry>
+	<entry key="page.products.reg.status3">No</entry>
+	<entry key="page.products.reg.title">Registration new product.</entry>
+	<entry key="page.products.reg.title1">Update product.</entry>
+	<entry key="page.products.dialog.error.title">Deleting can not be!</entry>
+	<entry key="page.products.dialog.error.message">The product is used in the packages. Find and remove
+		first packages.</entry>
+
+	<entry key="page.types.title">Tree exist types</entry>
+	<entry key="page.types.subtitle">(for more information about the types, right-click)</entry>
+	<entry key="page.types.create">Create type</entry>
+	<entry key="page.types.newtype.title">(form is only for commanders)</entry>
+	<entry key="page.types.newtype.name">Name type</entry>
+	<entry key="page.types.newtype.parrent">Parrent type</entry>
+	<entry key="page.types.newtype.title1">Registration new type</entry>
+	<entry key="page.types.newtype.title2">Update type</entry>
+	<entry key="page.types.newtype.error">This type already exists</entry>
+	<entry key="page.types.menu1">Info a type</entry>
+	<entry key="page.types.menu2">Products type</entry>
+	<entry key="page.types.menu3">Delete type</entry>
+	<entry key="page.types.products.title">Names created products that belong to the selected
+		type</entry>
+	<entry key="page.types.info.title">Type information</entry>
+	<entry key="page.types.info.id">Id type</entry>
+	<entry key="page.types.info.name">Name type</entry>
+	<entry key="page.types.info.parrent1">Type to which</entry>
+	<entry key="page.types.info.parrent2">this type:(parrent type)</entry>
+	<entry key="page.types.info.user">User to which create type</entry>
+	<entry key="page.types.error">To delete type, you must first delete all of its
+		subtypes and products of this type.</entry>
+
+	<entry key="page.packages.create">Create package</entry>
+	<entry key="page.packages.list.title">Base packages</entry>
+	<entry key="page.packages.list.placeholder.id">by id user</entry>
+	<entry key="page.packages.list.placeholder.code">by tracking</entry>
+	<entry key="page.packages.list.placeholder.fromdate">from</entry>
+	<entry key="page.packages.list.placeholder.todate">to</entry>
+	<entry key="page.packages.list.placeholder.desc">by description</entry>
+	<entry key="page.packages.list.placeholder.price">by price</entry>
+	<entry key="page.packages.list.placeholder.country">by country</entry>
+	<entry key="page.packages.list.placeholder.weight">by weight</entry>
+	<entry key="page.packages.list.placeholder.tax">by tax</entry>
+	<entry key="page.packages.list.placeholder.recipient">by recipient</entry>
+	<entry key="page.packages.list.sort.chk1">All paid</entry>
+	<entry key="page.packages.list.sort.chk2">All fine</entry>
+	<entry key="page.packages.list.sort.chk3">Not paid, not fine.</entry>
+	<entry key="page.packages.list.sort.chk4">My packages</entry>
+	<entry key="page.packages.list.sort.id">Tracking-code</entry>
+	<entry key="page.packages.list.sort.price">Price</entry>
+	<entry key="page.packages.list.sort.price2">(BLR)</entry>
+	<entry key="page.packages.list.sort.weight">Weight(kg)</entry>
+	<entry key="page.packages.list.sort.tax">Tax</entry>
+	<entry key="page.packages.list.sort.deadline">Payment deadline</entry>
+	<entry key="page.packages.list.sort.deadline1">(days)</entry>
+	<entry key="page.packages.list.sort.fine">Fine</entry>
+	<entry key="page.packages.list.sort.paid">Status</entry>
+	<entry key="page.packages.list.paid">Paid</entry>
+	<entry key="page.packages.info.title">Package information</entry>
+	<entry key="page.packages.info.id">Recipient id</entry>
+	<entry key="page.packages.info.price">The total cost package(BLR)</entry>
+	<entry key="page.packages.info.weight">Weight(kg)</entry>
+	<entry key="page.packages.info.tax">Tax(BLR)</entry>
+	<entry key="page.packages.info.user">Id creator</entry>
+	<entry key="page.packages.info.date">Date create</entry>
+	<entry key="page.packages.info.description">Description</entry>
+	<entry key="page.packages.info.country">Country sender</entry>
+	<entry key="page.packages.info.deadline">Payment deadline</entry>
+	<entry key="page.packages.info.deadline1">(the number of days that are given to pay the
+		registration sending.Include settings commander.)</entry>
+	<entry key="page.packages.info.fine">Fine(BLR)</entry>
+	<entry key="page.packages.info.status">Status(green-paid, red-not paid)</entry>
+	<entry key="page.packages.info.products">List products package</entry>
+	<entry key="page.packages.reg.status">Paid</entry>
+	<entry key="page.packages.reg.status1">Not paid</entry>
+	<entry key="page.packages.reg.title">New package registration.</entry>
+	<entry key="page.packages.reg.title1">Package update.</entry>
+	<entry key="page.packages.reg.info">Important information!</entry>
+	<entry key="page.packages.reg.info1">To register a new package, you must first select the
+		recipient and the products that are contained in the package.</entry>
+	<entry key="page.packages.reg.info2">Fields marked with an asterisk are required.</entry>
+	<entry key="page.packages.reg.recipient">Select recipient from list</entry>
+	<entry key="page.packages.reg.recipient1">(if the recipient does not exist, create</entry>
+	<entry key="page.packages.reg.recipient2">it in the appropriate section)</entry>
+	<entry key="page.packages.reg.code">Enter tracking-code package(in</entry>
+	<entry key="page.packages.reg.code1">code can not be changed in the future</entry>
+	<entry key="page.packages.reg.code2">without removing, so type carefully.It is desirable to
+		leave the default code)</entry>
+	<entry key="page.packages.reg.price">The total price of all the products in the package
+		(determined automatically depending on the products in the basket)</entry>
+	<entry key="page.packages.reg.tax">Total tax on the package(determined automatically
+		depending on the price and weight of the product)</entry>
+	<entry key="page.packages.reg.weight">Total weight package( determined automatically
+		depending on the products in the basket)</entry>
+	<entry key="page.packages.reg.user">Inspector package(If not selected, then set the
+		current)</entry>
+	<entry key="page.packages.reg.date">Date of arrival package (today's date is automatically
+		selected)</entry>
+	<entry key="page.packages.reg.desc">Additional description package(any information)</entry>
+	<entry key="page.packages.reg.country">Country sender</entry>
+	<entry key="page.packages.reg.deadline">Payment deadline</entry>
+	<entry key="page.packages.reg.deadline1">(set automatically</entry>
+	<entry key="page.packages.reg.deadline2">depending on the settings)</entry>
+	<entry key="page.packages.reg.fine">Fine(set automatically</entry>
+	<entry key="page.packages.reg.fine1">depending on the settings)</entry>
+	<entry key="page.packages.reg.status3">Status package</entry>
+	<entry key="page.packages.reg.products">Select the products and their quantities</entry>
+	<entry key="page.packages.reg.products1">(if the product is not present, create</entry>
+	<entry key="page.packages.reg.products2">it in the appropriate section.Number of arrows choose,
+		otherwise add only one) Products can not be
+		changed later</entry>
+	<entry key="page.packages.reg.addprod">Add product</entry>
+	<entry key="page.packages.reg.allprod">Products in basket</entry>
+	<entry key="page.packages.reg.deleteprod">Delete</entry>
+	<entry key="page.packages.reg.placeholder.country">Country</entry>
+	<entry key="page.packages.reg.placeholder.desc">Description</entry>
+	<entry key="page.packages.reg.placeholder.code">Tracking-code</entry>
+	<entry key="page.packages.reg.error">Tracking-code already exists!</entry>
+	<entry key="page.packages.reg.error1">First select the recipient!</entry>
+	<entry key="page.packages.placeholder.products">by product</entry>
+
+	<entry key="page.users.create">Create user</entry>
+	<entry key="page.users.base.title">Base users</entry>
+	<entry key="page.users.base.title2">(available only for the administrator)</entry>
+	<entry key="page.users.base.placeholder.id">by id</entry>
+	<entry key="page.users.base.placeholder.date">by date reg.</entry>
+	<entry key="page.users.base.placeholder.post">by post</entry>
+	<entry key="page.users.base.placeholder.login">by login</entry>
+	<entry key="page.users.base.placeholder.fname">by first name</entry>
+	<entry key="page.users.base.placeholder.lname">by last name</entry>
+	<entry key="page.users.base.placeholder.status">by status</entry>
+	<entry key="page.users.base.placeholder.email">by email</entry>
+	<entry key="page.users.base.placeholder.rank">by rank</entry>
+	<entry key="page.users.base.head.id">ID</entry>
+	<entry key="page.users.base.head.login">Login</entry>
+	<entry key="page.users.base.head.fname">First name</entry>
+	<entry key="page.users.base.head.lname">Last name</entry>
+	<entry key="page.users.base.head.status">Status user</entry>
+	<entry key="page.users.base.head.email">Email</entry>
+	<entry key="page.users.info.title">User information</entry>
+	<entry key="page.users.info.id">Id user</entry>
+	<entry key="page.users.info.login">Login</entry>
+	<entry key="page.users.info.fname">First name</entry>
+	<entry key="page.users.info.lname">Last name</entry>
+	<entry key="page.users.info.date">Date registration</entry>
+	<entry key="page.users.info.status">Status user</entry>
+	<entry key="page.users.info.post">Post</entry>
+	<entry key="page.users.info.rank">Rank</entry>
+	<entry key="page.users.info.email">Email</entry>
+	<entry key="page.users.info.packages">List packages</entry>
+	<entry key="page.users.info.packages1">Info package</entry>
+	<entry key="page.users.info.products">List products</entry>
+	<entry key="page.users.info.types">List type</entry>
+	<entry key="page.users.info.recipients">List recipients</entry>
+	<entry key="page.users.info.error">Select package</entry>
+	<entry key="page.users.create.title1">Registration new user</entry>
+	<entry key="page.users.create.title2">User update</entry>
+	<entry key="page.users.create.title3">(This form is only available to admin)</entry>
+	<entry key="page.users.create.login">Enter login(not change)</entry>
+	<entry key="page.users.create.password">Enter password(not change)</entry>
+	<entry key="page.users.create.fname">First name</entry>
+	<entry key="page.users.create.lname">Last name</entry>
+	<entry key="page.users.create.email">email(not change)</entry>
+	<entry key="page.users.create.date">Date create</entry>
+	<entry key="page.users.create.status">Status user</entry>
+	<entry key="page.users.create.post">Post</entry>
+	<entry key="page.users.create.rank">Rank</entry>
+	<entry key="page.users.create.error1">This username is not available.</entry>
+	<entry key="page.users.create.error2">Mail is already in use.</entry>
+	<entry key="page.users.dialog.error.message">This user has too many packages, products, type and
+		recipients. Before you delete a
+		user, you need to remove this elements.
+		You can ban a user.</entry>
+
+
+	<entry key="page.recipients.create.title">Create recipient</entry>
+	<entry key="page.recipients.list.title">Change recipient</entry>
+	<entry key="page.recipients.base.title">Base recipients</entry>
+	<entry key="page.recipients.base.placeholder.id">by id</entry>
+	<entry key="page.recipients.base.placeholder.name">by name</entry>
+	<entry key="page.recipients.base.placeholder.city">by city</entry>
+	<entry key="page.recipients.base.placeholder.address">by address</entry>
+	<entry key="page.recipients.base.placeholder.creator">by creator</entry>
+	<entry key="page.recipients.base.head.id">ID</entry>
+	<entry key="page.recipients.base.head.name">Name</entry>
+	<entry key="page.recipients.base.head.city">City</entry>
+	<entry key="page.recipients.base.head.address">Address</entry>
+	<entry key="page.recipients.base.head.creator">Creator</entry>
+	<entry key="page.recipients.base.sort">Sort by active</entry>
+	<entry key="page.recipients.base.sort1">(by quantity packages)</entry>
+	<entry key="page.recipients.info.title">Information for recipient</entry>
+	<entry key="page.recipients.info.name">Name recipient</entry>
+	<entry key="page.recipients.info.city">City recipient</entry>
+	<entry key="page.recipients.info.address">Address recipient</entry>
+	<entry key="page.recipients.info.creator">Creator recipient</entry>
+	<entry key="page.recipients.info.packages">List packages</entry>
+	<entry key="page.recipients.info.infopack">Info package</entry>
+	<entry key="page.recipients.info.error">Select package</entry>
+	<entry key="page.recipients.create.title1">Registration new recipient.</entry>
+	<entry key="page.recipients.create.title2">Recipient update.</entry>
+	<entry key="page.recipients.create.name">Full name recipient</entry>
+	<entry key="page.recipients.create.city">City</entry>
+	<entry key="page.recipients.create.address">Address</entry>
+	<entry key="page.recipients.create.error">This recipient is already registered.</entry>
+	<entry key="page.recipients.dialog.error.message">At this recipient in the database, there are packages.
+		To remove it, you must first get rid of the packages.</entry>
+	<entry key="page.recipients.info.statistic">Look statistic recipient for packages</entry>
+
+	<entry key="profilemenu.title">My Account</entry>
+	<entry key="profilemenu.setting.title">System settings</entry>
+	<entry key="profilemenu.setting.title1">User informations</entry>
+	<entry key="profilemenu.setting.login">Login</entry>
+	<entry key="profilemenu.setting.password">Password</entry>
+	<entry key="profilemenu.setting.fname">First name</entry>
+	<entry key="profilemenu.setting.lname">Last name</entry>
+	<entry key="profilemenu.setting.change">Change</entry>
+	<entry key="profilemenu.setting.date">Date registration</entry>
+	<entry key="profilemenu.setting.status">Status</entry>
+	<entry key="profilemenu.setting.post">Post</entry>
+	<entry key="profilemenu.setting.rank">Rank</entry>
+	<entry key="profilemenu.setting.email">Email</entry>
+	<entry key="profilemenu.setting.packages">User packages</entry>
+	<entry key="profilemenu.setting.packages1">Look information</entry>
+	<entry key="profilemenu.setting.packages2">the selected package</entry>
+	<entry key="profilemenu.change">Enter new value</entry>
+
+	<entry key="settings.title">System settings</entry>
+	<entry key="settings.price">Specify the maximum price for the month of import(BLR)</entry>
+	<entry key="settings.weight">Specify the maximum weight for the month of import(kg)</entry>
+	<entry key="settings.price.kg">Specify the cost of a kilogram in excess of the
+		limit(BLR)</entry>
+	<entry key="settings.tax">Specify the size of the tax on the price of excess(in
+		%)</entry>
+	<entry key="settings.deadline">Specify the number of days in the payment of tax</entry>
+	<entry key="settings.fine">Enter amount fine on the day delay of payment(in %)</entry>
+	<entry key="settings.fine2">(The penalty is calculated on the amount of unpaid
+		tax)</entry>
+	<entry key="settings.price2">This price is taken into account when calculating the
+		tax</entry>
+	<entry key="settings.weight2">At excess weight, calculated tax for the extra kg</entry>
+	<entry key="settings.kg2">x% of the amount exceeding the price==tax</entry>
+
+</properties>
