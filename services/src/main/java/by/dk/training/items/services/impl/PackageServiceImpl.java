@@ -66,15 +66,15 @@ public class PackageServiceImpl implements PackageService {
 
 		LOGGER.info("Package update, new and old: {}", pack, packDao.get(pack.getId()));
 
-		Date d = pack.getDate();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		d.setTime(cal.getTime().getTime());
-		pack.setDate(d);
+		// Date d = pack.getDate();
+		// Calendar cal = Calendar.getInstance();
+		// cal.setTime(d);
+		// cal.set(Calendar.HOUR_OF_DAY, 0);
+		// cal.set(Calendar.MINUTE, 0);
+		// cal.set(Calendar.SECOND, 0);
+		// cal.set(Calendar.MILLISECOND, 0);
+		// d.setTime(cal.getTime().getTime());
+		// pack.setDate(d);
 
 		this.packDao.update(pack);
 

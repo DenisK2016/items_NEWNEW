@@ -14,17 +14,14 @@
 	    http://www.springframework.org/schema/task
 	    http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
-	<import resource="service-context.xml"/>
+	<import resource="service-context.xml" />
 
 
 	<bean id="dataSource"
 		class="by.dk.training.items.datamodel.util.SchemaNameAwareBasicDataSource"
-		destroy-method="close" 
-		p:driverClassName="org.postgresql.Driver"
-		p:url="jdbc:postgresql://localhost:5432/mailingstest" 
-		p:username="postgres" 
-		p:password="948409"
-		p:schema="public" />
+		destroy-method="close" p:driverClassName="org.postgresql.Driver"
+		p:url="jdbc:postgresql://localhost:5432/mailings" p:username="postgres"
+		p:password="123456" p:schema="public" />
 
-	
+
 </beans>

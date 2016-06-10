@@ -184,7 +184,7 @@ public class ListRecipientsPanel extends Panel {
 				update.add(AttributeModifier.append("title", getString("page.recipients.list.title")));
 				item.add(update);
 				Long idCurrentUser = AuthorizedSession.get().getUser().getId();
-				if (idCurrentUser != id && !admin && !commander) {
+				if (idCurrentUser != id && !commander) {
 					update.setVisible(false);
 				}
 				if (admin) {

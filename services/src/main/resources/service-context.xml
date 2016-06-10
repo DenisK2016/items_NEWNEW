@@ -1,4 +1,4 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
+﻿<?xml version = "1.0" encoding = "UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
@@ -29,8 +29,8 @@
 	<bean id="dataSource"
 		class="by.dk.training.items.datamodel.util.SchemaNameAwareBasicDataSource"
 		destroy-method="close" p:driverClassName="org.postgresql.Driver"
-		p:url="jdbc:postgresql://localhost:5432/mailingstest" p:username="postgres"
-		p:password="948409" p:schema="public" />
+		p:url="jdbc:postgresql://localhost:5432/mailings" p:username="postgres"
+		p:password="123456" p:schema="public" />
 
 	<!-- Конфигурирование менеджера сущностей (EntityManager) осуществляется 
 		через объявление фабрики менеджера сущсностей (EntityManagerFactory) С ПОМОШЬЮ 
