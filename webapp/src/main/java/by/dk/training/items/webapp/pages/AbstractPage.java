@@ -31,7 +31,6 @@ public class AbstractPage extends WebPage {
 		} else {
 			add(new MenuForAdmin("menu-panel"));
 		}
-
 		// AbstractReadOnlyModel<Integer> yearModel = new
 		// AbstractReadOnlyModel<Integer>() {
 		// @Override
@@ -43,7 +42,5 @@ public class AbstractPage extends WebPage {
 		// WebMarkupContainer footer = new WebMarkupContainer("footer");
 		// add(footer);
 		// footer.add(new Label("current-year", yearModel));
-
 	}
-
 }

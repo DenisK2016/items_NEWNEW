@@ -23,52 +23,38 @@ import javax.persistence.TemporalType;
 public class Package implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@Column(name = "id", nullable = false, unique = true)
 	private Long id;
-
 	@ManyToOne(targetEntity = Recipient.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_recipient", nullable = false)
 	private Recipient idRecipient;
-
 	@Column(nullable = false)
 	private BigDecimal price = new BigDecimal("0");
-
 	@Column(nullable = false)
 	private Double weight = 0.0;
-
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private UserProfile idUser;
-
 	@Column(nullable = false)
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date date;
-
 	@Column(length = 1000)
 	private String description;
-
 	@Column(name = "country_sender", nullable = false, length = 100)
 	private String countrySender;
-
 	@Column(name = "payment_deadline", nullable = false)
 	private String paymentDeadline;
-
 	@Column(nullable = false)
 	private BigDecimal fine = new BigDecimal("0");
-
 	@Column(nullable = false)
 	private Boolean paid;
-
 	@Column(nullable = false)
 	private BigDecimal tax = new BigDecimal("0");
-
 	@JoinTable(name = "package_2_product", joinColumns = { @JoinColumn(name = "package_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "product_id") })
 	@ManyToMany(targetEntity = Product.class, fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<>();
-
 	@Column(name = "percent_fine")
 	private BigDecimal percentFine;
 
@@ -180,8 +166,8 @@ public class Package implements Serializable {
 		return products;
 	}
 
-	public void setProducts(Product products) {
-		this.products.add(products);
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	@Override

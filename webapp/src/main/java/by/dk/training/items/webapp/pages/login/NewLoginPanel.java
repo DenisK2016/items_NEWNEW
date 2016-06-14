@@ -39,7 +39,6 @@ import by.dk.training.items.services.mail.Sender;
 public class NewLoginPanel extends Panel {
 
 	private static final long serialVersionUID = 1L;
-
 	private UserProfile userProfile;
 	private UserCredentials userCredentials;
 	private ModalWindow modalWindow;
@@ -50,9 +49,7 @@ public class NewLoginPanel extends Panel {
 		super(modalWindow.getContentId());
 		userProfile = new UserProfile();
 		userCredentials = new UserCredentials();
-
 		this.modalWindow = modalWindow;
-
 	}
 
 	@Override
@@ -74,16 +71,13 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-
 			}
 		});
 		login.setRequired(true);
 		login.add(StringValidator.maximumLength(100));
 		login.add(StringValidator.minimumLength(2));
 		login.add(AttributeModifier.append("title", getString("newlogin.newuser.title")));
-
 		form.add(login);
-
 		PasswordTextField password = new PasswordTextField("password");
 		password.add(new AjaxFormComponentUpdatingBehavior("change") {
 			/**
@@ -93,7 +87,6 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-
 			}
 		});
 		password.add(StringValidator.maximumLength(100));
@@ -101,7 +94,6 @@ public class NewLoginPanel extends Panel {
 		password.add(new PatternValidator("[A-Za-z0-9]+"));
 		password.add(AttributeModifier.append("title", getString("newlogin.newpass.title")));
 		form.add(password);
-
 		TextField<String> firstName = new TextField<String>("firstName",
 				new PropertyModel<>(userCredentials, "firstName"));
 		firstName.add(new AjaxFormComponentUpdatingBehavior("change") {
@@ -112,7 +104,6 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-
 			}
 		});
 		firstName.setRequired(true);
@@ -121,7 +112,6 @@ public class NewLoginPanel extends Panel {
 		firstName.add(new PatternValidator("[А-Яа-я]+"));
 		firstName.add(AttributeModifier.append("title", getString("newlogin.newfname.title")));
 		form.add(firstName);
-
 		TextField<String> lastName = new TextField<String>("lastName",
 				new PropertyModel<>(userCredentials, "lastName"));
 		lastName.add(new AjaxFormComponentUpdatingBehavior("change") {
@@ -141,7 +131,6 @@ public class NewLoginPanel extends Panel {
 		lastName.add(new PatternValidator("[А-Яа-я]+"));
 		lastName.add(AttributeModifier.append("title", getString("newlogin.newlname.title")));
 		form.add(lastName);
-
 		TextField<String> email = new TextField<String>("email", new PropertyModel<>(userCredentials, "email"));
 		email.add(new AjaxFormComponentUpdatingBehavior("change") {
 			/**
@@ -151,7 +140,6 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-
 			}
 		});
 		email.setRequired(true);
@@ -160,7 +148,6 @@ public class NewLoginPanel extends Panel {
 		email.add(EmailAddressValidator.getInstance());
 		email.add(AttributeModifier.append("title", getString("newlogin.newemail.title")));
 		form.add(email);
-
 		TextField<String> post = new TextField<String>("post", new PropertyModel<>(userCredentials, "post"));
 		post.add(new AjaxFormComponentUpdatingBehavior("change") {
 			/**
@@ -170,12 +157,10 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-
 			}
 		});
 		post.add(AttributeModifier.append("title", getString("newlogin.newpost.title")));
 		form.add(post);
-
 		DropDownChoice<Ranks> rank = new DropDownChoice<Ranks>("rank",
 				new PropertyModel<Ranks>(userCredentials, "rank"), Arrays.asList(Ranks.values()));
 		rank.add(AttributeModifier.append("title", getString("newlogin.newrank.title")));
@@ -202,7 +187,6 @@ public class NewLoginPanel extends Panel {
 				super.onSubmit(target, form);
 				UserFilter filter = new UserFilter();
 				String msg = "";
-
 				try {
 					filter.setLogin(userProfile.getLogin());
 					if (!userProfileService.find(filter).isEmpty()) {
@@ -236,11 +220,9 @@ public class NewLoginPanel extends Panel {
 
 			@Override
 			protected void onError(AjaxRequestTarget target, Form<?> form) {
-
 				for (FeedbackMessage msg : feedBackPanel.getFeedbackMessagesModel().getObject()) {
 					notification.error(target, msg.getMessage());
 				}
-
 				super.onError(target, form);
 			}
 		};
@@ -259,8 +241,6 @@ public class NewLoginPanel extends Panel {
 		};
 		cancelLink.add(AttributeModifier.append("title", getString("newlogin.newcancel.title")));
 		form.add(cancelLink);
-
 		add(form);
 	}
-
 }

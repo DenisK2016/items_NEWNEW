@@ -11,7 +11,4 @@ public class UserCredentialsDaoImpl extends AbstractDaoImpl<UserCredentials, Lon
 	protected UserCredentialsDaoImpl() {
 		super(UserCredentials.class);
 	}
-
-	
-
 }

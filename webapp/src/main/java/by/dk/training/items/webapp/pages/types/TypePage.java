@@ -9,8 +9,8 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow.WindowClo
 
 import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.AbstractPage;
-import by.dk.training.items.webapp.pages.types.formforreg.RegistryTypePanel;
-import by.dk.training.items.webapp.pages.types.panelfortypes.ListTypesPanel;
+import by.dk.training.items.webapp.pages.types.formreg.RegistryTypePanel;
+import by.dk.training.items.webapp.pages.types.paneltypes.ListTypesPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER" })
 public class TypePage extends AbstractPage {
@@ -29,7 +29,6 @@ public class TypePage extends AbstractPage {
 	protected void onInitialize() {
 		super.onInitialize();
 		add(new ListTypesPanel("list-panel"));
-
 		final ModalWindow modalCreate = new ModalWindow("modalCreate");
 		modalCreate.setCssClassName("modal_window");
 		modalCreate.setResizable(false);
@@ -43,7 +42,6 @@ public class TypePage extends AbstractPage {
 			@Override
 			public void onClose(AjaxRequestTarget target) {
 				target.add(TypePage.this);
-
 			}
 		});
 		this.setOutputMarkupId(true);
@@ -65,6 +63,5 @@ public class TypePage extends AbstractPage {
 		if (admin || officer) {
 			create.setVisible(false);
 		}
-
 	}
 }

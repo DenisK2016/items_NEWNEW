@@ -25,11 +25,18 @@ public class LoginPage extends WebPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	public static final String ID_FORM = "form";
-
 	private String username;
 	private String password;
+	private static boolean registartion = true;
+
+	public static boolean isRegistartion() {
+		return registartion;
+	}
+
+	public static void setRegistartion(boolean registartion) {
+		LoginPage.registartion = registartion;
+	}
 
 	public LoginPage() {
 		super();
@@ -40,13 +47,10 @@ public class LoginPage extends WebPage {
 	protected void onInitialize() {
 		super.onInitialize();
 		add(new LanguageSelectionComponent("language-select"));
-		final Notification notification = new Notification("notification");
-
 		// if already logged then should not see login page at all
 		if (AuthenticatedWebSession.get().isSignedIn()) {
 			setResponsePage(Application.get().getHomePage());
 		}
-
 		final Form<Void> form = new Form<Void>(ID_FORM);
 		FeedbackPanel feedBackPanel = new FeedbackPanel("feedbackpanel");
 		feedBackPanel.setOutputMarkupId(true);
@@ -55,6 +59,7 @@ public class LoginPage extends WebPage {
 		form.setDefaultModel(new CompoundPropertyModel<LoginPage>(this));
 		form.add(new RequiredTextField<String>("username").setRequired(false));
 		form.add(new PasswordTextField("password").setRequired(false));
+		final Notification notification = new Notification("notification");
 		form.add(notification);
 		form.add(new AjaxSubmitLink("submit-btn") {
 
@@ -75,16 +80,14 @@ public class LoginPage extends WebPage {
 				}
 			}
 		});
-
 		add(form);
-
 		final ModalWindow modal1;
 		add(modal1 = new ModalWindow("modal1"));
 		modal1.setCssClassName("modal_window");
 		modal1.setInitialHeight(500);
 		modal1.setResizable(false);
 		this.setOutputMarkupId(true);
-		add(new AjaxLink<Void>("newUser") {
+		AjaxLink<Void> newUserLink = new AjaxLink<Void>("newUser") {
 			/**
 			 * 
 			 */
@@ -95,8 +98,9 @@ public class LoginPage extends WebPage {
 				modal1.setContent(new NewLoginPanel(modal1));
 				modal1.show(target);
 			}
-		});
-
+		};
+		newUserLink.setEnabled(registartion);
+		add(newUserLink);
 		modal1.setWindowClosedCallback(new WindowClosedCallback() {
 
 			/**
@@ -107,13 +111,10 @@ public class LoginPage extends WebPage {
 			@Override
 			public void onClose(AjaxRequestTarget target) {
 				target.add(LoginPage.this);
-
 			}
 		});
-
 		final ModalWindow modal2;
 		add(modal2 = new ModalWindow("modal2"));
-
 		modal2.setResizable(false);
 		modal2.setCssClassName("modal_window");
 		modal2.setInitialHeight(350);
@@ -141,10 +142,7 @@ public class LoginPage extends WebPage {
 			@Override
 			public void onClose(AjaxRequestTarget target) {
 				target.add(LoginPage.this);
-
 			}
 		});
-
 	}
-
 }

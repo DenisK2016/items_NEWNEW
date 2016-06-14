@@ -10,7 +10,6 @@ import by.dk.training.items.webapp.app.WicketApplication;
 public class LocaleChoiceRenderer extends ChoiceRenderer<Locale> {
 
 	private static final long serialVersionUID = 1L;
-
 	public static final LocaleChoiceRenderer INSTANCE = new LocaleChoiceRenderer();
 
 	private LocaleChoiceRenderer() {

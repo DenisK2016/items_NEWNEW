@@ -5,9 +5,9 @@ import org.apache.wicket.markup.html.link.Link;
 
 import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.AbstractPage;
-import by.dk.training.items.webapp.pages.packages.formforreg.PackRegPage;
-import by.dk.training.items.webapp.pages.packages.panelforpackages.ListPackagesOfficer;
-import by.dk.training.items.webapp.pages.packages.panelforpackages.ListPackagesPanel;
+import by.dk.training.items.webapp.pages.packages.formreg.PackRegPage;
+import by.dk.training.items.webapp.pages.packages.panelpackages.ListPackagesOfficer;
+import by.dk.training.items.webapp.pages.packages.panelpackages.ListPackagesPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER" })
 public class PackagesPage extends AbstractPage {
@@ -42,6 +42,5 @@ public class PackagesPage extends AbstractPage {
 		if (admin) {
 			createLink.setVisible(false);
 		}
-
 	}
 }

@@ -22,29 +22,22 @@ import javax.persistence.Table;
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
-
 	@Column(name = "name_product", nullable = false, unique = false)
 	private String nameProduct;
-
 	@Column(name = "\"weight\"", nullable = false)
 	private Double weight = 0.0;
-
 	@Column(name = "price_product", nullable = false)
 	private BigDecimal priceProduct;
-
 	@Column(nullable = false)
 	private Boolean status;
-
 	@JoinTable(name = "type_2_product", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "type_id") })
 	@ManyToMany(targetEntity = Type.class, fetch = FetchType.LAZY)
 	private List<Type> types = new ArrayList<>();
-
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private UserProfile idUser;

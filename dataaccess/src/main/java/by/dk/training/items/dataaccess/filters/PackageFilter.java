@@ -13,7 +13,6 @@ import by.dk.training.items.datamodel.UserProfile;
 public class PackageFilter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	private Long id;
 	private BigDecimal price;
 	private Double weight;
@@ -29,12 +28,10 @@ public class PackageFilter implements Serializable {
 	private BigDecimal tax;
 	private Date startDate;
 	private Date endDate;
-
 	private SingularAttribute<Object, Object> sortProperty;
 	private boolean sortOrder;
 	private Integer offset;
 	private Integer limit;
-
 	private boolean isFetchUser;
 	private boolean isFetchRecipient;
 	private boolean isFetchProduct;

@@ -28,15 +28,10 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 	@Override
 	public List<Product> find(ProductFilter filter) {
 		EntityManager em = getEntityManager();
-
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-
 		CriteriaQuery<Product> cq = cb.createQuery(Product.class);
-
 		Root<Product> from = cq.from(Product.class);
-
 		cq.select(from);
-
 		boolean nameProduct = (filter.getNameProduct() != null);
 		boolean limit = (filter.getWeightProduct() != null);
 		boolean price = (filter.getPriceProduct() != null);
@@ -45,7 +40,6 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 		boolean user = (filter.getUser() != null);
 		boolean id = (filter.getId() != null);
 		boolean filt = (nameProduct || limit || price || status || types || user || id);
-
 		if (filt) {
 			Predicate idEqualCondition = cb.equal(from.get(Product_.id), filter.getId());
 			Predicate nProductEqualCondition = cb.equal(from.get(Product_.nameProduct), filter.getNameProduct());
@@ -62,34 +56,26 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 				cq.where(cb.or(nProductEqualCondition, lProductEqualCondition, pProductEqualCondition,
 						statustEqualCondition, userEqualCondition, idEqualCondition));
 			}
-
 		}
-
 		// set fetching
 		if (filter.isFetchType()) {
 			from.fetch(Product_.types, JoinType.LEFT);
 		}
-
 		if (filter.isFetchUser()) {
 			from.fetch(Product_.idUser, JoinType.LEFT);
 		}
-
 		// set sort params
 		if (filter.getSortProperty() != null) {
 			cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
 		}
-
 		TypedQuery<Product> q = em.createQuery(cq);
-
 		// set paging
 		if (filter.getOffset() != null && filter.getLimit() != null) {
 			q.setFirstResult(filter.getOffset());
 			q.setMaxResults(filter.getLimit());
 		}
-
 		// set execute query
 		List<Product> allitems = q.getResultList();
-
 		return allitems;
 	}
 

@@ -29,7 +29,6 @@ import by.dk.training.items.services.UserProfileService;
 public class EditInfoPanel extends Panel {
 
 	private static final long serialVersionUID = 1L;
-
 	@Inject
 	private UserProfileService userProfileService;
 	private ModalWindow modalWindow;
@@ -53,7 +52,6 @@ public class EditInfoPanel extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		Form<UserProfile> form = new Form<UserProfile>("formEdit", new CompoundPropertyModel<UserProfile>(userProfile));
 		FeedbackPanel feedBackPanel = new FeedbackPanel("feedback");
 		feedBackPanel.setVisible(false);
@@ -135,5 +133,4 @@ public class EditInfoPanel extends Panel {
 			}
 		});
 	}
-
 }

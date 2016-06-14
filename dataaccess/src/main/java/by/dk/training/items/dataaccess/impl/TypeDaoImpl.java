@@ -23,23 +23,17 @@ public class TypeDaoImpl extends AbstractDaoImpl<Type, Long> implements TypeDao 
 
 	protected TypeDaoImpl() {
 		super(Type.class);
-
 	}
 
 	@Override
 	public List<Type> find(TypeFilter filter) {
 		EntityManager em = getEntityManager();
-
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-
 		CriteriaQuery<Type> cq = cb.createQuery(Type.class);
-
 		Root<Type> from = cq.from(Type.class); // SELECT .. FROM ...
-
 		cq.select(from); // Указывает что селектать SELECT *. from - это
 							// таблица,
 							// а from.get... - это конкретная колонка
-
 		boolean c = filter.getTypeName() != null;
 		boolean d = filter.getParentType() != null;
 		boolean e = filter.getUser() != null;
@@ -62,39 +56,29 @@ public class TypeDaoImpl extends AbstractDaoImpl<Type, Long> implements TypeDao 
 			} else {
 				cq.where(cb.or(tNameEqualCondition, pTypeEqualCondition, userEqualCondition, idEqualCondition));
 			}
-
 		}
-
 		// set fetching
 		if (filter.isFetchParentType()) {
 			from.fetch(Type_.parentType, JoinType.LEFT);
 		}
-
 		if (filter.isFetchUser()) {
 			from.fetch(Type_.idUser, JoinType.LEFT);
 		}
-
 		if (filter.isFetchChildTypes()) {
 			from.fetch(Type_.childTypes, JoinType.LEFT);
 		}
-
 		// set sort params
 		if (filter.getSortProperty() != null) {
 			cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
-
 		}
-
 		TypedQuery<Type> q = em.createQuery(cq.distinct(true));
-
 		// set paging
 		if (filter.getOffset() != null && filter.getLimit() != null) {
 			q.setFirstResult(filter.getOffset());
 			q.setMaxResults(filter.getLimit());
 		}
-
 		// set execute query
 		List<Type> allitems = q.getResultList();
-
 		return allitems;
 	}
 

@@ -28,110 +28,89 @@ public class UserServiceProfileImpl implements UserProfileService {
 	private UserProfileDao userDao;
 	@Inject
 	private UserCredentialsDao userCredentialsDao;
+	private Date date;
 
 	@Override
 	public void register(UserProfile user, UserCredentials userCredentials) {
-
-		Date d = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		d.setTime(cal.getTime().getTime());
-		userCredentials.setCreated(d);
+		resetDate(userCredentials);
+		userCredentials.setCreated(date);
 		userCredentials.setStatus(StatusUser.CONFIRMATION);
 		userCredentials.setUser(user);
 		user.setUserCredentials(userCredentials);
-
 		userCredentialsDao.insert(userCredentials);
 		userDao.insert(user);
-
 		LOGGER.info("User regirstred: {}", user, userCredentials);
-
 	}
 
 	@Override
 	public UserProfile getUser(Long id) {
-
 		LOGGER.info("User select: {}", userDao.get(id));
-
 		return userDao.get(id);
-
 	}
 
 	@Override
 	public UserCredentials getUserCredentials(Long id) {
-
 		LOGGER.info("UserCredential select: {}", userCredentialsDao.get(id));
-
 		return userCredentialsDao.get(id);
 	}
 
 	@Override
 	public void update(UserProfile user) {
-
 		LOGGER.info("User update, new and old: {}", user, userDao.get(user.getId()));
-
 		userDao.update(user);
 	}
 
 	@Override
 	public void update(UserCredentials userCredentials) {
-
 		LOGGER.info("UserCredentials update, new and old: {}", userCredentials,
 				userCredentialsDao.get(userCredentials.getId()));
+		resetDate(userCredentials);
+		userCredentials.setCreated(date);
+		userCredentialsDao.update(userCredentials);
+	}
 
-		Date d = userCredentials.getCreated();
+	private void resetDate(UserCredentials userCredentials) {
+		if (userCredentials.getCreated() == null) {
+			date = new Date();
+		} else {
+			date = userCredentials.getCreated();
+		}
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
+		cal.setTime(date);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		d.setTime(cal.getTime().getTime());
-		userCredentials.setCreated(d);
-
-		userCredentialsDao.update(userCredentials);
+		date.setTime(cal.getTime().getTime());
 	}
 
 	@Override
 	public void delete(Long id) {
-
 		LOGGER.info("User delete: {}", userDao.get(id), userCredentialsDao.get(id));
-
 		userDao.delete(id);
 		userCredentialsDao.delete(id);
-
 	}
 
 	@Override
 	public List<UserProfile> find(UserFilter userFilter) {
-
 		LOGGER.info("User find by filter: {}", userFilter);
 		return userDao.find(userFilter);
 	}
 
 	@Override
 	public List<UserProfile> getAll() {
-
 		LOGGER.info("User getAll: {}", "Alls users");
-
 		return userDao.getAll();
 	}
 
 	@Override
 	public Long count(UserFilter filter) {
-
 		LOGGER.info("User count(): {}", filter);
-
 		return userDao.count(filter);
 	}
 
 	@Override
 	public UserProfile getByNameAndPassword(String login, String password) {
-
 		return userDao.find(login, password);
 	}
 
@@ -140,5 +119,4 @@ public class UserServiceProfileImpl implements UserProfileService {
 		UserCredentials userCredentials = userCredentialsDao.get(id);
 		return Collections.singletonList(userCredentials.getStatus().name());
 	}
-
 }

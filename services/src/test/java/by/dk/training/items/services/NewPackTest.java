@@ -3,7 +3,6 @@ package by.dk.training.items.services;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,14 +19,14 @@ import by.dk.training.items.datamodel.UserProfile;
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
 public class NewPackTest {
 
-	@Inject
-	private UserProfileService userService;
+//	@Inject
+//	private UserProfileService userService;
 	@Inject
 	private RecipientService recipientService;
-	@Inject
-	private TypeService typesService;
-	@Inject
-	private ProductService productsService;
+//	@Inject
+//	private TypeService typesService;
+	// @Inject
+	// private ProductService productsService;
 	@Inject
 	private PackageService packService;
 	@Inject
@@ -37,10 +36,10 @@ public class NewPackTest {
 	public void packagesSelect() throws NoSuchFieldException, SecurityException, IllegalArgumentException,
 			IllegalAccessException, InterruptedException {
 
-		List<Package> allPack = packService.getAll();
-		for (Package p : allPack) {
-			packService.delete(p.getId());
-		}
+//		List<Package> allPack = packService.getAll();
+//		for (Package p : allPack) {
+//			packService.delete(p.getId());
+//		}
 		//
 		// List<UserProfile> all = userService.getAll();
 		// for (UserProfile user : all) {
@@ -135,7 +134,7 @@ public class NewPackTest {
 		// productsService.update(product2);
 		///////////////////////////////////
 		Recipient recipient = recipientService.getRecipient(1L);
-		UserProfile user = userProfileService.getUser(11L);
+		UserProfile user = userProfileService.getUser(1L);
 		Date d = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(d);

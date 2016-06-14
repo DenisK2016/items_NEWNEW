@@ -17,12 +17,9 @@ import by.dk.training.items.webapp.app.localization.LanguageSelectionComponent;
 public class AuthorizedSession extends AuthenticatedWebSession {
 
 	private static final long serialVersionUID = 1L;
-
 	@Inject
 	private UserProfileService userProfileService;
-
 	private UserProfile user;
-
 	private Roles roles;
 
 	public AuthorizedSession(Request request) {
@@ -74,5 +71,4 @@ public class AuthorizedSession extends AuthenticatedWebSession {
 	public UserProfile getUser() {
 		return user;
 	}
-
 }

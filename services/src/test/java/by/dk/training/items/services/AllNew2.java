@@ -33,7 +33,7 @@ public class AllNew2 {
 	private TypeService typeService;
 	@Inject
 	private ProductService productService;
-	
+
 	@Test
 	public void testProductCreate() {
 		Product product = new Product();
@@ -164,7 +164,7 @@ public class AllNew2 {
 					nnn++;
 				}
 				productFilter.setId((long) (nnn));
-				pack.setProducts(productService.find(productFilter).get(0));
+				// pack.setProducts(productService.find(productFilter).get(0));
 				pack.setPrice(pack.getProducts().get(0).getPriceProduct());
 				packageService.register(pack);
 			}

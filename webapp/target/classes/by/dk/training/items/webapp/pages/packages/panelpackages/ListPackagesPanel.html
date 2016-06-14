@@ -1,0 +1,98 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+
+	<table class="dataview-packages">
+		<tr>
+			<td colspan="7" align="center"><h1 style="font-size: 15pt">
+					<wicket:message key="page.packages.list.title" />
+				</h1></td>
+		</tr>
+		<tr>
+			<td align="center"><wicket:message key="page.products.find" /></td>
+			<td align="center"><input class="field-package" type="text"
+				wicket:id="userFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.id" /><br>
+				<input class="field-package" type="text" wicket:id="idFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.code" /></td>
+			<td style="width: 125px;" align="center"><input
+				class="field-package" type="text" wicket:id="startDateFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.fromdate"
+				style="width: 75px;" /><br> <input class="field-package"
+				type="text" wicket:id="endDateFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.todate"
+				style="width: 75px;" /></td>
+			<td align="center"><input class="field-package" type="text"
+				wicket:id="descFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.desc" /><br>
+				<input class="field-package" type="text" wicket:id="priceFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.price" /></td>
+			<td align="center"><input class="field-package" type="text"
+				wicket:id="countryFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.country" /><br>
+				<input class="field-package" type="text" wicket:id="weightFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.weight" /></td>
+			<td align="center"><input class="field-package" type="text"
+				wicket:id="productFilter"
+				wicket:message="placeholder:page.packages.placeholder.products" /><br>
+				<input class="field-package" type="text" wicket:id="taxFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.tax" /><br>
+				<input class="field-package" type="text" wicket:id="recipientFilter"
+				wicket:message="placeholder:page.packages.list.placeholder.recipient" /></td>
+			<td class="field-package" colspan="3" align="left"
+				style="font-size: 9pt;"><input type="checkbox"
+				wicket:id="paidFilter" /> <wicket:message
+					key="page.packages.list.sort.chk1" /><br> <input
+				type="checkbox" wicket:id="fineFilter" /> <wicket:message
+					key="page.packages.list.sort.chk2" /><br> <input
+				type="checkbox" wicket:id="notPaidFilter" /> <wicket:message
+					key="page.packages.list.sort.chk3" /><br> <input
+				type="checkbox" wicket:id="myPackFilter" /> <wicket:message
+					key="page.packages.list.sort.chk4" /><br></td>
+		</tr>
+	</table>
+	<div wicket:id="wmc">
+		<table class="dataview-packages">
+			<tr>
+				<th></th>
+				<th wicket:id="orderById"><wicket:message
+						key="page.packages.list.sort.id" /></th>
+				<th wicket:id="orderByPrice"><wicket:message
+						key="page.packages.list.sort.price" /><br> <wicket:message
+						key="page.packages.list.sort.price2" /></th>
+				<th wicket:id="orderByWeight"><wicket:message
+						key="page.packages.list.sort.weight" /></th>
+				<th wicket:id="orderByTax"><wicket:message
+						key="page.packages.list.sort.tax" /><br> <wicket:message
+						key="page.packages.list.sort.price2" /></th>
+				<th wicket:id="orderByDead"><wicket:message
+						key="page.packages.list.sort.deadline" /><br> <wicket:message
+						key="page.packages.list.sort.deadline1" /></th>
+				<th wicket:id="orderByFine"><wicket:message
+						key="page.packages.list.sort.fine" /><br> <wicket:message
+						key="page.packages.list.sort.price2" /></th>
+				<th wicket:id="orderByPaid"><wicket:message
+						key="page.packages.list.sort.paid" /></th>
+			</tr>
+			<tbody>
+				<tr wicket:id="packagelist">
+					<td><a class="icon_select" wicket:id="infoPackage">&#10148;</a></td>
+					<td align="center"><span wicket:id="packageid">[packageid]</span></td>
+					<td align="center"><span wicket:id="price">[price]</span></td>
+					<td align="center"><span wicket:id="weight">[weight]</span></td>
+					<td align="center"><span wicket:id="tax">[tax]</span></td>
+					<td align="center"><span wicket:id="deadline">[deadline]</span></td>
+					<td align="center"><span wicket:id="fine">[fine]</span></td>
+					<td align="center"><div class="squaredOne">
+							<input wicket:id="paid" type="checkbox"></input><label
+								for="squared"></label>
+						</div></td>
+					<td align="center"><a wicket:id="deletelink"
+						class="icon_delete">&#10007;</a></td>
+					<td align="center"><a wicket:id="updatePack" class="icon-edit">&#9997;</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+		<span wicket:id="navigator">[dataview navigator]</span>
+	</div>
+	<div wicket:id="modal1"></div>
+</wicket:panel>

@@ -20,36 +20,27 @@ import javax.persistence.TemporalType;
 public class UserCredentials implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)
 	private Long id;
-
 	@Column(name = "first_name", nullable = false, length = 100)
 	private String firstName;
-
 	@Column(name = "last_name", nullable = false, length = 100)
 	private String lastName;
-
 	@Column
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date created;
-
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatusUser status;
-
 	@Column(length = 200)
 	private String post;
-
 	@Column
 	@Enumerated(EnumType.STRING)
 	private Ranks rank;
-
 	@Column(nullable = false, unique = true, updatable = false)
 	private String email;
-
 	@OneToOne(mappedBy = "userCredentials")
 	private UserProfile user;
 

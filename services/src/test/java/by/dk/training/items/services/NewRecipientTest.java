@@ -1,7 +1,5 @@
 package by.dk.training.items.services;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -23,7 +21,7 @@ public class NewRecipientTest {
 	@Test
 	public void restRecipient() {
 
-		List<Recipient> allRecipients = recipientService.getAll();
+//		List<Recipient> allRecipients = recipientService.getAll();
 //		for (Recipient r : allRecipients) {
 //			recipientService.delete(r.getId());
 //		}

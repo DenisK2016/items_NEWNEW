@@ -60,13 +60,19 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="3"><wicket:message
+				<!-- <td colspan="3"><wicket:message
 						key="profilemenu.setting.packages" />:<br> <select
 					wicket:id="packages" class="field-list"
 					style="margin-left: 20px; width: 168px !important;"></select></td>
 				<td><a wicket:id="infoPackage"><wicket:message
 							key="profilemenu.setting.packages1" /><br> <wicket:message
-							key="profilemenu.setting.packages2" /></a></td>
+							key="profilemenu.setting.packages2" /></a></td> -->
+			</tr>
+			<tr>
+				<wicket:enclosure child="registration">
+					<td><wicket:message key="profilemenu.change.reg" /></td>
+					<td><input type="checkbox" wicket:id="registration" /></td>
+				</wicket:enclosure>
 			</tr>
 		</table>
 		<div wicket:id="modal1"></div>

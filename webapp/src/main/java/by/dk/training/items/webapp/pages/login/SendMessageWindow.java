@@ -26,6 +26,7 @@ import by.dk.training.items.dataaccess.filters.UserFilter;
 import by.dk.training.items.datamodel.UserProfile;
 import by.dk.training.items.services.UserProfileService;
 import by.dk.training.items.services.mail.Sender;
+import by.dk.training.items.webapp.app.AuthorizedSession;
 
 public class SendMessageWindow extends Panel {
 
@@ -39,6 +40,7 @@ public class SendMessageWindow extends Panel {
 	private UserProfileService userProfileService;
 	private String email;
 	private UserFilter userFilter;
+	private boolean banned = AuthorizedSession.get().getRoles().contains("BANNED");
 
 	public SendMessageWindow(ModalWindow modalWindow) {
 		super(modalWindow.getContentId());
@@ -82,22 +84,21 @@ public class SendMessageWindow extends Panel {
 				List<UserProfile> userList = userProfileService.find(userFilter);
 				if (userList.size() == 0 || email == null) {
 					notification.error(target, getString("restore.error"));
+				} else if (banned) {
+					notification.error(target, getString("restore.error.ban"));
 				} else {
 					UserProfile user = userList.get(0);
 					Long idUser = user.getId();
-					BigDecimal key = new BigDecimal(idUser).multiply(new BigDecimal("123"))
-							.multiply(new BigDecimal("23")).multiply(new BigDecimal("3"));
+					BigDecimal key;
+					key = keyMethod(idUser);
 					PageParameters param = new PageParameters();
 					param.add("foo", key);
-					String url = "http://localhost:8081"
-							+ RequestCycle.get().urlFor(PageConfirmation.class, param).toString().substring(5);
-					String text = String.format("%s %s. %s %s", getString("send.message.text"), user.getLogin(),
-							getString("send.message.text2"), url);
+					String text;
+					text = textMessage(user, param);
 					new Sender("denisov27111990@gmail.com", "php948409php").send(getString("send.message.title"), text,
 							user.getUserCredentials().getEmail());
 					notification.info(target, getString("send.message.info"));
 				}
-
 			}
 
 			@Override
@@ -114,4 +115,19 @@ public class SendMessageWindow extends Panel {
 		super.onInitialize();
 	}
 
+	private BigDecimal keyMethod(Long idUser) {
+		BigDecimal key;
+		key = new BigDecimal(idUser).multiply(new BigDecimal("123")).multiply(new BigDecimal("23"))
+				.multiply(new BigDecimal("3"));
+		return key;
+	}
+
+	private String textMessage(UserProfile user, PageParameters param) {
+		String text;
+		String url = "http://localhost:8081"
+				+ RequestCycle.get().urlFor(PageConfirmation.class, param).toString().substring(5);
+		text = String.format("%s %s. %s %s", getString("send.message.text"), user.getLogin(),
+				getString("send.message.text2"), url);
+		return text;
+	}
 }

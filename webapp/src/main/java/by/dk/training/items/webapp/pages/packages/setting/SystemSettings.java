@@ -20,6 +20,7 @@ import com.googlecode.wicket.jquery.ui.markup.html.link.AjaxLink;
 import com.googlecode.wicket.kendo.ui.widget.notification.Notification;
 
 import by.dk.training.items.webapp.app.AuthorizedSession;
+import by.dk.training.items.webapp.pages.packages.formreg.RegistryPackPanel;
 
 public class SystemSettings extends Panel {
 
@@ -36,7 +37,6 @@ public class SystemSettings extends Panel {
 	public SystemSettings(ModalWindow modalWindow) {
 		super(modalWindow.getContentId());
 		this.modalWindow = modalWindow;
-
 	}
 
 	public static String getPaymentDeadline() {
@@ -197,6 +197,8 @@ public class SystemSettings extends Panel {
 				setPriceWeight(priceWeight);
 				setPaymentDeadline(paymentDeadline);
 				modalWindow.close(target);
+				RegistryPackPanel.setMaxPrice(maxPrice);
+				RegistryPackPanel.setPercent(percent.divide(BigDecimal.valueOf(100L)));
 			}
 
 			@Override
@@ -232,5 +234,4 @@ public class SystemSettings extends Panel {
 		}
 		super.onInitialize();
 	}
-
 }

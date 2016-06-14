@@ -22,62 +22,46 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void register(Product products) {
-		
 		LOGGER.info("Product regirstred: {}", products);
-		
 		productDao.insert(products);
 
 	}
 
 	@Override
 	public Product get(Long id) {
-		
 		LOGGER.info("Product select: {}", productDao.get(id));
-		
 		return productDao.get(id);
 	}
 
 	@Override
 	public void update(Product products) {
-		
 		LOGGER.info("Product update, new and old: {}", products, productDao.get(products.getId()));
-		
 		productDao.update(products);
 
 	}
 
 	@Override
 	public void delete(Long id) {
-		
 		LOGGER.info("Product delete: {}", productDao.get(id));
-		
 		productDao.delete(id);
-
 	}
 
 	@Override
 	public List<Product> find(ProductFilter productsFilter) {
-		
 		LOGGER.info("Product find by filter: {}", productsFilter);
-		
 		return productDao.find(productsFilter);
 	}
 
 	@Override
 	public List<Product> getAll() {
-		
 		LOGGER.info("Product getAll: {}", "All products");
-		
 		return productDao.getAll();
 	}
 
 	@Override
 	public Long count(ProductFilter filter) {
-		
 		LOGGER.info("Product count: {}", filter);
-
 		return productDao.count(filter);
 	}
 
-	
 }

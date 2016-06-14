@@ -23,7 +23,6 @@ public class RedirectPage extends WebPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		add(new Label("msg", getString("redirect.label")));
 		final ModalWindow modalMail;
 		add(modalMail = new ModalWindow("modalEmail"));
@@ -42,7 +41,6 @@ public class RedirectPage extends WebPage {
 				modalMail.show(target);
 			}
 		}.add(AttributeModifier.append("title", getString("redirect.sendmsg"))));
-
 		modalMail.setWindowClosedCallback(new WindowClosedCallback() {
 
 			/**
@@ -56,7 +54,6 @@ public class RedirectPage extends WebPage {
 
 			}
 		});
-
 		add(new AjaxLink<Object>("home") {
 			/**
 			 * 
@@ -84,5 +81,4 @@ public class RedirectPage extends WebPage {
 		add(footer);
 		footer.add(new Label("current-year", yearModel));
 	}
-
 }

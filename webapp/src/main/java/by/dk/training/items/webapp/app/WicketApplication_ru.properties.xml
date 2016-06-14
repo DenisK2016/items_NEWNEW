@@ -52,6 +52,7 @@
 	<entry key="restore.title.field">Введите адрес электронной почты, по которому вы
 		регистрировались</entry>
 	<entry key="restore.error">Введенного адреса не существует.</entry>
+	<entry key="restore.error.ban">Вы забанены!</entry>
 
 	<entry key="confirm.home">На страницу логина</entry>
 	<entry key="confirm.error">Пользователя с данным номером не существует.</entry>
@@ -131,6 +132,7 @@
 	<entry key="page.products.sort.creater">Сортировать по создателю</entry>
 	<entry key="page.products.chk2">Выбрать только разрешенные</entry>
 	<entry key="page.products.chk3">Выбрать только свои</entry>
+	<entry key="page.products.placeholder.type">по типу</entry>
 	<entry key="page.products.placeholder.id">по id</entry>
 	<entry key="page.products.placeholder.name">по названию</entry>
 	<entry key="page.products.placeholder.price">по цене</entry>
@@ -395,6 +397,7 @@
 	<entry key="profilemenu.setting.packages1">Посмотреть информация о</entry>
 	<entry key="profilemenu.setting.packages2">выбранной посылке</entry>
 	<entry key="profilemenu.change">Введите новое значение</entry>
+	<entry key="profilemenu.change.reg">Включить регистрацию</entry>
 
 	<entry key="settings.title">Настройка системы</entry>
 	<entry key="settings.price">Укажите максимальную цену для ввоза в месяц в

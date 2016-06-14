@@ -24,25 +24,19 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 
 	protected UserProfileDaoImpl() {
 		super(UserProfile.class);
-
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserProfile> find(UserFilter filter) {
 		EntityManager em = getEntityManager();
-
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-
 		CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
-
 		Root<UserProfile> from = cq.from(UserProfile.class); // SELECT .. FROM
 																// ...
-
 		cq.select(from); // Указывает что селектать SELECT *. from - это
 							// таблица,
 							// а from.get... - это конкретная колонка
-
 		boolean fName = (filter.getFirstName() != null);
 		boolean lName = (filter.getLastName() != null);
 		boolean login = (filter.getLogin() != null);
@@ -54,7 +48,6 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 		boolean id = (filter.getId() != null);
 		boolean password = filter.getPassword() != null;
 		boolean filt = (fName || lName || login || create || stat || post || rank || email || id || password);
-
 		if (filt) {
 			Predicate idEqualCondition = cb.equal(from.get(UserProfile_.id), filter.getId());
 			Predicate loginEqualCondition = cb.equal(from.get(UserProfile_.login), filter.getLogin());
@@ -77,16 +70,13 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 					statusEqualCondition, postEqualCondition, rankEqualCondition, emailEqualCondition, idEqualCondition,
 					passwordEqualCondition));
 		}
-
 		// set fetching
 		if (filter.isFetchCredentials()) {
 			from.fetch(UserProfile_.userCredentials, JoinType.LEFT);
 		}
-
 		if (filter.isFetchPackages()) {
 			from.fetch(UserProfile_.packages, JoinType.LEFT);
 		}
-
 		// set sort params
 		if (filter.getSortProperty() != null) {
 			boolean log = filter.getSortProperty() == UserProfile_.login;
@@ -99,18 +89,14 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 						filter.isSortOrder()));
 			}
 		}
-
 		TypedQuery<UserProfile> q = em.createQuery(cq);
-
 		// set paging
 		if (filter.getOffset() != null && filter.getLimit() != null) {
 			q.setFirstResult(filter.getOffset());
 			q.setMaxResults(filter.getLimit());
 		}
-
 		// set execute query
 		List<UserProfile> allitems = q.getResultList();
-
 		return allitems;
 	}
 
@@ -134,24 +120,16 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 
 	@Override
 	public UserProfile find(String login, String password) {
-
 		EntityManager em = getEntityManager();
-
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-
 		CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
-
 		Root<UserProfile> from = cq.from(UserProfile.class);
-
 		cq.select(from);
 		Predicate usernameEqualCondition = cb.equal(from.get(UserProfile_.login), login);
 		Predicate passwEqualCondition = cb.equal(from.get(UserProfile_.password), password);
 		cq.where(cb.and(usernameEqualCondition, passwEqualCondition));
-
 		TypedQuery<UserProfile> q = em.createQuery(cq);
-
 		List<UserProfile> allitems = q.getResultList();
-
 		if (allitems.isEmpty()) {
 			return null;
 		} else if (allitems.size() == 1) {
@@ -160,5 +138,4 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 			throw new IllegalArgumentException("==more than 1 user found==");
 		}
 	}
-
 }

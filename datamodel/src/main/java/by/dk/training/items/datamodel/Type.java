@@ -26,17 +26,13 @@ public class Type implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
-
 	@Column(name = "type_name", nullable = false, unique = true)
 	private String typeName;
-
 	@ManyToOne(targetEntity = Type.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "parent_type", referencedColumnName = "id")
 	private Type parentType;
-
 	@OneToMany(mappedBy = "parentType", fetch = FetchType.LAZY)
 	private List<Type> childTypes = new ArrayList<>();
-
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private UserProfile idUser;

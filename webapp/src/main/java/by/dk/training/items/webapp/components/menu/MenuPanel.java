@@ -8,7 +8,7 @@ import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.home.HomePage;
 import by.dk.training.items.webapp.pages.login.LoginPage;
 import by.dk.training.items.webapp.pages.packages.PackagesPage;
-import by.dk.training.items.webapp.pages.packages.formforreg.PackRegPage;
+import by.dk.training.items.webapp.pages.packages.formreg.PackRegPage;
 import by.dk.training.items.webapp.pages.products.ProductPage;
 import by.dk.training.items.webapp.pages.profilemenu.ProfileMenuPage;
 import by.dk.training.items.webapp.pages.recipients.RecipientPage;
@@ -39,8 +39,7 @@ public class MenuPanel extends Panel {
 			public void onClick() {
 				setResponsePage(new ProductPage());
 			}
-		}.add(AttributeModifier.append("title", "База продуктов")));
-
+		}.add(AttributeModifier.append("title", getString("page.products.title"))));
 		add(new Link<Object>("types") {
 			/**
 			 * 
@@ -51,8 +50,7 @@ public class MenuPanel extends Panel {
 			public void onClick() {
 				setResponsePage(new TypePage());
 			}
-		}.add(AttributeModifier.append("title", "База типов")));
-
+		}.add(AttributeModifier.append("title", getString("page.types.title"))));
 		add(new Link<Object>("packages") {
 			/**
 			 * 
@@ -63,8 +61,7 @@ public class MenuPanel extends Panel {
 			public void onClick() {
 				setResponsePage(new PackagesPage());
 			}
-		}.add(AttributeModifier.append("title", "База посылок")));
-
+		}.add(AttributeModifier.append("title", getString("page.packages.list.title"))));
 		add(new Link<Object>("recipient") {
 			/**
 			 * 
@@ -75,8 +72,7 @@ public class MenuPanel extends Panel {
 			public void onClick() {
 				setResponsePage(new RecipientPage());
 			}
-		}.add(AttributeModifier.append("title", "База получателей")));
-
+		}.add(AttributeModifier.append("title", getString("page.recipients.base.title"))));
 		add(new Link<Object>("newPack") {
 			/**
 			 * 
@@ -88,7 +84,6 @@ public class MenuPanel extends Panel {
 				setResponsePage(new PackRegPage());
 			}
 		});
-
 		add(new Link<Object>("logout") {
 
 			/**
@@ -100,11 +95,9 @@ public class MenuPanel extends Panel {
 			public void onClick() {
 				getSession().invalidate();
 				setResponsePage(LoginPage.class);
-
 			}
-
-		}.setVisible(AuthorizedSession.get().isSignedIn()).add(AttributeModifier.append("title", "Выйти из системы")));
-
+		}.setVisible(AuthorizedSession.get().isSignedIn())
+				.add(AttributeModifier.append("title", getString("menu.profile-logout"))));
 		add(new Link<Object>("profile") {
 
 			/**
@@ -115,11 +108,8 @@ public class MenuPanel extends Panel {
 			@Override
 			public void onClick() {
 				setResponsePage(new ProfileMenuPage(AuthorizedSession.get().getUser()));
-
 			}
-
-		}.add(AttributeModifier.append("title", "Информация о пользователе")));
-
+		}.add(AttributeModifier.append("title", getString("menu.profile"))));
 		add(new Link<HomePage>("Back") {
 
 			private static final long serialVersionUID = 1L;
@@ -129,7 +119,5 @@ public class MenuPanel extends Panel {
 				setResponsePage(new HomePage());
 			}
 		});
-
 	}
-
 }

@@ -29,7 +29,15 @@ public interface PackageService {
 
 	List<Package> betweenDates(Date startDate, Date endDate);
 
+	Long countBetweenDatesRecipient(PackageFilter packageFilter);
+
 	List<Package> betweenDatesRecipient(PackageFilter packageFilter);
 
 	Package maxPrice();
+
+	long countPack();
+
+	long countPackBetweenDates(Date startDate, Date endDate);
+
+	String oftenCountry();
 }

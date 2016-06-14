@@ -34,7 +34,6 @@ public class PageConfirmation extends WebPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		String keyString = parameters.getValues("foo").get(0).toString();
 		BigDecimal key = new BigDecimal(keyString).divide(new BigDecimal("123"), 0).divide(new BigDecimal("23"), 0)
 				.divide(new BigDecimal("3"), 0);
@@ -45,13 +44,8 @@ public class PageConfirmation extends WebPage {
 			user.setStatus(StatusUser.OFFICER);
 			userProfileService.update(user);
 			add(new Label("thanks", getString("confirm.label")));
-			String text = String.format("%s %s %s. %s: \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s",
-					getString("confirm.email.text"), user.getFirstName(), user.getLastName(),
-					getString("confirm.email.text2"), getString("newlogin.login"),
-					userProfileService.getUser(user.getId()).getLogin(), getString("newlogin.password"),
-					userProfileService.getUser(user.getId()).getPassword(), getString("newlogin.fname"),
-					user.getFirstName(), getString("newlogin.lname"), user.getLastName(), getString("newlogin.post"),
-					user.getPost(), getString("newlogin.rank"), user.getRank());
+			String text;
+			text = textMessage(user);
 			new Sender("denisov27111990@gmail.com", "php948409php").send(getString("confirm.email.text3"), text,
 					user.getEmail());
 		} else {
@@ -82,5 +76,17 @@ public class PageConfirmation extends WebPage {
 		WebMarkupContainer footer = new WebMarkupContainer("footer");
 		add(footer);
 		footer.add(new Label("current-year", yearModel));
+	}
+
+	private String textMessage(UserCredentials user) {
+		String text;
+		text = String.format("%s %s %s. %s: \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s",
+				getString("confirm.email.text"), user.getFirstName(), user.getLastName(),
+				getString("confirm.email.text2"), getString("newlogin.login"),
+				userProfileService.getUser(user.getId()).getLogin(), getString("newlogin.password"),
+				userProfileService.getUser(user.getId()).getPassword(), getString("newlogin.fname"),
+				user.getFirstName(), getString("newlogin.lname"), user.getLastName(), getString("newlogin.post"),
+				user.getPost(), getString("newlogin.rank"), user.getRank());
+		return text;
 	}
 }

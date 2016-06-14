@@ -269,6 +269,7 @@ public class AllNew {
 		for (int k = 1; k <= 10; k++) {
 			int n = 1;
 			int nn = 1;
+			@SuppressWarnings("unused")
 			int nnn = 1;
 			for (int i = 1; i <= 100; i++) {
 				pack.setId(idPack++);
@@ -286,7 +287,7 @@ public class AllNew {
 				if (i % 100 == 0) {
 					nnn++;
 				}
-				pack.setProducts(productService.get((long) nnn));
+//				pack.setProducts(productService.get((long) nnn));
 				pack.setPrice(pack.getProducts().get(0).getPriceProduct());
 				packageService.register(pack);
 			}

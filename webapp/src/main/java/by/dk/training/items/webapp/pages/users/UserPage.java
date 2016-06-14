@@ -8,8 +8,8 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow.WindowClosedCallback;
 
 import by.dk.training.items.webapp.pages.AbstractPage;
-import by.dk.training.items.webapp.pages.users.formforreg.RegistryUserPanel;
-import by.dk.training.items.webapp.pages.users.panelforusers.ListUsersPanel;
+import by.dk.training.items.webapp.pages.users.formreg.RegistryUserPanel;
+import by.dk.training.items.webapp.pages.users.panelusers.ListUsersPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN" })
 public class UserPage extends AbstractPage {
@@ -27,7 +27,6 @@ public class UserPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		add(new ListUsersPanel("list-panel"));
 		final ModalWindow modalCreate = new ModalWindow("modalCreate");
 		modalCreate.setCssClassName("modal_window");
@@ -47,7 +46,6 @@ public class UserPage extends AbstractPage {
 		});
 		this.setOutputMarkupId(true);
 		add(modalCreate);
-
 		AjaxLink<Void> create = new AjaxLink<Void>("createUser") {
 			/**
 			 * 

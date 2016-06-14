@@ -25,7 +25,6 @@ public class SchemaNameAwareBasicDataSource extends BasicDataSource {
 		if (schema == null) {
 			throw new IllegalArgumentException("Illegal schema name:" + schema);
 		}
-
 		this.schema = schema;
 	}
 
@@ -46,7 +45,6 @@ public class SchemaNameAwareBasicDataSource extends BasicDataSource {
 		} finally {
 			stmt.close();
 		}
-
 		return connection;
 	}
 

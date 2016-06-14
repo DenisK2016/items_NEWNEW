@@ -3,9 +3,7 @@ package by.dk.training.items.webapp.pages.home;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,14 +30,12 @@ import com.googlecode.wickedcharts.highcharts.options.VerticalAlignment;
 import com.googlecode.wickedcharts.highcharts.options.series.SimpleSeries;
 import com.googlecode.wickedcharts.wicket7.highcharts.Chart;
 
-import by.dk.training.items.dataaccess.filters.PackageFilter;
-import by.dk.training.items.datamodel.Package;
 import by.dk.training.items.services.PackageService;
 import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.AbstractPage;
 import by.dk.training.items.webapp.pages.login.RedirectPage;
 
-@AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER", "CONFIRMATION" })
+@AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER", "CONFIRMATION", "BANNED" })
 public class HomePage extends AbstractPage {
 
 	/**
@@ -50,9 +46,12 @@ public class HomePage extends AbstractPage {
 	private PackageService packageService;
 	private Date dateStart;
 	private Date dateEnd;
+	private Date d1;
+	private Date d2;
 	private boolean admin = AuthorizedSession.get().getRoles().contains("ADMIN");
 	private boolean commander = AuthorizedSession.get().getRoles().contains("COMMANDER");
 	private boolean confirm = AuthorizedSession.get().getRoles().contains("CONFIRMATION");
+	private boolean banned = AuthorizedSession.get().getRoles().contains("BANNED");
 	private Number year = Calendar.getInstance().get(Calendar.YEAR);
 	private List<Number> years = Arrays
 			.asList(new Number[] { 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 });
@@ -82,30 +81,16 @@ public class HomePage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		Label allPacks = new Label("allpacks", Model.of(packageService.getAll().size()));
+		Label allPacks = new Label("allpacks", Model.of(packageService.countPack()));
 		add(allPacks);
-		Date d1 = new Date();
-		Date d2 = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(d2);
-		cal.set(Calendar.DAY_OF_MONTH, 1);
-		cal.set(Calendar.HOUR, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		d2.setTime(cal.getTime().getTime());
-		int month = cal.get(Calendar.MONTH) - 1;
-		if (month == -1) {
-			month = 11;
-			cal.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 1);
-		}
-		cal.set(Calendar.MONTH, month);
-		d1.setTime(cal.getTime().getTime());
-		Label lastMonth = new Label("month", Model.of(packageService.betweenDates(d1, d2).size()));
+		d1 = new Date();
+		d2 = new Date();
+		changeDate(d1, d2);
+		Label lastMonth = new Label("month", Model.of(packageService.countPackBetweenDates(d1, d2)));
 		add(lastMonth);
 		dateStart = new Date();
 		dateEnd = new Date();
-		Model<Integer> mod = new Model<Integer>(packageService.betweenDates(dateStart, dateEnd).size());
+		Model<Long> mod = new Model<Long>(packageService.countPackBetweenDates(d1, d2));
 		Label lab = new Label("quantity", Model.of(mod));
 		lab.setOutputMarkupId(true);
 		add(lab);
@@ -119,7 +104,7 @@ public class HomePage extends AbstractPage {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-				mod.setObject(packageService.betweenDates(dateStart, dateEnd).size());
+				mod.setObject(packageService.countPackBetweenDates(dateStart, dateEnd));
 				target.add(lab);
 
 			}
@@ -137,7 +122,7 @@ public class HomePage extends AbstractPage {
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
 
-				mod.setObject(packageService.betweenDates(dateStart, dateEnd).size());
+				mod.setObject(packageService.countPackBetweenDates(dateStart, dateEnd));
 				target.add(lab);
 			}
 		});
@@ -145,28 +130,8 @@ public class HomePage extends AbstractPage {
 		fieldEnd.add(new DatePicker());
 		Label maxPrice = new Label("maxprice", Model.of(packageService.maxPrice().getPrice()));
 		add(maxPrice);
-		List<Package> packs = packageService.getAll();
-		Map<String, Integer> map = new HashMap<>();
-		for (Package p : packs) {
-			if (map.get(p.getCountrySender()) == null) {
-				map.put(p.getCountrySender(), 1);
-			} else {
-				map.put(p.getCountrySender(), (map.get(p.getCountrySender())) + 1);
-			}
-
-		}
-		int maxCountry = 0;
-		String region = "";
-		for (Map.Entry<String, Integer> entry : map.entrySet()) {
-
-			if (maxCountry < entry.getValue()) {
-				maxCountry = entry.getValue();
-				region = entry.getKey();
-			}
-		}
-		Label popularCity = new Label("city", Model.of(region));
+		Label popularCity = new Label("city", Model.of(packageService.oftenCountry()));
 		add(popularCity);
-
 		Label role;
 		Label info1;
 		Label info2;
@@ -186,7 +151,6 @@ public class HomePage extends AbstractPage {
 		add(role);
 		add(info1);
 		add(info2);
-
 		final WebMarkupContainer wmc = new WebMarkupContainer("wmc");
 		wmc.setOutputMarkupId(true);
 		add(wmc);
@@ -200,34 +164,9 @@ public class HomePage extends AbstractPage {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-				PackageFilter filter = new PackageFilter();
 				Date date1 = new Date();
 				Date date2 = new Date();
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(date2);
-				calendar.set(Calendar.DAY_OF_MONTH, 1);
-				calendar.set(Calendar.HOUR, 0);
-				calendar.set(Calendar.MINUTE, 0);
-				calendar.set(Calendar.SECOND, 0);
-				calendar.set(Calendar.MILLISECOND, 0);
-				calendar.set(Calendar.YEAR, (int) year);
-
-				for (int i = 0; i < 12; i++) {
-					calendar.set(Calendar.MONTH, i);
-					date1.setTime(calendar.getTime().getTime());
-					if (i == 11) {
-						calendar.set(Calendar.MONTH, 0);
-						calendar.set(Calendar.YEAR, (int) year + 1);
-						date2.setTime(calendar.getTime().getTime());
-					} else {
-						calendar.set(Calendar.MONTH, i + 1);
-						date2.setTime(calendar.getTime().getTime());
-					}
-					filter.setStartDate(date1);
-					filter.setEndDate(date2);
-					num[i] = packageService.find(filter).size();
-
-				}
+				changeYearChart(date1, date2);
 				target.add(wmc);
 			}
 		});
@@ -243,42 +182,14 @@ public class HomePage extends AbstractPage {
 						getString("page.home.chart.month9"), getString("page.home.chart.month10"),
 						getString("page.home.chart.month11"), getString("page.home.chart.month12") })));
 		options.setyAxis(new Axis().setTitle(new Title(getString("page.home.chart1"))));
-
 		options.setLegend(new Legend().setLayout(LegendLayout.VERTICAL).setAlign(HorizontalAlignment.RIGHT)
 				.setVerticalAlign(VerticalAlignment.TOP).setX(-10).setY(100).setBorderWidth(0));
-
-		PackageFilter filter = new PackageFilter();
 		Date date1 = new Date();
 		Date date2 = new Date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date2);
-		calendar.set(Calendar.DAY_OF_MONTH, 1);
-		calendar.set(Calendar.HOUR, 0);
-		calendar.set(Calendar.MINUTE, 0);
-		calendar.set(Calendar.SECOND, 0);
-		calendar.set(Calendar.MILLISECOND, 0);
-		calendar.set(Calendar.YEAR, (int) year);
-
-		for (int i = 0; i < 12; i++) {
-			calendar.set(Calendar.MONTH, i);
-			date1.setTime(calendar.getTime().getTime());
-			if (i == 11) {
-				calendar.set(Calendar.MONTH, 0);
-				calendar.set(Calendar.YEAR, (int) year + 1);
-				date2.setTime(calendar.getTime().getTime());
-			} else {
-				calendar.set(Calendar.MONTH, i + 1);
-				date2.setTime(calendar.getTime().getTime());
-			}
-			filter.setStartDate(date1);
-			filter.setEndDate(date2);
-			num[i] = packageService.find(filter).size();
-
-		}
+		changeYearChart(date1, date2);
 		options.addSeries(new SimpleSeries().setName(getString("page.home.chart1")).setData(Arrays.asList(num)));
 		Chart chart = new Chart("chart", options);
 		wmc.add(chart);
-
 		if (admin) {
 			allPacks.setVisible(false);
 			lastMonth.setVisible(false);
@@ -290,10 +201,50 @@ public class HomePage extends AbstractPage {
 			listYears.setVisible(false);
 			chart.setVisible(false);
 		}
-
-		if (confirm) {
+		if (confirm || banned) {
 			setResponsePage(RedirectPage.class);
 		}
 	}
 
+	private void changeYearChart(Date date1, Date date2) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date2);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		calendar.set(Calendar.YEAR, (int) year);
+		for (int i = 0; i < 12; i++) {
+			calendar.set(Calendar.MONTH, i);
+			date1.setTime(calendar.getTime().getTime());
+			if (i == 11) {
+				calendar.set(Calendar.MONTH, 0);
+				calendar.set(Calendar.YEAR, (int) year + 1);
+				date2.setTime(calendar.getTime().getTime());
+			} else {
+				calendar.set(Calendar.MONTH, i + 1);
+				date2.setTime(calendar.getTime().getTime());
+			}
+			num[i] = packageService.countPackBetweenDates(date1, date2);
+		}
+	}
+
+	private void changeDate(Date d1, Date d2) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d2);
+		cal.set(Calendar.DAY_OF_MONTH, 1);
+		cal.set(Calendar.HOUR, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		d2.setTime(cal.getTime().getTime());
+		int month = cal.get(Calendar.MONTH) - 1;
+		if (month == -1) {
+			month = 11;
+			cal.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 1);
+		}
+		cal.set(Calendar.MONTH, month);
+		d1.setTime(cal.getTime().getTime());
+	}
 }

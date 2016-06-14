@@ -16,6 +16,14 @@ public interface PackageDao extends AbstractDao<Package, Long> {
 
 	Package maxPrice();
 
+	Long countBetweenDatesRecipient(PackageFilter filter);
+
 	List<Package> betweenDatesRecipient(PackageFilter filter);
+
+	long countPack();
+
+	long countPackBetweenDates(Date start, Date end);
+
+	String oftenCountry();
 
 }

@@ -9,8 +9,8 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow.WindowClo
 
 import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.AbstractPage;
-import by.dk.training.items.webapp.pages.recipients.formforreg.RegistryRecipientPanel;
-import by.dk.training.items.webapp.pages.recipients.panelforrecipients.ListRecipientsPanel;
+import by.dk.training.items.webapp.pages.recipients.formreg.RegistryRecipientPanel;
+import by.dk.training.items.webapp.pages.recipients.panelrecipients.ListRecipientsPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER" })
 public class RecipientPage extends AbstractPage {
@@ -20,13 +20,11 @@ public class RecipientPage extends AbstractPage {
 
 	public RecipientPage() {
 		super();
-
 	}
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		final ModalWindow modalCreate = new ModalWindow("modalCreate");
 		modalCreate.setCssClassName("modal_window");
 		modalCreate.setResizable(false);

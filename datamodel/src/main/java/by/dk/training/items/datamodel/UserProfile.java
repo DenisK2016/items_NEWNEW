@@ -22,23 +22,18 @@ import javax.persistence.Table;
 public class UserProfile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, unique = true)
 	private Long id;
-
 	@Column(nullable = false, length = 100, unique = true, updatable = false)
 	private String login;
-
 	@Column(nullable = false, length = 100)
 	private String password;
-
 	@MapsId
 	@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(nullable = false, updatable = false, name = "id")
 	private UserCredentials userCredentials;
-
 	@OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
 	private Set<Package> packages = new HashSet<>();
 

@@ -52,6 +52,7 @@
 	<entry key="restore.cancel">Cancel</entry>
 	<entry key="restore.title.field">Enter you email</entry>
 	<entry key="restore.error">Email in base not exist</entry>
+	<entry key="restore.error.ban">You are banned!</entry>
 
 	<entry key="confirm.home">To login page</entry>
 	<entry key="confirm.error">User not exist.</entry>
@@ -132,6 +133,7 @@
 	<entry key="page.products.sort.creater">Sort by creator</entry>
 	<entry key="page.products.chk2">Only allowes</entry>
 	<entry key="page.products.chk3">Only my products</entry>
+	<entry key="page.products.placeholder.type">by type</entry>
 	<entry key="page.products.placeholder.id">by id</entry>
 	<entry key="page.products.placeholder.name">by name</entry>
 	<entry key="page.products.placeholder.price">by price</entry>
@@ -389,6 +391,7 @@
 	<entry key="profilemenu.setting.packages1">Look information</entry>
 	<entry key="profilemenu.setting.packages2">the selected package</entry>
 	<entry key="profilemenu.change">Enter new value</entry>
+	<entry key="profilemenu.change.reg">On registartion</entry>
 
 	<entry key="settings.title">System settings</entry>
 	<entry key="settings.price">Specify the maximum price for the month of import(BLR)</entry>

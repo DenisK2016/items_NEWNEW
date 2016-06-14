@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,13 +47,9 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	@Override
 	public List<Package> find(PackageFilter filter) {
 		EntityManager em = getEntityManager();
-
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-
 		CriteriaQuery<Package> cq = cb.createQuery(Package.class);
-
 		Root<Package> from = cq.from(Package.class);
-
 		cq.select(from);
 
 		boolean price = (filter.getPrice() != null);
@@ -113,7 +110,6 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 							userEqualCondition, recipientEqualCondition, productEqualCondition, idEqualCondition,
 							taxEqualCondition)).distinct(true);
 				}
-
 			} else {
 				if (betweenDate != null) {
 					cq.where(cb.or(priceEqualCondition, weightEqualCondition, dateEqualCondition, descrEqualCondition,
@@ -126,7 +122,6 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 							userEqualCondition, recipientEqualCondition, idEqualCondition, taxEqualCondition))
 							.distinct(true);
 				}
-
 			}
 		}
 
@@ -160,7 +155,6 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 		List<Package> allitems = q.getResultList();
 
 		return allitems;
-
 	}
 
 	@Override
@@ -184,11 +178,74 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	@Override
 	public Package maxPrice() {
 		EntityManager em = getEntityManager();
-
 		Package pack = (Package) em.createQuery("SELECT e FROM Package e WHERE e.price=(SELECT MAX(price) FROM e)")
-				.getResultList().get(0);
-
+				.setMaxResults(1).getSingleResult();
 		return pack;
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public Long countBetweenDatesRecipient(PackageFilter filter) {
+		EntityManager em = getEntityManager();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		Root<Package> from = cq.from(Package.class);
+		cq.select(cb.count(from));
+		boolean f = filter.getStartDate() != null;
+		boolean t = filter.getEndDate() != null;
+		boolean recipient = (filter.getRecipint() != null);
+		boolean filt = (recipient || f || t);
+		if (filt) {
+			Predicate recipientEqualCondition = cb.equal(from.get(Package_.idRecipient), filter.getRecipint());
+			Predicate betweenDate = null;
+			if ((filter.getStartDate() != null) && (filter.getEndDate() != null)) {
+				betweenDate = cb.between(from.get(Package_.date), filter.getStartDate(), filter.getEndDate());
+			}
+			if ((filter.getStartDate() == null) && (filter.getEndDate() != null)) {
+				startDate = new Date(0, 0, 0);
+				endDate = filter.getEndDate();
+				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
+			}
+			if ((filter.getStartDate() != null) && (filter.getEndDate() == null)) {
+				endDate = new Date();
+				startDate = filter.getStartDate();
+				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
+			}
+			cq.where(cb.and(recipientEqualCondition, betweenDate));
+		}
+		TypedQuery<Long> q = em.createQuery(cq);
+		return q.getSingleResult();
+	}
+
+	@Override
+	public long countPack() {
+		EntityManager em = getEntityManager();
+		String sql = "SELECT COUNT(*) FROM Package";
+		Query q = em.createQuery(sql);
+		long count = (long) q.getSingleResult();
+		return count;
+	}
+
+	@Override
+	public long countPackBetweenDates(Date start, Date end) {
+		EntityManager em = getEntityManager();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		Root<Package> from = cq.from(Package.class);
+		cq.select(cb.count(from));
+		Predicate countBetwen = cb.between(from.get(Package_.date), start, end);
+		cq.where(countBetwen);
+		TypedQuery<Long> q = em.createQuery(cq);
+		return q.getSingleResult();
+	}
+
+	@Override
+	public String oftenCountry() {
+		EntityManager em = getEntityManager();
+		String sql = "SELECT p.countrySender FROM Package p GROUP BY p.countrySender ORDER BY COUNT(*) DESC";
+		Query q = em.createQuery(sql).setMaxResults(1);
+		String country = (String) q.getSingleResult();
+		return country;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -222,9 +279,6 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 			cq.where(cb.and(recipientEqualCondition, betweenDate));
 		}
 		TypedQuery<Package> q = em.createQuery(cq);
-		List<Package> allitems = q.getResultList();
-
-		return allitems;
+		return q.getResultList();
 	}
-
 }

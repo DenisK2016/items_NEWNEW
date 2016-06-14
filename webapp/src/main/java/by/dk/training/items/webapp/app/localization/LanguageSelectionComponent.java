@@ -30,13 +30,10 @@ public class LanguageSelectionComponent extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		Locale locale = Session.get().getLocale();
-
 		DropDownChoice<Locale> dropDownChoice = new DropDownChoice<Locale>("language", Model.of(locale),
 				SUPPORTED_LOCALES, LocaleChoiceRenderer.INSTANCE);
 		add(dropDownChoice);
-
 		dropDownChoice.add(new AjaxFormComponentUpdatingBehavior("change") {
 
 			private static final long serialVersionUID = 1L;
@@ -48,7 +45,5 @@ public class LanguageSelectionComponent extends Panel {
 				setResponsePage(getPage());
 			}
 		});
-
 	}
-
 }

@@ -38,14 +38,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this, getApplicationContext()));
 		getSecuritySettings().setAuthorizationStrategy(new AnnotationsRoleAuthorizationStrategy(this));
 		mountPage("/confirmation/${foo}/registration", PageConfirmation.class);
+		getDebugSettings().setAjaxDebugModeEnabled(false);
 		// add your configuration here
-
-		// //// DELETE!!!!!!!!!!!!!1
-		// getDebugSettings().setDevelopmentUtilitiesEnabled(true);
-		//
-		// getRequestCycleSettings().addResponseFilter(new
-		// ServerAndClientTimeFilter());
-		// //// DELETE!!!!!!!!!!!!!!!
 	}
 
 	public ApplicationContext getApplicationContext() {

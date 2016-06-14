@@ -29,7 +29,6 @@ public class MenuForAdmin extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		add(new Link<Object>("linkproduct") {
 			/**
 			 * 
@@ -40,8 +39,7 @@ public class MenuForAdmin extends Panel {
 			public void onClick() {
 				setResponsePage(new ProductPage());
 			}
-		}.add(AttributeModifier.append("title", "База продуктов")));
-
+		}.add(AttributeModifier.append("title", getString("page.products.title"))));
 		add(new Link<Object>("types") {
 			/**
 			 * 
@@ -52,7 +50,7 @@ public class MenuForAdmin extends Panel {
 			public void onClick() {
 				setResponsePage(new TypePage());
 			}
-		}.add(AttributeModifier.append("title", "База типов")));
+		}.add(AttributeModifier.append("title", getString("page.types.title"))));
 
 		add(new Link<Object>("user") {
 			/**
@@ -64,7 +62,7 @@ public class MenuForAdmin extends Panel {
 			public void onClick() {
 				setResponsePage(new UserPage());
 			}
-		}.add(AttributeModifier.append("title", "База пользователей")));
+		}.add(AttributeModifier.append("title", getString("page.users.base.title"))));
 
 		add(new Link<Object>("packages") {
 			/**
@@ -76,7 +74,7 @@ public class MenuForAdmin extends Panel {
 			public void onClick() {
 				setResponsePage(new PackagesPage());
 			}
-		}.add(AttributeModifier.append("title", "База посылок")));
+		}.add(AttributeModifier.append("title", getString("page.packages.list.title"))));
 
 		add(new Link<Object>("recipient") {
 			/**
@@ -88,7 +86,7 @@ public class MenuForAdmin extends Panel {
 			public void onClick() {
 				setResponsePage(new RecipientPage());
 			}
-		}.add(AttributeModifier.append("title", "База получателей")));
+		}.add(AttributeModifier.append("title", getString("page.recipients.base.title"))));
 
 		add(new Link<Object>("logout") {
 
@@ -104,7 +102,8 @@ public class MenuForAdmin extends Panel {
 
 			}
 
-		}.setVisible(AuthorizedSession.get().isSignedIn()).add(AttributeModifier.append("title", "Выйти из системы")));
+		}.setVisible(AuthorizedSession.get().isSignedIn())
+				.add(AttributeModifier.append("title", getString("menu.profile-logout"))));
 
 		add(new Link<Object>("profile") {
 
@@ -119,7 +118,7 @@ public class MenuForAdmin extends Panel {
 
 			}
 
-		}.add(AttributeModifier.append("title", "Профиль пользователя")));
+		}.add(AttributeModifier.append("title", getString("menu.profile"))));
 
 		add(new Link<HomePage>("Back") {
 
@@ -130,7 +129,5 @@ public class MenuForAdmin extends Panel {
 				setResponsePage(new HomePage());
 			}
 		});
-
 	}
-
 }

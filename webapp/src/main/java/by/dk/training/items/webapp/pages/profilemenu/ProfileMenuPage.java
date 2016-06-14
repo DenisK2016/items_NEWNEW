@@ -16,20 +16,17 @@ public class ProfileMenuPage extends AbstractPage {
 
 	boolean commander = AuthorizedSession.get().getRoles().contains("COMMANDER");
 	boolean officer = AuthorizedSession.get().getRoles().contains("OFFICER");
-
 	private static final long serialVersionUID = 1L;
 	private UserProfile userProfile;
 
 	public ProfileMenuPage(UserProfile userProfile) {
 		super();
 		this.userProfile = userProfile;
-
 	}
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		add(new ProfileMenuPanel("profileMenu", userProfile));
 		final ModalWindow modalSettings = new ModalWindow("modalSettings");
 		modalSettings.setCssClassName("modal_window");
@@ -47,7 +44,6 @@ public class ProfileMenuPage extends AbstractPage {
 		});
 		this.setOutputMarkupId(true);
 		add(modalSettings);
-
 		AjaxLink<Void> linkSettings = new AjaxLink<Void>("settings") {
 			private static final long serialVersionUID = 1L;
 

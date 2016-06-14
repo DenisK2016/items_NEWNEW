@@ -42,7 +42,6 @@ public class PasswordRestorePanel extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		Form<UserProfile> form = new Form<UserProfile>("formRestorePass");
 		FeedbackPanel feedBackPanel = new FeedbackPanel("feedback");
 		form.add(feedBackPanel.setOutputMarkupId(true));
@@ -54,7 +53,6 @@ public class PasswordRestorePanel extends Panel {
 		email.add(EmailAddressValidator.getInstance());
 		email.setRequired(true);
 		form.add(email);
-
 		form.add(new AjaxSubmitLink("request") {
 			/**
 			 * 
@@ -66,9 +64,7 @@ public class PasswordRestorePanel extends Panel {
 				super.onSubmit(target, form);
 				userFilter.setEmail(emailStr);
 				if (!userProfileService.find(userFilter).isEmpty()) {
-					text = String.format("%s: %s \n%s: %s", getString("newlogin.login"),
-							userProfileService.find(userFilter).get(0).getLogin(), getString("newlogin.password"),
-							userProfileService.find(userFilter).get(0).getPassword());
+					textMessage();
 					new Sender("denisov27111990@gmail.com", "php948409php").send(getString("restore.title"), text,
 							emailStr);
 					notification.info(target, getString("send.message.info"));
@@ -85,7 +81,6 @@ public class PasswordRestorePanel extends Panel {
 				super.onError(target, form);
 			}
 		});
-
 		form.add(new AjaxLink<Object>("cancel") {
 			/**
 			 * 
@@ -97,9 +92,12 @@ public class PasswordRestorePanel extends Panel {
 				modalWindow.close(target);
 			}
 		});
-
 		add(form);
-
 	}
 
+	private void textMessage() {
+		text = String.format("%s: %s \n%s: %s", getString("newlogin.login"),
+				userProfileService.find(userFilter).get(0).getLogin(), getString("newlogin.password"),
+				userProfileService.find(userFilter).get(0).getPassword());
+	}
 }

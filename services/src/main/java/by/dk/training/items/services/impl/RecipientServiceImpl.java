@@ -22,66 +22,49 @@ public class RecipientServiceImpl implements RecipientService {
 
 	@Override
 	public void register(Recipient recipient) {
-
 		LOGGER.info("Recipient register: {}", recipient);
-
 		recipientDao.insert(recipient);
 
 	}
 
 	@Override
 	public Recipient getRecipient(Long id) {
-
 		LOGGER.info("Recipient select: {}", recipientDao.get(id));
-
 		return recipientDao.get(id);
 	}
 
 	@Override
 	public void update(Recipient recipient) {
-
 		LOGGER.info("Recipient update, new and old: {}", recipient, recipientDao.get(recipient.getId()));
-
 		recipientDao.update(recipient);
-
 	}
 
 	@Override
 	public void delete(Long id) {
-
 		LOGGER.info("Recipient delete: {}", recipientDao.get(id));
-
 		recipientDao.delete(id);
-
 	}
 
 	@Override
 	public List<Recipient> find(RecipientFilter recipientFilter) {
-
 		LOGGER.info("Recipient find by filter: {}", recipientFilter);
-
 		return recipientDao.find(recipientFilter);
 	}
 
 	@Override
 	public List<Recipient> getAll() {
-
 		LOGGER.info("Recipient getAll: {}", "All recipients");
-
 		return recipientDao.getAll();
 	}
 
 	@Override
 	public Long count(RecipientFilter filter) {
-
 		LOGGER.info("Recipient count: {}", filter);
-
 		return recipientDao.count(filter);
 	}
 
 	@Override
 	public List<Recipient> checkDuplicate(RecipientFilter filter) {
-
 		return recipientDao.checkDuplicate(filter);
 	}
 

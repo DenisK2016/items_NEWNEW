@@ -9,8 +9,8 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow.WindowClo
 
 import by.dk.training.items.webapp.app.AuthorizedSession;
 import by.dk.training.items.webapp.pages.AbstractPage;
-import by.dk.training.items.webapp.pages.products.formforreg.RegistryProductPanel;
-import by.dk.training.items.webapp.pages.products.panelforproducts.ListProductsPanel;
+import by.dk.training.items.webapp.pages.products.formreg.RegistryProductPanel;
+import by.dk.training.items.webapp.pages.products.panelproducts.ListProductsPanel;
 
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER" })
 public class ProductPage extends AbstractPage {
@@ -20,13 +20,11 @@ public class ProductPage extends AbstractPage {
 
 	public ProductPage() {
 		super();
-
 	}
 
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 		final ModalWindow modalCreate = new ModalWindow("modalCreate");
 		modalCreate.setCssClassName("modal_window");
 		modalCreate.setResizable(false);
@@ -40,7 +38,6 @@ public class ProductPage extends AbstractPage {
 			@Override
 			public void onClose(AjaxRequestTarget target) {
 				target.add(ProductPage.this);
-
 			}
 		});
 		this.setOutputMarkupId(true);

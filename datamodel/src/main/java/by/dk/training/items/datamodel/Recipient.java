@@ -20,28 +20,21 @@ import javax.persistence.Table;
 public class Recipient implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, unique = true)
 	private Long id;
-
 	@Column(nullable = false, length = 100)
 	private String name;
-
 	@Column(nullable = false, length = 100)
 	private String city;
-
 	@Column(nullable = false, length = 100)
 	private String address;
-
 	@OneToMany(mappedBy = "idRecipient", fetch = FetchType.LAZY)
 	private Set<Package> packages = new HashSet<>();
-
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
 	private UserProfile idUser;
-
 	@Column(name = "counter_packages")
 	private Integer counterPackages = new Integer(0);
 
