@@ -14,6 +14,7 @@ public class AssertDemo
             n=getnum();
 
             System.out.println("n="+n);
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
         }
     }
 }
