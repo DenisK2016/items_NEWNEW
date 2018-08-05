@@ -1,53 +1,41 @@
 package by.dk.training.items.datamodel;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user_profile")
 public class UserProfile implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -672287603266547498L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, unique = true)
 	private Long id;
+
 	@Column(nullable = false, length = 100, unique = true, updatable = false)
 	private String login;
+
 	@Column(nullable = false, length = 100)
 	private String password;
+
 	@MapsId
-	@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinColumn(nullable = false, updatable = false, name = "id")
+	@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = { CascadeType.ALL })
 	private UserCredentials userCredentials;
+
 	@OneToMany(mappedBy = "idUser", fetch = FetchType.LAZY)
-	private Set<Package> packages = new HashSet<>();
-
-	public UserProfile() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private Set<Package> packages;
 
 	public String getLogin() {
 		return login;
@@ -81,6 +69,14 @@ public class UserProfile implements Serializable {
 		this.packages = pack;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", login=" + login + ", password=" + password + ", \nuserCredentials="
@@ -91,7 +87,7 @@ public class UserProfile implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
 		return result;
 	}
 
@@ -107,11 +103,11 @@ public class UserProfile implements Serializable {
 			return false;
 		}
 		UserProfile other = (UserProfile) obj;
-		if (id == null) {
-			if (other.id != null) {
+		if (getId() == null) {
+			if (other.getId() != null) {
 				return false;
 			}
-		} else if (!id.equals(other.id)) {
+		} else if (!getId().equals(other.getId())) {
 			return false;
 		}
 		return true;

@@ -414,13 +414,13 @@ public class ListProductsPanel extends Panel {
 
 			productFilter.setLimit((int) count);
 			productFilter.setOffset((int) first);
-			return productService.find(productFilter).iterator();
+			return productService.findProduct(productFilter).iterator();
 
 		}
 
 		@Override
 		public long size() {
-			return productService.count(productFilter);
+			return productService.overallNumberOfProducts(productFilter);
 		}
 
 		@Override

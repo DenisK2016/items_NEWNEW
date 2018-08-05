@@ -235,10 +235,10 @@ public class RegistryUserPanel extends Panel {
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				try {
 					if (userProfile.getId() == null) {
-						userProfileService.register(userProfile, userCredentials);
+						userProfileService.registerUser(userProfile, userCredentials);
 					} else {
-						userProfileService.update(userProfile);
-						userProfileService.update(userCredentials);
+						userProfileService.updateUserProfile(userProfile);
+						userProfileService.updateUserCredentials(userCredentials);
 					}
 					modalWindow.close(target);
 					super.onSubmit(target, form);
@@ -256,12 +256,12 @@ public class RegistryUserPanel extends Panel {
 				UserFilter filter = new UserFilter();
 				filter.setFetchCredentials(true);
 				filter.setLogin(userProfile.getLogin());
-				if (!userProfileService.find(filter).isEmpty()) {
+				if (!userProfileService.findUser(filter).isEmpty()) {
 					notification.error(target, getString("page.users.create.error1"));
 				}
 				filter.setLogin(null);
 				filter.setEmail(userCredentials.getEmail());
-				if (!userProfileService.find(filter).isEmpty()) {
+				if (!userProfileService.findUser(filter).isEmpty()) {
 					notification.error(target, getString("page.users.create.error2"));
 				}
 				for (FeedbackMessage msg : feedBackPanel.getFeedbackMessagesModel().getObject()) {

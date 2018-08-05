@@ -21,23 +21,23 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDao;
 
 	@Override
-	public void register(Product products) {
-		LOGGER.info("Product regirstred: {}", products);
+	public void registerProduct(Product products) {
+		LOGGER.info("Product was regirstred: {}", products);
 		productDao.insert(products);
 
 	}
 
 	@Override
-	public Product get(Long id) {
-		LOGGER.info("Product select: {}", productDao.get(id));
-		return productDao.get(id);
+	public Product getProductWithId(Long id) {
+		Product product = productDao.get(id);
+		LOGGER.info("Product was selected: {}", product);
+		return product;
 	}
 
 	@Override
 	public void update(Product products) {
 		LOGGER.info("Product update, new and old: {}", products, productDao.get(products.getId()));
 		productDao.update(products);
-
 	}
 
 	@Override
@@ -47,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> find(ProductFilter productsFilter) {
+	public List<Product> findProduct(ProductFilter productsFilter) {
 		LOGGER.info("Product find by filter: {}", productsFilter);
-		return productDao.find(productsFilter);
+		return productDao.findProducts(productsFilter);
 	}
 
 	@Override
@@ -59,9 +59,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Long count(ProductFilter filter) {
+	public Long overallNumberOfProducts(ProductFilter filter) {
 		LOGGER.info("Product count: {}", filter);
-		return productDao.count(filter);
+		return productDao.overallNumberOfProducts(filter);
 	}
 
 }

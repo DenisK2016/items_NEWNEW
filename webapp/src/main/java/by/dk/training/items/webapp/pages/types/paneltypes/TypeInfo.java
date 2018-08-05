@@ -31,7 +31,7 @@ public class TypeInfo extends Panel {
 		typeFilter.setFetchParentType(true);
 		typeFilter.setFetchUser(true);
 		typeFilter.setId(type.getId());
-		this.type = typeService.find(typeFilter).get(0);
+		this.type = typeService.findType(typeFilter).get(0);
 		this.modalWindow = modalWindow;
 
 	}

@@ -149,7 +149,7 @@ public class RegistryProductPanel extends Panel {
 				}
 				if (product.getId() == null) {
 					product.setIdUser(AuthorizedSession.get().getUser());
-					productService.register(product);
+					productService.registerProduct(product);
 				} else {
 					productService.update(product);
 				}

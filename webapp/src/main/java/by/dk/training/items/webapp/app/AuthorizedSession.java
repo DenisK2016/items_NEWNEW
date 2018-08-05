@@ -16,7 +16,10 @@ import by.dk.training.items.webapp.app.localization.LanguageSelectionComponent;
 
 public class AuthorizedSession extends AuthenticatedWebSession {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6326258754363302521L;
 	@Inject
 	private UserProfileService userProfileService;
 	private UserProfile user;
@@ -42,7 +45,7 @@ public class AuthorizedSession extends AuthenticatedWebSession {
 
 	@Override
 	protected boolean authenticate(final String userName, final String password) {
-		user = userProfileService.getByNameAndPassword(userName, password);
+		user = userProfileService.getUserByNameAndPassword(userName, password);
 		return user != null;
 	}
 

@@ -106,8 +106,8 @@ public class EditInfoPanel extends Panel {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
-				userProfileService.update(userProfile);
-				userProfileService.update(userCredentials);
+				userProfileService.updateUserProfile(userProfile);
+				userProfileService.updateUserCredentials(userCredentials);
 				modalWindow.close(target);
 			}
 

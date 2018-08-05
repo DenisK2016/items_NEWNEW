@@ -65,7 +65,7 @@ public class UserInfo extends Panel {
 		userFilter.setFetchCredentials(true);
 		userFilter.setFetchPackages(true);
 		userFilter.setId(userProfile.getId());
-		this.userProfile = userProfileService.find(userFilter).get(0);
+		this.userProfile = userProfileService.findUser(userFilter).get(0);
 		this.modalWindow = modalWindow;
 
 		productFilter = new ProductFilter();
@@ -142,7 +142,7 @@ public class UserInfo extends Panel {
 				if (inPack == null) {
 					notification.error(target, getString("page.users.info.error"));
 				} else {
-					modal2.setContent(new PackageInfo(modal2, packageService.getPackage(Long.valueOf(inPack))));
+					modal2.setContent(new PackageInfo(modal2, packageService.getPackageWithId(Long.valueOf(inPack))));
 					modal2.show(target);
 				}
 
@@ -150,19 +150,19 @@ public class UserInfo extends Panel {
 		});
 
 		List<String> listPod = new ArrayList<>();
-		for (Product p : productService.find(productFilter)) {
+		for (Product p : productService.findProduct(productFilter)) {
 			listPod.add(String.format("%d %s", p.getId(), p.getNameProduct()));
 		}
 		add(new DropDownChoice<String>("listProd", listPod).setNullValid(true));
 
 		List<String> listType = new ArrayList<>();
-		for (Type t : typeService.find(typeFilter)) {
+		for (Type t : typeService.findType(typeFilter)) {
 			listType.add(String.format("%d %s", t.getId(), t.getTypeName()));
 		}
 		add(new DropDownChoice<String>("listType", listType).setNullValid(true));
 
 		List<String> listRec = new ArrayList<>();
-		for (Recipient r : recipientService.find(recipientFilter)) {
+		for (Recipient r : recipientService.findRecipient(recipientFilter)) {
 			listRec.add(String.format("%d %s %s %s", r.getId(), r.getName(), r.getCity(), r.getAddress()));
 		}
 		add(new DropDownChoice<String>("listRec", listRec).setNullValid(true));

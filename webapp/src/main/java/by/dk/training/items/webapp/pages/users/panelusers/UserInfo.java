@@ -66,7 +66,7 @@ public class UserInfo extends Panel {
 		userFilter.setFetchCredentials(true);
 		userFilter.setFetchPackages(true);
 		userFilter.setId(userProfile.getId());
-		this.userProfile = userProfileService.find(userFilter).get(0);
+		this.userProfile = userProfileService.findUser(userFilter).get(0);
 		this.modalWindow = modalWindow;
 		productFilter = new ProductFilter();
 		productFilter.setUser(this.userProfile);
@@ -143,11 +143,11 @@ public class UserInfo extends Panel {
 
 			}
 		});
-		add(new DropDownChoice<Product>("listProd", productService.find(productFilter), ProductChoiceRenderer.INSTANCE)
+		add(new DropDownChoice<Product>("listProd", productService.findProduct(productFilter), ProductChoiceRenderer.INSTANCE)
 				.setNullValid(true));
-		add(new DropDownChoice<Type>("listType", typeService.find(typeFilter), TypeRenderer.INSTANCE)
+		add(new DropDownChoice<Type>("listType", typeService.findType(typeFilter), TypeRenderer.INSTANCE)
 				.setNullValid(true));
-		add(new DropDownChoice<Recipient>("listRec", recipientService.find(recipientFilter), RecipientRenderer.INSTANCE)
+		add(new DropDownChoice<Recipient>("listRec", recipientService.findRecipient(recipientFilter), RecipientRenderer.INSTANCE)
 				.setNullValid(true));
 		add(new AjaxLink<Void>("back") {
 

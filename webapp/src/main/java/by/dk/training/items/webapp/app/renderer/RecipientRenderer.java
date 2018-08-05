@@ -6,10 +6,7 @@ import by.dk.training.items.datamodel.Recipient;
 
 public class RecipientRenderer extends ChoiceRenderer<Recipient> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4021606940356196752L;
 	public static final RecipientRenderer INSTANCE = new RecipientRenderer();
 
 	private RecipientRenderer() {
@@ -18,7 +15,8 @@ public class RecipientRenderer extends ChoiceRenderer<Recipient> {
 
 	@Override
 	public Object getDisplayValue(Recipient object) {
-		String display = object.getId() + " " + object.getName() + " " + object.getCity() + " " + object.getAddress();
+		String display = String.format("%s %s %s %s", object.getId(), object.getName(), object.getCity(),
+				object.getAddress());
 		return display;
 	}
 

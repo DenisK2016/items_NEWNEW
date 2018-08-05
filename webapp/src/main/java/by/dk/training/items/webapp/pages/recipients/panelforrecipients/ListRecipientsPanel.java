@@ -341,13 +341,13 @@ public class ListRecipientsPanel extends Panel {
 
 			recipientFilter.setLimit((int) count);
 			recipientFilter.setOffset((int) first);
-			return recipientService.find(recipientFilter).iterator();
+			return recipientService.findRecipient(recipientFilter).iterator();
 
 		}
 
 		@Override
 		public long size() {
-			return recipientService.count(recipientFilter);
+			return recipientService.overallNumberOfRecipients(recipientFilter);
 		}
 
 		@Override

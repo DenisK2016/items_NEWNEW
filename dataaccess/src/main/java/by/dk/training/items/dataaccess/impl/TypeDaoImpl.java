@@ -34,22 +34,24 @@ public class TypeDaoImpl extends AbstractDaoImpl<Type, Long> implements TypeDao 
 		cq.select(from); // Указывает что селектать SELECT *. from - это
 							// таблица,
 							// а from.get... - это конкретная колонка
-		boolean c = filter.getTypeName() != null;
-		boolean d = filter.getParentType() != null;
-		boolean e = filter.getUser() != null;
-		boolean f = filter.getId() != null;
-		boolean g = "null".equals(filter.getNullParent());
-		boolean h = filter.getChilldType() != null;
-		boolean b = c || d || e || f || g || h;
-		if (b) {
+
+		boolean typeName = filter.getTypeName() != null;
+		boolean parentType = filter.getParentType() != null;
+		boolean user = filter.getUser() != null;
+		boolean id = filter.getId() != null;
+		boolean nullParent = "null".equals(filter.getNullParent());
+		boolean childType = filter.getChilldType() != null;
+		boolean isFilterCorrect = typeName || parentType || user || id || nullParent || childType;
+
+		if (isFilterCorrect) {
 			Predicate idEqualCondition = cb.equal(from.get(Type_.id), filter.getId());
 			Predicate tNameEqualCondition = cb.equal(from.get(Type_.typeName), filter.getTypeName());
 			Predicate pTypeEqualCondition = cb.equal(from.get(Type_.parentType), filter.getParentType());
 			Predicate userEqualCondition = cb.equal(from.get(Type_.idUser), filter.getUser());
-			if (g) {
+			if (nullParent) {
 				pTypeEqualCondition = cb.isNull(from.get(Type_.parentType));
 			}
-			if (h) {
+			if (childType) {
 				Predicate typesEqualCondition = cb.isMember(filter.getChilldType(), from.get(Type_.childTypes));
 				cq.where(cb.or(tNameEqualCondition, pTypeEqualCondition, userEqualCondition, idEqualCondition,
 						typesEqualCondition));
@@ -83,7 +85,7 @@ public class TypeDaoImpl extends AbstractDaoImpl<Type, Long> implements TypeDao 
 	}
 
 	@Override
-	public Long count(TypeFilter filter) {
+	public Long overallNumberOfTypes(TypeFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);

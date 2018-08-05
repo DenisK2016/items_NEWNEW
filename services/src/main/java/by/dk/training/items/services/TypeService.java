@@ -10,7 +10,7 @@ import by.dk.training.items.datamodel.Type;
 
 public interface TypeService {
 	@Transactional
-	void register(Type type);
+	void registerType(Type type);
 	
 	Type get(Long id);
 	
@@ -20,9 +20,9 @@ public interface TypeService {
 	@Transactional
 	void delete(Long id);
 	
-	List<Type> find(TypeFilter typeFilter);
+	List<Type> findType(TypeFilter typeFilter);
 
 	List<Type> getAll();
 	
-	Long count(TypeFilter filter);
+	Long overallNumberOfTypes(TypeFilter filter);
 }

@@ -116,7 +116,7 @@ public class RecipientStatistic extends Panel {
 			}
 			filter.setStartDate(date1);
 			filter.setEndDate(date2);
-			num[i] = packageService.countBetweenDatesRecipient(filter);
+			num[i] = packageService.numberOfPacksWithRecipientBetweenDates(filter);
 		}
 	}
 }

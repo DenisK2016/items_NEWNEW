@@ -8,22 +8,22 @@ import by.dk.training.items.datamodel.Package;
 
 public interface PackageDao extends AbstractDao<Package, Long> {
 
-	Long count(PackageFilter filter);
+	Long overallNumberOfPackages(PackageFilter filter);
 
-	List<Package> find(PackageFilter filter);
+	List<Package> findPackage(PackageFilter filter);
 
-	List<Package> betweenDates(Date startDate, Date endDate);
+	List<Package> extractPackagesBetweenDates(Date startDate, Date endDate);
 
-	Package maxPrice();
+	Package extractPackageWithMaxPrice();
 
-	Long countBetweenDatesRecipient(PackageFilter filter);
+	Long numberOfPacksWithRecipientBetweenDates(PackageFilter filter);
 
 	List<Package> betweenDatesRecipient(PackageFilter filter);
 
-	long countPack();
+	long overallNumberOfPackages();
 
-	long countPackBetweenDates(Date start, Date end);
+	long numberOfPackagesBetweenDates(Date start, Date end);
 
-	String oftenCountry();
+	String getMostPopularCountry();
 
 }

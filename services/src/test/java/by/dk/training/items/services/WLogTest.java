@@ -4,9 +4,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LogTest {
+public class WLogTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(LogTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(WLogTest.class);
 
 	@Test
 	public void logTest() {

@@ -10,9 +10,14 @@ import by.dk.training.items.webapp.components.menu.MenuPanel;
 
 public class AbstractPage extends WebPage {
 
-	private static final long serialVersionUID = 1L;
-	boolean officer = AuthorizedSession.get().getRoles().contains("OFFICER");
-	boolean commander = AuthorizedSession.get().getRoles().contains("COMMANDER");
+	private static final long serialVersionUID = 1169052753022631330L;
+	boolean isOfficer = false;
+	boolean isCommander = false;
+
+	{
+		isOfficer = AuthorizedSession.get().getRoles().contains("OFFICER");
+		isCommander = AuthorizedSession.get().getRoles().contains("COMMANDER");
+	}
 
 	public AbstractPage() {
 		super();
@@ -26,11 +31,12 @@ public class AbstractPage extends WebPage {
 	protected void onInitialize() {
 		super.onInitialize();
 		add(new LanguageSelectionComponent("language-select"));
-		if (officer || commander) {
+		if (isOfficer || isCommander) {
 			add(new MenuPanel("menu-panel"));
 		} else {
 			add(new MenuForAdmin("menu-panel"));
 		}
+
 		// AbstractReadOnlyModel<Integer> yearModel = new
 		// AbstractReadOnlyModel<Integer>() {
 		// @Override

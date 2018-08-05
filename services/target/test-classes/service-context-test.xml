@@ -20,8 +20,8 @@
 	<bean id="dataSource"
 		class="by.dk.training.items.datamodel.util.SchemaNameAwareBasicDataSource"
 		destroy-method="close" p:driverClassName="org.postgresql.Driver"
-		p:url="jdbc:postgresql://localhost:5432/newmailings2" p:username="postgres"
-		p:password="948409" p:schema="public" />
+		p:url="jdbc:postgresql://localhost:5432/acc_items" p:username="postgres"
+		p:password="123456" p:schema="items" />
 
 
 </beans>

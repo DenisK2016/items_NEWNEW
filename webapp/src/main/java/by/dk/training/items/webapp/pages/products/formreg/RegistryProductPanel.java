@@ -76,7 +76,7 @@ public class RegistryProductPanel extends Panel {
 		ProductFilter filter = new ProductFilter();
 		filter.setFetchType(true);
 		filter.setId(product.getId());
-		this.product = productService.find(filter).get(0);
+		this.product = productService.findProduct(filter).get(0);
 		existTypesProd = this.product.getTypes();
 
 	}
@@ -145,7 +145,7 @@ public class RegistryProductPanel extends Panel {
 				}
 				if (product.getId() == null) {
 					product.setIdUser(AuthorizedSession.get().getUser());
-					productService.register(product);
+					productService.registerProduct(product);
 				} else {
 					productService.update(product);
 				}

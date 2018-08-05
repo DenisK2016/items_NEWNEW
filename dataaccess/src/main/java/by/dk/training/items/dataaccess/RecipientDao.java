@@ -7,10 +7,10 @@ import by.dk.training.items.datamodel.Recipient;
 
 public interface RecipientDao extends AbstractDao<Recipient, Long> {
 
-	Long count(RecipientFilter filter);
+	Long overallNumberOfRecipients(RecipientFilter filter);
 
-	List<Recipient> find(RecipientFilter filter);
+	List<Recipient> findRecipients(RecipientFilter filter);
 
-	List<Recipient> checkDuplicate(RecipientFilter filter);
+	List<Recipient> getDuplicates(RecipientFilter filter);
 
 }

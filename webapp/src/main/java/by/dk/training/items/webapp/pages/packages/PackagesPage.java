@@ -12,9 +12,14 @@ import by.dk.training.items.webapp.pages.packages.panelpackages.ListPackagesPane
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER" })
 public class PackagesPage extends AbstractPage {
 
-	private static final long serialVersionUID = 1L;
-	boolean admin = AuthorizedSession.get().getRoles().contains("ADMIN");
-	boolean commander = AuthorizedSession.get().getRoles().contains("COMMANDER");
+	private static final long serialVersionUID = 8693243765762994367L;
+
+	boolean admin = false;
+	boolean commander = false;
+	{
+		admin = AuthorizedSession.get().getRoles().contains("ADMIN");
+		commander = AuthorizedSession.get().getRoles().contains("COMMANDER");
+	}
 
 	public PackagesPage() {
 		super();
@@ -24,11 +29,12 @@ public class PackagesPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		if (admin || commander) {
-			add(new ListPackagesPanel("list-panel"));
-		} else {
-			add(new ListPackagesOfficer("list-panel"));
-		}
+
+		addListPackages();
+		addCreateLink();
+	}
+
+	private void addCreateLink() {
 		Link<PackRegPage> createLink = new Link<PackRegPage>("CreatePack") {
 
 			private static final long serialVersionUID = 1L;
@@ -41,6 +47,14 @@ public class PackagesPage extends AbstractPage {
 		add(createLink);
 		if (admin) {
 			createLink.setVisible(false);
+		}
+	}
+
+	private void addListPackages() {
+		if (admin || commander) {
+			add(new ListPackagesPanel("list-panel"));
+		} else {
+			add(new ListPackagesOfficer("list-panel"));
 		}
 	}
 }

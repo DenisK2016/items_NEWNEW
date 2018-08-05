@@ -388,7 +388,7 @@ public class ListProductsPanel extends Panel {
 			protected void onUpdate(AjaxRequestTarget target) {
 				TypeFilter filter = new TypeFilter();
 				filter.setTypeName(byTypeFilter);
-				List<Type> type = typeService.find(filter);
+				List<Type> type = typeService.findType(filter);
 				if (byTypeFilter != null && !type.isEmpty()) {
 					productFilter.setTypes(type.get(0));
 					dataProvider.setProductFilter(productFilter);
@@ -433,13 +433,13 @@ public class ListProductsPanel extends Panel {
 			productFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
 			productFilter.setLimit((int) count);
 			productFilter.setOffset((int) first);
-			return productService.find(productFilter).iterator();
+			return productService.findProduct(productFilter).iterator();
 
 		}
 
 		@Override
 		public long size() {
-			return productService.count(productFilter);
+			return productService.overallNumberOfProducts(productFilter);
 		}
 
 		@Override

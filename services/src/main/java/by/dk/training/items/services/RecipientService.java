@@ -10,7 +10,7 @@ import by.dk.training.items.datamodel.Recipient;
 public interface RecipientService {
 
 	@Transactional
-	void register(Recipient recipient);
+	void registerRecipient(Recipient recipient);
 
 	Recipient getRecipient(Long id);
 
@@ -20,11 +20,11 @@ public interface RecipientService {
 	@Transactional
 	void delete(Long id);
 
-	List<Recipient> find(RecipientFilter recipientFilter);
+	List<Recipient> findRecipient(RecipientFilter recipientFilter);
 
 	List<Recipient> getAll();
 
-	Long count(RecipientFilter filter);
+	Long overallNumberOfRecipients(RecipientFilter filter);
 
-	List<Recipient> checkDuplicate(RecipientFilter filter);
+	List<Recipient> getDuplicate(RecipientFilter filter);
 }

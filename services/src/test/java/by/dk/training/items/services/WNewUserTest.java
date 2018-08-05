@@ -12,7 +12,7 @@ import by.dk.training.items.datamodel.UserProfile;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
-public class NewUserTest {
+public class WNewUserTest {
 
 	@Inject
 	private UserProfileService userService;
@@ -37,7 +37,7 @@ public class NewUserTest {
 			userCred1.setEmail("admin@gmail.com");
 			userCred1.setFirstName("jason");
 			userCred1.setLastName("Statham");
-			userService.register(user1, userCred1);
+			userService.registerUser(user1, userCred1);
 			
 			UserProfile user2 = new UserProfile();
 			UserCredentials userCred2 = new UserCredentials();
@@ -47,7 +47,7 @@ public class NewUserTest {
 			userCred2.setEmail("komandir@gmail.com");
 			userCred2.setFirstName("Dow");
 			userCred2.setLastName("Jones");
-			userService.register(user2, userCred2);
+			userService.registerUser(user2, userCred2);
 			
 			UserProfile user3 = new UserProfile();
 			UserCredentials userCred3 = new UserCredentials();
@@ -57,7 +57,7 @@ public class NewUserTest {
 			userCred3.setEmail("user@gmail.com");
 			userCred3.setFirstName("Alexander");
 			userCred3.setLastName("Pushkin");
-			userService.register(user3, userCred3);
+			userService.registerUser(user3, userCred3);
 			
 //		}
 

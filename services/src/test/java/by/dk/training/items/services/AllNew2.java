@@ -44,91 +44,91 @@ public class AllNew2 {
 		product.setPriceProduct(new BigDecimal("10000000"));
 		product.setStatus(true);
 		filter.setTypeName("Ноутбуки");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 
 		product.setIdUser(userProfileService.getUser((long) 3));
 		product.setNameProduct("Nokia 6600");
 		product.setPriceProduct(new BigDecimal("3000000"));
 		product.setStatus(true);
 		filter.setTypeName("Мобильные телефоны");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 4));
 		product.setNameProduct("Gefest 3424");
 		product.setPriceProduct(new BigDecimal("15000000"));
 		product.setStatus(true);
 		filter.setTypeName("Кухонная техника");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Samsung GT7000+");
 		product.setPriceProduct(new BigDecimal("4000000"));
 		product.setStatus(true);
 		filter.setTypeName("Фото-, видеокамеры, объективы");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Командор-343");
 		product.setPriceProduct(new BigDecimal("7000000"));
 		product.setStatus(true);
 		filter.setTypeName("Мебель для гостиной");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Спортивная сумка-SPORT 3000");
 		product.setPriceProduct(new BigDecimal("1000000"));
 		product.setStatus(true);
 		filter.setTypeName("Бижутерия, аксессуары");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Кактус");
 		product.setPriceProduct(new BigDecimal("500000"));
 		product.setStatus(true);
 		filter.setTypeName("Растения");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Nescafe");
 		product.setPriceProduct(new BigDecimal("70000"));
 		product.setStatus(true);
 		filter.setTypeName("Чай, кофе, напитки");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Цемент М-500");
 		product.setPriceProduct(new BigDecimal("50000"));
 		product.setStatus(true);
 		filter.setTypeName("Растворы");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(50.0);
-		productService.register(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Бампер");
 		product.setPriceProduct(new BigDecimal("10000000"));
 		product.setStatus(true);
 		filter.setTypeName("другие");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
-		productService.register(product);
+		productService.registerProduct(product);
+		productService.registerProduct(product);
 		product.setIdUser(userProfileService.getUser((long) 2));
 		product.setNameProduct("Какаин");
 		product.setPriceProduct(new BigDecimal("10000000"));
 		product.setStatus(true);
 		filter.setTypeName("Запрещенный для ввоза");
-		product.setTypes(typeService.find(filter).get(0));
+		product.setTypes(typeService.findType(filter).get(0));
 		product.setWeight(5.0);
-		productService.register(product);
+		productService.registerProduct(product);
 
 	}
 
@@ -146,7 +146,7 @@ public class AllNew2 {
 
 				pack.setId(idPack++);
 				pack.setCountrySender("Country " + i);
-				pack.setFine(fine);
+				pack.setPenalty(fine);
 				int n = 1;
 				int nn = 1;
 				if (i % 10 == 0) {
@@ -154,9 +154,9 @@ public class AllNew2 {
 					nn++;
 				}
 				recipientFilter.setId((long) n);
-				pack.setIdRecipient(recipientService.find(recipientFilter).get(0));
+				pack.setRecipient(recipientService.findRecipient(recipientFilter).get(0));
 				userFilter.setId((long) nn);
-				pack.setIdUser(userProfileService.find(userFilter).get(0));
+				pack.setIdUser(userProfileService.findUser(userFilter).get(0));
 				pack.setPaid(false);
 				pack.setPaymentDeadline("10");
 				int nnn = 1;
@@ -166,7 +166,7 @@ public class AllNew2 {
 				productFilter.setId((long) (nnn));
 				// pack.setProducts(productService.find(productFilter).get(0));
 				pack.setPrice(pack.getProducts().get(0).getPriceProduct());
-				packageService.register(pack);
+				packageService.registerPackage(pack);
 			}
 		}
 
@@ -204,7 +204,7 @@ public class AllNew2 {
 				cal.set(Calendar.DAY_OF_MONTH, day);
 			}
 			d.setTime(cal.getTime().getTime());
-			packageService.update(p);
+			packageService.updatePackage(p);
 		}
 
 	}

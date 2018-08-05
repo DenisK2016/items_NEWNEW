@@ -6,10 +6,7 @@ import by.dk.training.items.datamodel.Product;
 
 public class ProductChoiceRenderer extends ChoiceRenderer<Product> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5085548139093729532L;
 	public static final ProductChoiceRenderer INSTANCE = new ProductChoiceRenderer();
 
 	private ProductChoiceRenderer() {

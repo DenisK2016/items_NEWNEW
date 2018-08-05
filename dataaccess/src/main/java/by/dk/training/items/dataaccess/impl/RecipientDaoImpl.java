@@ -26,19 +26,21 @@ public class RecipientDaoImpl extends AbstractDaoImpl<Recipient, Long> implement
 	}
 
 	@Override
-	public List<Recipient> find(RecipientFilter filter) {
+	public List<Recipient> findRecipients(RecipientFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Recipient> cq = cb.createQuery(Recipient.class);
 		Root<Recipient> from = cq.from(Recipient.class);
 		cq.select(from);
+		
 		boolean name = (filter.getName() != null);
 		boolean city = (filter.getCity() != null);
 		boolean address = (filter.getAddress() != null);
 		boolean user = (filter.getUser() != null);
 		boolean id = (filter.getId() != null);
-		boolean filt = name || city || address || user || id;
-		if (filt) {
+		boolean isFilterCorrect = name || city || address || user || id;
+		
+		if (isFilterCorrect) {
 			Predicate idEqualCondition = cb.equal(from.get(Recipient_.id), filter.getId());
 			Predicate nameEqualCondition = cb.equal(from.get(Recipient_.name), filter.getName());
 			Predicate cityEqualCondition = cb.equal(from.get(Recipient_.city), filter.getCity());
@@ -70,7 +72,7 @@ public class RecipientDaoImpl extends AbstractDaoImpl<Recipient, Long> implement
 	}
 
 	@Override
-	public Long count(RecipientFilter filter) {
+	public Long overallNumberOfRecipients(RecipientFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
@@ -88,7 +90,7 @@ public class RecipientDaoImpl extends AbstractDaoImpl<Recipient, Long> implement
 	}
 
 	@Override
-	public List<Recipient> checkDuplicate(RecipientFilter filter) {
+	public List<Recipient> getDuplicates(RecipientFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Recipient> cq = cb.createQuery(Recipient.class);

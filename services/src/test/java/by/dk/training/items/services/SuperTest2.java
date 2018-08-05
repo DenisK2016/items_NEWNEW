@@ -46,7 +46,7 @@ public class SuperTest2 {
 		userCredentials0.setEmail("admin@gmail.com");
 		userCredentials0.setFirstName("adminFirstName");
 		userCredentials0.setLastName("adminLastName");
-		userProfile.register(user0, userCredentials0);
+		userProfile.registerUser(user0, userCredentials0);
 		UserProfile user1 = new UserProfile();
 		UserCredentials userCredentials1 = new UserCredentials();
 		user1.setLogin("Login1");
@@ -54,7 +54,7 @@ public class SuperTest2 {
 		userCredentials1.setEmail("user1@mail.ru");
 		userCredentials1.setFirstName("user1FirstName");
 		userCredentials1.setLastName("user1LastName");
-		userProfile.register(user1, userCredentials1);
+		userProfile.registerUser(user1, userCredentials1);
 		UserProfile user2 = new UserProfile();
 		UserCredentials userCredentials2 = new UserCredentials();
 		user2.setLogin("Login2");
@@ -62,7 +62,7 @@ public class SuperTest2 {
 		userCredentials2.setEmail("user21@mail.ru");
 		userCredentials2.setFirstName("user2FirstName");
 		userCredentials2.setLastName("user2LastName");
-		userProfile.register(user2, userCredentials2);
+		userProfile.registerUser(user2, userCredentials2);
 		UserProfile user3 = new UserProfile();
 		UserCredentials userCredentials3 = new UserCredentials();
 		user3.setLogin("Login3");
@@ -70,7 +70,7 @@ public class SuperTest2 {
 		userCredentials3.setEmail("user3@mail.ru");
 		userCredentials3.setFirstName("user3FirstName");
 		userCredentials3.setLastName("user3LastName");
-		userProfile.register(user3, userCredentials3);
+		userProfile.registerUser(user3, userCredentials3);
 		UserProfile user4 = new UserProfile();
 		UserCredentials userCredentials4 = new UserCredentials();
 		user4.setLogin("Login4");
@@ -78,7 +78,7 @@ public class SuperTest2 {
 		userCredentials4.setEmail("user4@mail.ru");
 		userCredentials4.setFirstName("user4FirstName");
 		userCredentials4.setLastName("user4LastName");
-		userProfile.register(user4, userCredentials4);
+		userProfile.registerUser(user4, userCredentials4);
 		UserProfile user5 = new UserProfile();
 		UserCredentials userCredentials5 = new UserCredentials();
 		user5.setLogin("Login5");
@@ -86,7 +86,7 @@ public class SuperTest2 {
 		userCredentials5.setEmail("user5@mail.ru");
 		userCredentials5.setFirstName("user5FirstName");
 		userCredentials5.setLastName("user5LastName");
-		userProfile.register(user5, userCredentials5);
+		userProfile.registerUser(user5, userCredentials5);
 		UserProfile user6 = new UserProfile();
 		UserCredentials userCredentials6 = new UserCredentials();
 		user6.setLogin("Login6");
@@ -94,7 +94,7 @@ public class SuperTest2 {
 		userCredentials6.setEmail("user6@mail.ru");
 		userCredentials6.setFirstName("user6FirstName");
 		userCredentials6.setLastName("user6LastName");
-		userProfile.register(user6, userCredentials6);
+		userProfile.registerUser(user6, userCredentials6);
 		UserProfile user7 = new UserProfile();
 		UserCredentials userCredentials7 = new UserCredentials();
 		user7.setLogin("Login7");
@@ -102,7 +102,7 @@ public class SuperTest2 {
 		userCredentials7.setEmail("user7@mail.ru");
 		userCredentials7.setFirstName("user7FirstName");
 		userCredentials7.setLastName("user7LastName");
-		userProfile.register(user7, userCredentials7);
+		userProfile.registerUser(user7, userCredentials7);
 		UserProfile user8 = new UserProfile();
 		UserCredentials userCredentials8 = new UserCredentials();
 		user8.setLogin("Login8");
@@ -110,7 +110,7 @@ public class SuperTest2 {
 		userCredentials8.setEmail("user8@mail.ru");
 		userCredentials8.setFirstName("user8FirstName");
 		userCredentials8.setLastName("user8LastName");
-		userProfile.register(user8, userCredentials8);
+		userProfile.registerUser(user8, userCredentials8);
 		UserProfile user9 = new UserProfile();
 		UserCredentials userCredentials9 = new UserCredentials();
 		user9.setLogin("Login9");
@@ -118,7 +118,7 @@ public class SuperTest2 {
 		userCredentials9.setEmail("user9@mail.ru");
 		userCredentials9.setFirstName("user9FirstName");
 		userCredentials9.setLastName("user9LastName");
-		userProfile.register(user9, userCredentials9);
+		userProfile.registerUser(user9, userCredentials9);
 		UserProfile user10 = new UserProfile();
 		UserCredentials userCredentials10 = new UserCredentials();
 		user10.setLogin("Login10");
@@ -126,7 +126,7 @@ public class SuperTest2 {
 		userCredentials10.setEmail("user10@mail.ru");
 		userCredentials10.setFirstName("user10FirstName");
 		userCredentials10.setLastName("user10LastName");
-		userProfile.register(user10, userCredentials10);
+		userProfile.registerUser(user10, userCredentials10);
 		UserProfile user11 = new UserProfile();
 		UserCredentials userCredentials11 = new UserCredentials();
 		user11.setLogin("Login11");
@@ -134,7 +134,7 @@ public class SuperTest2 {
 		userCredentials11.setEmail("user11@mail.ru");
 		userCredentials11.setFirstName("user11FirstName");
 		userCredentials11.setLastName("user11LastName");
-		userProfile.register(user11, userCredentials11);
+		userProfile.registerUser(user11, userCredentials11);
 		UserProfile user12 = new UserProfile();
 		UserCredentials userCredentials12 = new UserCredentials();
 		user12.setLogin("Login12");
@@ -142,7 +142,7 @@ public class SuperTest2 {
 		userCredentials12.setEmail("user12@mail.ru");
 		userCredentials12.setFirstName("user12FirstName");
 		userCredentials12.setLastName("user12LastName");
-		userProfile.register(user12, userCredentials12);
+		userProfile.registerUser(user12, userCredentials12);
 		UserProfile user13 = new UserProfile();
 		UserCredentials userCredentials13 = new UserCredentials();
 		user13.setLogin("Login13");
@@ -150,7 +150,7 @@ public class SuperTest2 {
 		userCredentials13.setEmail("user13@mail.ru");
 		userCredentials13.setFirstName("user13FirstName");
 		userCredentials13.setLastName("user13LastName");
-		userProfile.register(user13, userCredentials13);
+		userProfile.registerUser(user13, userCredentials13);
 		UserProfile user14 = new UserProfile();
 		UserCredentials userCredentials14 = new UserCredentials();
 		user14.setLogin("Login14");
@@ -158,7 +158,7 @@ public class SuperTest2 {
 		userCredentials14.setEmail("user14@mail.ru");
 		userCredentials14.setFirstName("user14FirstName");
 		userCredentials14.setLastName("user14LastName");
-		userProfile.register(user14, userCredentials14);
+		userProfile.registerUser(user14, userCredentials14);
 		UserProfile user15 = new UserProfile();
 		UserCredentials userCredentials15 = new UserCredentials();
 		user15.setLogin("Login15");
@@ -166,7 +166,7 @@ public class SuperTest2 {
 		userCredentials15.setEmail("user15@mail.ru");
 		userCredentials15.setFirstName("user15FirstName");
 		userCredentials15.setLastName("user15LastName");
-		userProfile.register(user15, userCredentials15);
+		userProfile.registerUser(user15, userCredentials15);
 		UserProfile user16 = new UserProfile();
 		UserCredentials userCredentials16 = new UserCredentials();
 		user16.setLogin("Login16");
@@ -174,7 +174,7 @@ public class SuperTest2 {
 		userCredentials16.setEmail("user16@mail.ru");
 		userCredentials16.setFirstName("user16FirstName");
 		userCredentials16.setLastName("user16LastName");
-		userProfile.register(user16, userCredentials16);
+		userProfile.registerUser(user16, userCredentials16);
 		UserProfile user17 = new UserProfile();
 		UserCredentials userCredentials17 = new UserCredentials();
 		user17.setLogin("Login17");
@@ -182,7 +182,7 @@ public class SuperTest2 {
 		userCredentials17.setEmail("user17@mail.ru");
 		userCredentials17.setFirstName("user17FirstName");
 		userCredentials17.setLastName("user17LastName");
-		userProfile.register(user17, userCredentials17);
+		userProfile.registerUser(user17, userCredentials17);
 		UserProfile user18 = new UserProfile();
 		UserCredentials userCredentials18 = new UserCredentials();
 		user18.setLogin("Login18");
@@ -190,7 +190,7 @@ public class SuperTest2 {
 		userCredentials18.setEmail("user18@mail.ru");
 		userCredentials18.setFirstName("user18FirstName");
 		userCredentials18.setLastName("user18LastName");
-		userProfile.register(user18, userCredentials18);
+		userProfile.registerUser(user18, userCredentials18);
 		UserProfile user19 = new UserProfile();
 		UserCredentials userCredentials19 = new UserCredentials();
 		user19.setLogin("Login19");
@@ -198,7 +198,7 @@ public class SuperTest2 {
 		userCredentials19.setEmail("user19@mail.ru");
 		userCredentials19.setFirstName("user19FirstName");
 		userCredentials19.setLastName("user19LastName");
-		userProfile.register(user19, userCredentials19);
+		userProfile.registerUser(user19, userCredentials19);
 		UserProfile user20 = new UserProfile();
 		UserCredentials userCredentials20 = new UserCredentials();
 		user20.setLogin("Login20");
@@ -206,102 +206,102 @@ public class SuperTest2 {
 		userCredentials20.setEmail("user20@mail.ru");
 		userCredentials20.setFirstName("user20FirstName");
 		userCredentials20.setLastName("user20LastName");
-		userProfile.register(user20, userCredentials20);
+		userProfile.registerUser(user20, userCredentials20);
 		System.out.println("Юзеры готовы");
 
 		Type type1 = new Type();
 		type1.setIdUser(user1);
 		type1.setTypeName("Электроника и бытовая техника");
-		typeService.register(type1);
+		typeService.registerType(type1);
 		Type type2 = new Type();
 		type2.setIdUser(user1);
 		type2.setTypeName("Компьютерная техника");
-		typeService.register(type2);
+		typeService.registerType(type2);
 		Type type3 = new Type();
 		type3.setIdUser(user1);
 		type3.setTypeName("Телефоны и связь");
-		typeService.register(type3);
+		typeService.registerType(type3);
 		Type type4 = new Type();
 		type4.setIdUser(user1);
 		type4.setTypeName("Фото, видео");
-		typeService.register(type4);
+		typeService.registerType(type4);
 		Type type5 = new Type();
 		type5.setIdUser(user1);
 		type5.setTypeName("Мебель, интерьер, обиход");
-		typeService.register(type5);
+		typeService.registerType(type5);
 		Type type6 = new Type();
 		type6.setIdUser(user1);
 		type6.setTypeName("Одежда, обувь, аксессуары");
-		typeService.register(type6);
+		typeService.registerType(type6);
 		Type type7 = new Type();
 		type7.setIdUser(user1);
 		type7.setTypeName("Животные и растения");
-		typeService.register(type7);
+		typeService.registerType(type7);
 		Type type8 = new Type();
 		type8.setIdUser(user1);
 		type8.setTypeName("Книга, учебники, журналы");
-		typeService.register(type8);
+		typeService.registerType(type8);
 		Type type9 = new Type();
 		type9.setIdUser(user1);
 		type9.setTypeName("Продукты питания");
-		typeService.register(type9);
+		typeService.registerType(type9);
 		Type type10 = new Type();
 		type10.setIdUser(user1);
 		type10.setTypeName("Строительные материалы");
-		typeService.register(type10);
+		typeService.registerType(type10);
 		Type type11 = new Type();
 		type11.setIdUser(user1);
 		type11.setTypeName("Запрещенный для ввоза");
-		typeService.register(type11);
+		typeService.registerType(type11);
 		Type type12 = new Type();
 		type12.setIdUser(user1);
 		type12.setTypeName("другие");
-		typeService.register(type12);
+		typeService.registerType(type12);
 		Type type13 = new Type();
 		type13.setIdUser(user1);
 		type13.setTypeName("Кухонная техника");
 		type13.setParentType(type1);
-		typeService.register(type13);
+		typeService.registerType(type13);
 		Type type14 = new Type();
 		type14.setIdUser(user1);
 		type14.setTypeName("Ноутбуки");
 		type14.setParentType(type2);
-		typeService.register(type14);
+		typeService.registerType(type14);
 		Type type15 = new Type();
 		type15.setIdUser(user1);
 		type15.setTypeName("Мобильные телефоны");
 		type15.setParentType(type3);
-		typeService.register(type15);
+		typeService.registerType(type15);
 		Type type16 = new Type();
 		type16.setIdUser(user1);
 		type16.setTypeName("Фото-, видеокамеры, объективы");
 		type16.setParentType(type4);
-		typeService.register(type16);
+		typeService.registerType(type16);
 		Type type17 = new Type();
 		type17.setIdUser(user1);
 		type17.setTypeName("Мебель для гостиной");
 		type17.setParentType(type5);
-		typeService.register(type17);
+		typeService.registerType(type17);
 		Type type18 = new Type();
 		type18.setIdUser(user1);
 		type18.setTypeName("Бижутерия, аксессуары");
 		type18.setParentType(type6);
-		typeService.register(type18);
+		typeService.registerType(type18);
 		Type type19 = new Type();
 		type19.setIdUser(user1);
 		type19.setTypeName("Растения");
 		type19.setParentType(type7);
-		typeService.register(type19);
+		typeService.registerType(type19);
 		Type type20 = new Type();
 		type20.setIdUser(user1);
 		type20.setTypeName("Чай, кофе, напитки");
 		type20.setParentType(type9);
-		typeService.register(type20);
+		typeService.registerType(type20);
 		Type type21 = new Type();
 		type21.setIdUser(user1);
 		type21.setTypeName("Растворы");
 		type21.setParentType(type10);
-		typeService.register(type21);
+		typeService.registerType(type21);
 		System.out.println("Типы готовы");
 
 		long idUser = 1;
@@ -316,7 +316,7 @@ public class SuperTest2 {
 				idUser++;
 			}
 			recipient.setIdUser(userProfile.getUser(idUser));
-			recipientService.register(recipient);
+			recipientService.registerRecipient(recipient);
 		}
 		System.out.println("Получатели готовы");
 		Product product;
@@ -347,8 +347,8 @@ public class SuperTest2 {
 				}
 				filter.setId(idType);
 			}
-			product.setTypes(typeService.find(filter).get(0));
-			productService.register(product);
+			product.setTypes(typeService.findType(filter).get(0));
+			productService.registerProduct(product);
 		}
 		System.out.println("Продукты готовы");
 		Package pack;
@@ -365,29 +365,29 @@ public class SuperTest2 {
 			pack = new Package();
 			pack.setId(idPack + i);
 			pack.setCountrySender("Страна " + i);
-			pack.setFine(fine);
+			pack.setPenalty(fine);
 			if (i % 1000 == 0) {
 				idUserPack++;
 			}
 			pack.setIdUser(userProfile.getUser(idUserPack));
 			pack.setPaid(false);
 			pack.setPaymentDeadline("10");
-			pack.setPercentFine(percentFine);
+			pack.setPercentPenalty(percentFine);
 			pack.setPrice(pricePack);
 			pack.setTax(fine);
 			pack.setWeight(14.0);
 			if (i % 50 == 0) {
 				idRec++;
 			}
-			pack.setIdRecipient(recipientService.getRecipient(idRec));
+			pack.setRecipient(recipientService.getRecipient(idRec));
 			if (i % 10 == 0) {
 				idProd = idProd + 2;
 				listProd.clear();
-				listProd.add(productService.get(idProd));
-				listProd.add(productService.get(idProd - 1L));
+				listProd.add(productService.getProductWithId(idProd));
+				listProd.add(productService.getProductWithId(idProd - 1L));
 			}
 			pack.setProducts(listProd);
-			packageService.register(pack);
+			packageService.registerPackage(pack);
 		}
 		System.out.println("Пакеты готовы");
 		Package packUpdate;
@@ -402,7 +402,7 @@ public class SuperTest2 {
 		int month = 0;
 		int year = 2012;
 		for (int i = 0; i < 20000; i++) {
-			packUpdate = packageService.getPackage(idPack + i);
+			packUpdate = packageService.getPackageWithId(idPack + i);
 			if (i % 36 == 0) {
 				if (day == 30) {
 					day = 0;
@@ -423,7 +423,7 @@ public class SuperTest2 {
 			cal.set(Calendar.YEAR, year);
 			d.setTime(cal.getTime().getTime());
 			packUpdate.setDate(d);
-			packageService.update(packUpdate);
+			packageService.updatePackage(packUpdate);
 
 		}
 		System.out.println("Даты обновлены");

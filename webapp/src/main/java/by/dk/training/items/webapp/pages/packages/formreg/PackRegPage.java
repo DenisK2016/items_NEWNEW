@@ -25,6 +25,10 @@ public class PackRegPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+		addRegistrationPackagePanel();
+	}
+
+	private void addRegistrationPackagePanel() {
 		if (pack != null) {
 			add(new RegistryPackPanel("regPanPack", pack));
 		} else {

@@ -30,14 +30,17 @@ import by.dk.training.items.webapp.app.AuthorizedSession;
 
 public class SendMessageWindow extends Panel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4050360002339445270L;
+
+	private static final String EMAIL = "sample1denis1@gmail.com";
+	private static final String PASSWORD = "12345678qwertyui";
+
 	@SuppressWarnings("unused")
 	private ModalWindow modalWindow;
+
 	@Inject
 	private UserProfileService userProfileService;
+
 	private String email;
 	private UserFilter userFilter;
 	private boolean banned = AuthorizedSession.get().getRoles().contains("BANNED");
@@ -51,37 +54,38 @@ public class SendMessageWindow extends Panel {
 
 	@Override
 	protected void onInitialize() {
+		Form<Object> formSendWindow = new Form<>("formSend");
+
+		addLabelToForm(formSendWindow);
+		addEmailToForm(formSendWindow);
+		addAjaxSubmitLinkToForm(formSendWindow);
+
+		add(formSendWindow);
+
+		super.onInitialize();
+	}
+
+	private void addAjaxSubmitLinkToForm(Form<Object> formSendWindow) {
+
+		final Notification notification = new Notification("notification");
+		this.add(notification);
+
 		FeedbackPanel feedBackPanel = new FeedbackPanel("feedback");
 		add(feedBackPanel);
 		feedBackPanel.setVisible(false);
-		Form<Object> formSendWindow = new Form<>("formSend");
-		formSendWindow.add(new Label("title", getString("restore.fieldname")));
-		final Notification notification = new Notification("notification");
-		this.add(notification);
-		EmailTextField emailField = new EmailTextField("email", new PropertyModel<>(this, "email"));
-		emailField.setRequired(true);
-		emailField.add(new AjaxFormComponentUpdatingBehavior("change") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
 
-			@Override
-			protected void onUpdate(AjaxRequestTarget target) {
-			}
-		});
-		formSendWindow.add(emailField);
 		AjaxSubmitLink link = new AjaxSubmitLink("send") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+
+			private static final long serialVersionUID = 7491960504543556605L;
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
+
 				userFilter.setEmail(email);
-				List<UserProfile> userList = userProfileService.find(userFilter);
+
+				List<UserProfile> userList = userProfileService.findUser(userFilter);
+
 				if (userList.size() == 0 || email == null) {
 					notification.error(target, getString("restore.error"));
 				} else if (banned) {
@@ -94,8 +98,8 @@ public class SendMessageWindow extends Panel {
 					PageParameters param = new PageParameters();
 					param.add("foo", key);
 					String text;
-					text = textMessage(user, param);
-					new Sender("denisov27111990@gmail.com", "php948409php").send(getString("send.message.title"), text,
+					text = getTextMessage(user, param);
+					new Sender(EMAIL, PASSWORD).send(getString("send.message.title"), text,
 							user.getUserCredentials().getEmail());
 					notification.info(target, getString("send.message.info"));
 				}
@@ -111,8 +115,24 @@ public class SendMessageWindow extends Panel {
 		};
 		link.add(AttributeModifier.append("title", getString("restore.button")));
 		formSendWindow.add(link);
-		add(formSendWindow);
-		super.onInitialize();
+	}
+
+	private void addEmailToForm(Form<Object> formSendWindow) {
+		EmailTextField emailField = new EmailTextField("email", new PropertyModel<>(this, "email"));
+		emailField.setRequired(true);
+		emailField.add(new AjaxFormComponentUpdatingBehavior("change") {
+
+			private static final long serialVersionUID = 8433134471515114392L;
+
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+			}
+		});
+		formSendWindow.add(emailField);
+	}
+
+	private void addLabelToForm(Form<Object> formSendWindow) {
+		formSendWindow.add(new Label("title", getString("restore.fieldname")));
 	}
 
 	private BigDecimal keyMethod(Long idUser) {
@@ -122,7 +142,7 @@ public class SendMessageWindow extends Panel {
 		return key;
 	}
 
-	private String textMessage(UserProfile user, PageParameters param) {
+	private String getTextMessage(UserProfile user, PageParameters param) {
 		String text;
 		String url = "http://localhost:8081"
 				+ RequestCycle.get().urlFor(PageConfirmation.class, param).toString().substring(5);

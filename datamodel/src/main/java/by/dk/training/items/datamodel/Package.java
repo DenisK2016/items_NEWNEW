@@ -1,70 +1,72 @@
 package by.dk.training.items.datamodel;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "package")
-public class Package implements Serializable {
+public class Package extends EntityItem {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name = "id", nullable = false, unique = true)
-	private Long id;
-	@ManyToOne(targetEntity = Recipient.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_recipient", nullable = false)
-	private Recipient idRecipient;
+	private static final long serialVersionUID = -8196441922163357291L;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "recipient", nullable = false)
+	private Recipient recipient;
+
 	@Column(nullable = false)
 	private BigDecimal price = new BigDecimal("0");
+
 	@Column(nullable = false)
-	private Double weight = 0.0;
-	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user")
+	private Double weight = new Double(0.0);
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idUser")
 	private UserProfile idUser;
+
 	@Column(nullable = false)
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date date;
+
 	@Column(length = 1000)
 	private String description;
+
 	@Column(name = "country_sender", nullable = false, length = 100)
 	private String countrySender;
+
 	@Column(name = "payment_deadline", nullable = false)
 	private String paymentDeadline;
+
 	@Column(nullable = false)
-	private BigDecimal fine = new BigDecimal("0");
+	private BigDecimal penalty = new BigDecimal("0");
+
 	@Column(nullable = false)
 	private Boolean paid;
+
 	@Column(nullable = false)
 	private BigDecimal tax = new BigDecimal("0");
+
 	@JoinTable(name = "package_2_product", joinColumns = { @JoinColumn(name = "package_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "product_id") })
-	@ManyToMany(targetEntity = Product.class, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<>();
-	@Column(name = "percent_fine")
-	private BigDecimal percentFine;
 
-	public BigDecimal getPercentFine() {
-		return percentFine;
-	}
-
-	public void setPercentFine(BigDecimal percentFine) {
-		this.percentFine = percentFine;
-	}
+	@Column(name = "percent_penalty")
+	private BigDecimal percentPenalty;
 
 	public BigDecimal getTax() {
 		return tax;
@@ -82,20 +84,12 @@ public class Package implements Serializable {
 		this.paid = paid;
 	}
 
-	public Long getId() {
-		return id;
+	public Recipient getRecipient() {
+		return recipient;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Recipient getIdRecipient() {
-		return idRecipient;
-	}
-
-	public void setIdRecipient(Recipient idRecipient) {
-		this.idRecipient = idRecipient;
+	public void setRecipient(Recipient recipient) {
+		this.recipient = recipient;
 	}
 
 	public BigDecimal getPrice() {
@@ -154,14 +148,6 @@ public class Package implements Serializable {
 		this.paymentDeadline = paymentDeadline;
 	}
 
-	public BigDecimal getFine() {
-		return fine;
-	}
-
-	public void setFine(BigDecimal fine) {
-		this.fine = fine;
-	}
-
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -170,11 +156,27 @@ public class Package implements Serializable {
 		this.products = products;
 	}
 
+	public BigDecimal getPenalty() {
+		return penalty;
+	}
+
+	public void setPenalty(BigDecimal penalty) {
+		this.penalty = penalty;
+	}
+
+	public BigDecimal getPercentPenalty() {
+		return percentPenalty;
+	}
+
+	public void setPercentPenalty(BigDecimal percentPenalty) {
+		this.percentPenalty = percentPenalty;
+	}
+
 	@Override
 	public String toString() {
-		return "Packages [trackingCode=" + id + ", price=" + price + ", weight=" + weight + ", date=" + date
+		return "Packages [trackingCode=" + getId() + ", price=" + price + ", weight=" + weight + ", date=" + date
 				+ ", description=" + description + ", countrySender=" + countrySender + ", paymentDeadline="
-				+ paymentDeadline + ", fine=" + fine + ", paid=" + paid + "]";
+				+ paymentDeadline + ", penalty=" + penalty + ", paid=" + paid + "]";
 	}
 
 }

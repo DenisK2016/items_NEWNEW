@@ -26,12 +26,13 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 	}
 
 	@Override
-	public List<Product> find(ProductFilter filter) {
+	public List<Product> findProducts(ProductFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Product> cq = cb.createQuery(Product.class);
 		Root<Product> from = cq.from(Product.class);
 		cq.select(from);
+
 		boolean nameProduct = (filter.getNameProduct() != null);
 		boolean limit = (filter.getWeightProduct() != null);
 		boolean price = (filter.getPriceProduct() != null);
@@ -39,8 +40,9 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 		boolean types = (filter.getTypes() != null);
 		boolean user = (filter.getUser() != null);
 		boolean id = (filter.getId() != null);
-		boolean filt = (nameProduct || limit || price || status || types || user || id);
-		if (filt) {
+		boolean isFilterCorrect = (nameProduct || limit || price || status || types || user || id);
+
+		if (isFilterCorrect) {
 			Predicate idEqualCondition = cb.equal(from.get(Product_.id), filter.getId());
 			Predicate nProductEqualCondition = cb.equal(from.get(Product_.nameProduct), filter.getNameProduct());
 			Predicate lProductEqualCondition = cb.equal(from.get(Product_.weight), filter.getWeightProduct());
@@ -80,7 +82,7 @@ public class ProductDaoImpl extends AbstractDaoImpl<Product, Long> implements Pr
 	}
 
 	@Override
-	public Long count(ProductFilter filter) {
+	public Long overallNumberOfProducts(ProductFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);

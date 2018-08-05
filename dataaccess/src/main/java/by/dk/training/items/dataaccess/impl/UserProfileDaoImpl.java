@@ -28,7 +28,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserProfile> find(UserFilter filter) {
+	public List<UserProfile> findUser(UserFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
@@ -37,6 +37,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 		cq.select(from); // Указывает что селектать SELECT *. from - это
 							// таблица,
 							// а from.get... - это конкретная колонка
+
 		boolean fName = (filter.getFirstName() != null);
 		boolean lName = (filter.getLastName() != null);
 		boolean login = (filter.getLogin() != null);
@@ -47,8 +48,10 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 		boolean email = (filter.getEmail() != null);
 		boolean id = (filter.getId() != null);
 		boolean password = filter.getPassword() != null;
-		boolean filt = (fName || lName || login || create || stat || post || rank || email || id || password);
-		if (filt) {
+		boolean isFilterCorrect = (fName || lName || login || create || stat || post || rank || email || id
+				|| password);
+
+		if (isFilterCorrect) {
 			Predicate idEqualCondition = cb.equal(from.get(UserProfile_.id), filter.getId());
 			Predicate loginEqualCondition = cb.equal(from.get(UserProfile_.login), filter.getLogin());
 			Predicate passwordEqualCondition = cb.equal(from.get(UserProfile_.password), filter.getPassword());
@@ -101,7 +104,7 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 	}
 
 	@Override
-	public Long count(UserFilter filter) {
+	public Long overallNumberOfUsers(UserFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
@@ -119,17 +122,19 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 	}
 
 	@Override
-	public UserProfile find(String login, String password) {
+	public UserProfile findUserByLoginAndPassword(String login, String password) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<UserProfile> cq = cb.createQuery(UserProfile.class);
 		Root<UserProfile> from = cq.from(UserProfile.class);
 		cq.select(from);
+
 		Predicate usernameEqualCondition = cb.equal(from.get(UserProfile_.login), login);
 		Predicate passwEqualCondition = cb.equal(from.get(UserProfile_.password), password);
 		cq.where(cb.and(usernameEqualCondition, passwEqualCondition));
 		TypedQuery<UserProfile> q = em.createQuery(cq);
 		List<UserProfile> allitems = q.getResultList();
+
 		if (allitems.isEmpty()) {
 			return null;
 		} else if (allitems.size() == 1) {

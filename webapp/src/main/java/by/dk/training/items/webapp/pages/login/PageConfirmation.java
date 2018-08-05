@@ -21,8 +21,13 @@ import by.dk.training.items.services.mail.Sender;
 
 public class PageConfirmation extends WebPage {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8238151980149480294L;
+
+	private static final String EMAIL = "sample1denis1@gmail.com";
+	private static final String PASSWORD = "12345678qwertyui";
+
 	private PageParameters parameters;
+
 	@Inject
 	private UserProfileService userProfileService;
 
@@ -34,39 +39,35 @@ public class PageConfirmation extends WebPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+
+		addRegistrationResult();
+		addLinkHome();
+		addFooter();
+	}
+
+	private void addRegistrationResult() {
 		String keyString = parameters.getValues("foo").get(0).toString();
 		BigDecimal key = new BigDecimal(keyString).divide(new BigDecimal("123"), 0).divide(new BigDecimal("23"), 0)
 				.divide(new BigDecimal("3"), 0);
 		UserCredentials user = userProfileService.getUserCredentials(key.longValue());
+
 		if (user == null) {
 			add(new Label("thanks", getString("confirm.error")));
 		} else if (user.getStatus().equals(StatusUser.CONFIRMATION)) {
 			user.setStatus(StatusUser.OFFICER);
-			userProfileService.update(user);
+			userProfileService.updateUserCredentials(user);
 			add(new Label("thanks", getString("confirm.label")));
-			String text;
-			text = textMessage(user);
-			new Sender("denisov27111990@gmail.com", "php948409php").send(getString("confirm.email.text3"), text,
-					user.getEmail());
+			String text = getTextMessage(user);
+			new Sender(EMAIL, PASSWORD).send(getString("confirm.email.text3"), text, user.getEmail());
 		} else {
 			add(new Label("thanks", getString("confirm.email.error2")));
 		}
-		add(new AjaxLink<Object>("home") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+	}
 
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-				setResponsePage(new LoginPage());
-			}
-		}.add(AttributeModifier.append("title", getString("confirm.home"))));
+	private void addFooter() {
 		AbstractReadOnlyModel<Integer> yearModel = new AbstractReadOnlyModel<Integer>() {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+
+			private static final long serialVersionUID = -8851000262854857184L;
 
 			@Override
 			public Integer getObject() {
@@ -78,7 +79,19 @@ public class PageConfirmation extends WebPage {
 		footer.add(new Label("current-year", yearModel));
 	}
 
-	private String textMessage(UserCredentials user) {
+	private void addLinkHome() {
+		add(new AjaxLink<Object>("home") {
+
+			private static final long serialVersionUID = 1967529838574694382L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				setResponsePage(new LoginPage());
+			}
+		}.add(AttributeModifier.append("title", getString("confirm.home"))));
+	}
+
+	private String getTextMessage(UserCredentials user) {
 		String text;
 		text = String.format("%s %s %s. %s: \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s \n %s:%s",
 				getString("confirm.email.text"), user.getFirstName(), user.getLastName(),

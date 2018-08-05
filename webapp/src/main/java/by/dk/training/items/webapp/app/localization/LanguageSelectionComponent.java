@@ -36,7 +36,7 @@ public class LanguageSelectionComponent extends Panel {
 		add(dropDownChoice);
 		dropDownChoice.add(new AjaxFormComponentUpdatingBehavior("change") {
 
-			private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 7484988535425643991L;
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {

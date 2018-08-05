@@ -224,7 +224,7 @@ public class ListTypesPanel extends Panel {
 			typeFilter.setId(null);
 			List<Type> listT = new ArrayList<Type>(); // Типы у которых нет
 														// парентов
-			for (Type t : typeService.find(typeFilter)) {
+			for (Type t : typeService.findType(typeFilter)) {
 				if (t.getParentType() == null) {
 					listT.add(t);
 				}
@@ -235,7 +235,7 @@ public class ListTypesPanel extends Panel {
 		@Override
 		public boolean hasChildren(Type type) {
 			typeFilter.setId(type.getId());
-			return type.getChildTypes() == null || !typeService.find(typeFilter).get(0).getChildTypes().isEmpty();
+			return type.getChildTypes() == null || !typeService.findType(typeFilter).get(0).getChildTypes().isEmpty();
 		}
 
 		@Override

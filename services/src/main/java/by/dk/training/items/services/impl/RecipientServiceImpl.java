@@ -21,7 +21,7 @@ public class RecipientServiceImpl implements RecipientService {
 	private RecipientDao recipientDao;
 
 	@Override
-	public void register(Recipient recipient) {
+	public void registerRecipient(Recipient recipient) {
 		LOGGER.info("Recipient register: {}", recipient);
 		recipientDao.insert(recipient);
 
@@ -46,9 +46,9 @@ public class RecipientServiceImpl implements RecipientService {
 	}
 
 	@Override
-	public List<Recipient> find(RecipientFilter recipientFilter) {
+	public List<Recipient> findRecipient(RecipientFilter recipientFilter) {
 		LOGGER.info("Recipient find by filter: {}", recipientFilter);
-		return recipientDao.find(recipientFilter);
+		return recipientDao.findRecipients(recipientFilter);
 	}
 
 	@Override
@@ -58,14 +58,14 @@ public class RecipientServiceImpl implements RecipientService {
 	}
 
 	@Override
-	public Long count(RecipientFilter filter) {
+	public Long overallNumberOfRecipients(RecipientFilter filter) {
 		LOGGER.info("Recipient count: {}", filter);
-		return recipientDao.count(filter);
+		return recipientDao.overallNumberOfRecipients(filter);
 	}
 
 	@Override
-	public List<Recipient> checkDuplicate(RecipientFilter filter) {
-		return recipientDao.checkDuplicate(filter);
+	public List<Recipient> getDuplicate(RecipientFilter filter) {
+		return recipientDao.getDuplicates(filter);
 	}
 
 }

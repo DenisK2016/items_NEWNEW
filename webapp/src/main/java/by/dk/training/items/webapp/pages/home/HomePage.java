@@ -38,10 +38,8 @@ import by.dk.training.items.webapp.pages.login.RedirectPage;
 @AuthorizeInstantiation(value = { "ADMIN", "OFFICER", "COMMANDER", "CONFIRMATION", "BANNED" })
 public class HomePage extends AbstractPage {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6750745603401253488L;
+
 	@Inject
 	private PackageService packageService;
 	private Date dateStart;
@@ -57,22 +55,6 @@ public class HomePage extends AbstractPage {
 			.asList(new Number[] { 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 });
 	private Number[] num = new Number[12];
 
-	public Date getDateStart() {
-		return dateStart;
-	}
-
-	public void setDateStart(Date dateStart) {
-		this.dateStart = dateStart;
-	}
-
-	public Date getDateEnd() {
-		return dateEnd;
-	}
-
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
-	}
-
 	public HomePage() {
 		super();
 
@@ -81,16 +63,17 @@ public class HomePage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		Label allPacks = new Label("allpacks", Model.of(packageService.countPack()));
+
+		Label allPacks = new Label("allpacks", Model.of(packageService.overallNumberOfPackages()));
 		add(allPacks);
 		d1 = new Date();
 		d2 = new Date();
 		changeDate(d1, d2);
-		Label lastMonth = new Label("month", Model.of(packageService.countPackBetweenDates(d1, d2)));
+		Label lastMonth = new Label("month", Model.of(packageService.numberOfPackagesBetweenDates(d1, d2)));
 		add(lastMonth);
 		dateStart = new Date();
 		dateEnd = new Date();
-		Model<Long> mod = new Model<Long>(packageService.countPackBetweenDates(d1, d2));
+		Model<Long> mod = new Model<Long>(packageService.numberOfPackagesBetweenDates(d1, d2));
 		Label lab = new Label("quantity", Model.of(mod));
 		lab.setOutputMarkupId(true);
 		add(lab);
@@ -104,7 +87,7 @@ public class HomePage extends AbstractPage {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-				mod.setObject(packageService.countPackBetweenDates(dateStart, dateEnd));
+				mod.setObject(packageService.numberOfPackagesBetweenDates(dateStart, dateEnd));
 				target.add(lab);
 
 			}
@@ -122,15 +105,15 @@ public class HomePage extends AbstractPage {
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
 
-				mod.setObject(packageService.countPackBetweenDates(dateStart, dateEnd));
+				mod.setObject(packageService.numberOfPackagesBetweenDates(dateStart, dateEnd));
 				target.add(lab);
 			}
 		});
 		add(fieldEnd);
 		fieldEnd.add(new DatePicker());
-		Label maxPrice = new Label("maxprice", Model.of(packageService.maxPrice().getPrice()));
+		Label maxPrice = new Label("maxprice", Model.of(packageService.maxPricePackage().getPrice()));
 		add(maxPrice);
-		Label popularCity = new Label("city", Model.of(packageService.oftenCountry()));
+		Label popularCity = new Label("city", Model.of(packageService.getMostPopularCountry()));
 		add(popularCity);
 		Label role;
 		Label info1;
@@ -226,7 +209,7 @@ public class HomePage extends AbstractPage {
 				calendar.set(Calendar.MONTH, i + 1);
 				date2.setTime(calendar.getTime().getTime());
 			}
-			num[i] = packageService.countPackBetweenDates(date1, date2);
+			num[i] = packageService.numberOfPackagesBetweenDates(date1, date2);
 		}
 	}
 
@@ -246,5 +229,21 @@ public class HomePage extends AbstractPage {
 		}
 		cal.set(Calendar.MONTH, month);
 		d1.setTime(cal.getTime().getTime());
+	}
+
+	public Date getDateStart() {
+		return dateStart;
+	}
+
+	public void setDateStart(Date dateStart) {
+		this.dateStart = dateStart;
+	}
+
+	public Date getDateEnd() {
+		return dateEnd;
+	}
+
+	public void setDateEnd(Date dateEnd) {
+		this.dateEnd = dateEnd;
 	}
 }

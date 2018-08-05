@@ -46,7 +46,7 @@ public class RecipientInfo extends Panel {
 		recipientFilter.setFetchUser(true);
 		recipientFilter.setFetchPackages(true);
 		recipientFilter.setId(recipient.getId());
-		this.recipient = recipientService.find(recipientFilter).get(0);
+		this.recipient = recipientService.findRecipient(recipientFilter).get(0);
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class RecipientInfo extends Panel {
 				if (inPack == null) {
 					notification.error(target, getString("page.recipients.info.error"));
 				} else {
-					modal1.setContent(new PackageInfo(modal1, packageService.getPackage(Long.valueOf(inPack))));
+					modal1.setContent(new PackageInfo(modal1, packageService.getPackageWithId(Long.valueOf(inPack))));
 					modal1.show(target);
 				}
 			}

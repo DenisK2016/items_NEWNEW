@@ -19,12 +19,12 @@ import by.dk.training.items.datamodel.UserProfile;
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
 public class NewPackTest {
 
-//	@Inject
-//	private UserProfileService userService;
+	// @Inject
+	// private UserProfileService userService;
 	@Inject
 	private RecipientService recipientService;
-//	@Inject
-//	private TypeService typesService;
+	// @Inject
+	// private TypeService typesService;
 	// @Inject
 	// private ProductService productsService;
 	@Inject
@@ -36,10 +36,10 @@ public class NewPackTest {
 	public void packagesSelect() throws NoSuchFieldException, SecurityException, IllegalArgumentException,
 			IllegalAccessException, InterruptedException {
 
-//		List<Package> allPack = packService.getAll();
-//		for (Package p : allPack) {
-//			packService.delete(p.getId());
-//		}
+		// List<Package> allPack = packService.getAll();
+		// for (Package p : allPack) {
+		// packService.delete(p.getId());
+		// }
 		//
 		// List<UserProfile> all = userService.getAll();
 		// for (UserProfile user : all) {
@@ -159,8 +159,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 			pack.setDate(d);
@@ -169,7 +169,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -191,8 +191,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -204,7 +204,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -226,8 +226,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -239,7 +239,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -261,8 +261,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -274,7 +274,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -296,8 +296,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -309,7 +309,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -331,8 +331,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -344,7 +344,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -366,8 +366,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -379,7 +379,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -401,8 +401,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -414,7 +414,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -436,8 +436,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -449,7 +449,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -471,8 +471,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -484,7 +484,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -506,8 +506,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -519,7 +519,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
@@ -541,8 +541,8 @@ public class NewPackTest {
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 
@@ -554,7 +554,7 @@ public class NewPackTest {
 			pack.setId(l++);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);

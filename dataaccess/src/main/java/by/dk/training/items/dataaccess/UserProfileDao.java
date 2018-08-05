@@ -7,9 +7,9 @@ import by.dk.training.items.datamodel.UserProfile;
 
 public interface UserProfileDao extends AbstractDao<UserProfile, Long> {
 	
-	Long count(UserFilter filter);
+	Long overallNumberOfUsers(UserFilter filter);
 
-	List<UserProfile> find(UserFilter filter);
+	List<UserProfile> findUser(UserFilter filter);
 	
-	UserProfile find(String login, String password);
+	UserProfile findUserByLoginAndPassword(String login, String password);
 }

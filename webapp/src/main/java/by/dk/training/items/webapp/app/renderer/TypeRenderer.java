@@ -6,10 +6,7 @@ import by.dk.training.items.datamodel.Type;
 
 public class TypeRenderer extends ChoiceRenderer<Type> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8855741132013830119L;
 	public static final TypeRenderer INSTANCE = new TypeRenderer();
 
 	private TypeRenderer() {
@@ -19,7 +16,7 @@ public class TypeRenderer extends ChoiceRenderer<Type> {
 
 	@Override
 	public Object getDisplayValue(Type object) {
-		String display = object.getId() + " " + object.getTypeName();
+		String display = String.format("%s %s", object.getId(), object.getTypeName());
 		return display;
 	}
 

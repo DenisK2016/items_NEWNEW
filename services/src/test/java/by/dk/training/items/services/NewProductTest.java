@@ -37,7 +37,7 @@ public class NewProductTest {
 		userCred.setEmail("uuuuuu@mail.ru");
 		userCred.setFirstName("имяяяя");
 		userCred.setLastName("фамилия");
-		userProfileService.register(user, userCred);
+		userProfileService.registerUser(user, userCred);
 
 		Product product;
 		BigDecimal bd = new BigDecimal("100000");
@@ -49,7 +49,7 @@ public class NewProductTest {
 			product.setStatus(true);
 			product.setWeight(7.0);
 			product.setTypes(typeService.get(1L));
-			productService.register(product);
+			productService.registerProduct(product);
 			System.out.println("i=" + i);
 		}
 
@@ -61,7 +61,7 @@ public class NewProductTest {
 			recipient.setCity("Минск");
 			recipient.setIdUser(user);
 			recipient.setName("ФИО " + k);
-			recipientService.register(recipient);
+			recipientService.registerRecipient(recipient);
 			System.out.println("k=" + k);
 		}
 

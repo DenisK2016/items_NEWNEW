@@ -1,6 +1,5 @@
 package by.dk.training.items.datamodel;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +7,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -19,31 +15,44 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product extends EntityItem {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-	private Long id;
+	private static final long serialVersionUID = 1033650972966276212L;
+
 	@Column(name = "name_product", nullable = false, unique = false)
 	private String nameProduct;
+
 	@Column(name = "\"weight\"", nullable = false)
 	private Double weight = 0.0;
+
 	@Column(name = "price_product", nullable = false)
 	private BigDecimal priceProduct;
+
 	@Column(nullable = false)
 	private Boolean status;
+
 	@JoinTable(name = "type_2_product", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "type_id") })
-	@ManyToMany(targetEntity = Type.class, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Type> types = new ArrayList<>();
-	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idUser")
 	private UserProfile idUser;
+
+	@ManyToMany(mappedBy = "products")
+	private List<Package> packages = new ArrayList<>();
 
 	public Product() {
 		super();
+	}
+
+	public List<Package> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(List<Package> packages) {
+		this.packages = packages;
 	}
 
 	public UserProfile getIdUser() {
@@ -69,14 +78,6 @@ public class Product implements Serializable {
 			}
 			pType = pType.getParentType();
 		}
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNameProduct() {
@@ -113,7 +114,7 @@ public class Product implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Products [id=" + id + ", nameProduct=" + nameProduct + ", limit=" + weight + ", priceProduct="
+		return "Products [id=" + getId() + ", nameProduct=" + nameProduct + ", limit=" + weight + ", priceProduct="
 				+ priceProduct + ", status=" + status + ", Types product=" + types + "]";
 	}
 
@@ -121,7 +122,7 @@ public class Product implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
 		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
 		result = prime * result + ((nameProduct == null) ? 0 : nameProduct.hashCode());
 		result = prime * result + ((priceProduct == null) ? 0 : priceProduct.hashCode());
@@ -142,11 +143,11 @@ public class Product implements Serializable {
 			return false;
 		}
 		Product other = (Product) obj;
-		if (id == null) {
-			if (other.id != null) {
+		if (getId() == null) {
+			if (other.getId() != null) {
 				return false;
 			}
-		} else if (!id.equals(other.id)) {
+		} else if (!getId().equals(other.getId())) {
 			return false;
 		}
 		if (weight == null) {

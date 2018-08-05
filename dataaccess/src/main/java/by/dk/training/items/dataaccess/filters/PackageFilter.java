@@ -20,7 +20,7 @@ public class PackageFilter implements Serializable {
 	private String description;
 	private String countrySender;
 	private String paymentDeadline;
-	private BigDecimal fine;
+	private BigDecimal penalty;
 	private Boolean paid;
 	private UserProfile user;
 	private Recipient recipint;
@@ -149,11 +149,11 @@ public class PackageFilter implements Serializable {
 	}
 
 	public BigDecimal getFine() {
-		return fine;
+		return penalty;
 	}
 
 	public void setFine(BigDecimal fine) {
-		this.fine = fine;
+		this.penalty = fine;
 	}
 
 	public Boolean getPaid() {

@@ -4,18 +4,21 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/newmailings2</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/acc_items</property>
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">948409</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">update</property>
-		<property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
+		<property name="hbm2ddl.auto">create</property>
+		<!-- <property name="hibernate.jdbc.lob.non_contextual_creation">true</property> -->
 		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<property name="hibernate.default_schema">items</property>
+
 
 		<mapping class="by.dk.training.items.datamodel.UserProfile" />
-		<mapping class="by.dk.training.items.datamodel.Product" />
 		<mapping class="by.dk.training.items.datamodel.UserCredentials" />
+		<mapping class="by.dk.training.items.datamodel.Product" />
+
 		<mapping class="by.dk.training.items.datamodel.Package" />
 		<mapping class="by.dk.training.items.datamodel.Recipient" />
 		<mapping class="by.dk.training.items.datamodel.Type" />

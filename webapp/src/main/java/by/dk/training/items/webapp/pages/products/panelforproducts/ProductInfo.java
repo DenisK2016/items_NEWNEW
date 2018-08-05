@@ -39,7 +39,7 @@ public class ProductInfo extends Panel {
 		productFilter.setFetchType(true);
 		productFilter.setFetchUser(true);
 		productFilter.setId(product.getId());
-		this.product = productService.find(productFilter).get(0);
+		this.product = productService.findProduct(productFilter).get(0);
 		this.modalWindow = modalWindow;
 	}
 

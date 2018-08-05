@@ -6,10 +6,7 @@ import by.dk.training.items.datamodel.UserProfile;
 
 public class UserProfileRenderer extends ChoiceRenderer<UserProfile> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6533429038169241627L;
 	public static final UserProfileRenderer INSTANCE = new UserProfileRenderer();
 
 	private UserProfileRenderer() {
@@ -18,7 +15,7 @@ public class UserProfileRenderer extends ChoiceRenderer<UserProfile> {
 
 	@Override
 	public Object getDisplayValue(UserProfile object) {
-		String display = object.getId() + " " + object.getLogin();
+		String display = String.format("%s %s", object.getId(), object.getLogin());
 		return display;
 	}
 

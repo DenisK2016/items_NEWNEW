@@ -11,7 +11,7 @@ import by.dk.training.items.datamodel.Type;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
-public class NewTypeTest {
+public class WNewTypeTest {
 
 	@Inject
 	private TypeService typeService;
@@ -67,21 +67,21 @@ public class NewTypeTest {
 		subType8.setParentType(subType7);
 		subType9.setParentType(subType7);
 
-		typeService.register(subType1);
-		typeService.register(subType2);
-		typeService.register(subType3);
-		typeService.register(subType4);
-		typeService.register(subType5);
-		typeService.register(subType6);
-		typeService.register(subType7);
-		typeService.register(subType8);
-		typeService.register(subType9);
-		typeService.register(subType10);
+		typeService.registerType(subType1);
+		typeService.registerType(subType2);
+		typeService.registerType(subType3);
+		typeService.registerType(subType4);
+		typeService.registerType(subType5);
+		typeService.registerType(subType6);
+		typeService.registerType(subType7);
+		typeService.registerType(subType8);
+		typeService.registerType(subType9);
+		typeService.registerType(subType10);
 		
 		Type type = new Type();
 		type.setIdUser(userProfileService.getUser(1L));
 		type.setTypeName("Другие");
-		typeService.register(type);
+		typeService.registerType(type);
 
 	}
 

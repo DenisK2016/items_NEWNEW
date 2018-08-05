@@ -81,7 +81,7 @@ public class UserServiceTest {
 		userCredentials.setLastName("Durov");
 		userCredentials.setRank(Ranks.INSPECTOR_FIRST);
 		userCredentials.setStatus(StatusUser.OFFICER);
-		userService.register(profile, userCredentials);
+		userService.registerUser(profile, userCredentials);
 
 		UserProfile registredProfile = userService.getUser(profile.getId());
 		UserCredentials registredCredentials = userService.getUserCredentials(userCredentials.getId());
@@ -91,17 +91,17 @@ public class UserServiceTest {
 
 		String updatedFName = "updatedName";
 		userCredentials.setFirstName(updatedFName);
-		userService.update(userCredentials);
+		userService.updateUserCredentials(userCredentials);
 
 		Assert.assertEquals(updatedFName, userService.getUserCredentials(profile.getId()).getFirstName());
 
 		profile.setPassword("654321");
-		userService.update(profile);
+		userService.updateUserProfile(profile);
 
 		UserProfile us = userService.getUser(profile.getId());
 		Assert.assertEquals(us.getPassword(), profile.getPassword());
 
-		userService.delete(profile.getId());
+		userService.deleteUserWithId(profile.getId());
 
 		Assert.assertNull(userService.getUser(profile.getId()));
 		Assert.assertNull(userService.getUserCredentials(userCredentials.getId()));
@@ -117,7 +117,7 @@ public class UserServiceTest {
 		recipient.setCity("Grodno");
 		recipient.setName("Иванов Иван Иванович");
 
-		recipientService.register(recipient);
+		recipientService.registerRecipient(recipient);
 
 		Recipient recReg = recipientService.getRecipient(recipient.getId());
 
@@ -151,7 +151,7 @@ public class UserServiceTest {
 		subSubType.setTypeName("Телефон");
 		subSubType.setParentType(subType);
 
-		typesService.register(subSubType);
+		typesService.registerType(subSubType);
 
 		Assert.assertNotNull(typesService.get(parentType.getId()));
 		Assert.assertNotNull(typesService.get(subType.getId()));
@@ -177,13 +177,13 @@ public class UserServiceTest {
 		product.setPriceProduct(new BigDecimal(1000000));
 		product.setStatus(true);
 
-		productsService.register(product);
+		productsService.registerProduct(product);
 
-		Assert.assertNotNull(productsService.get(product.getId()));
+		Assert.assertNotNull(productsService.getProductWithId(product.getId()));
 
 		productsService.delete(product.getId());
 
-		Assert.assertNull(productsService.get(product.getId()));
+		Assert.assertNull(productsService.getProductWithId(product.getId()));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -221,19 +221,19 @@ public class UserServiceTest {
 		userCredentials2.setLastName("Durov");
 		userCredentials2.setRank(Ranks.INSPECTOR_FIRST);
 		userCredentials2.setStatus(StatusUser.OFFICER);
-		userService.register(profile, userCredentials);
-		userService.register(profile1, userCredentials1);
-		userService.register(profile2, userCredentials2);
+		userService.registerUser(profile, userCredentials);
+		userService.registerUser(profile1, userCredentials1);
+		userService.registerUser(profile2, userCredentials2);
 
 		recipient.setAddress("Горького 52");
 		recipient.setCity("Grodno");
 		recipient.setName("Иванов Иван Иванович");
-		recipientService.register(recipient);
+		recipientService.registerRecipient(recipient);
 
 		pack.setCountrySender("China");
 		pack.setDescription("DEscription3462346t54");
-		pack.setFine(new BigDecimal(0));
-		pack.setIdRecipient(recipient);
+		pack.setPenalty(new BigDecimal(0));
+		pack.setRecipient(recipient);
 		pack.setIdUser(profile);
 		pack.setPaid(false);
 		pack.setPaymentDeadline(new SimpleDateFormat("dd MMMM yyyy").format(new Date(116, 07, 07)));
@@ -241,21 +241,21 @@ public class UserServiceTest {
 		pack.setPrice(new BigDecimal(300000));
 		pack.setWeight(12.00);
 
-		packService.register(pack);
+		packService.registerPackage(pack);
 
 		Assert.assertNotNull(userService.getUser(profile.getId()));
 		Assert.assertNotNull(recipientService.getRecipient(recipient.getId()));
-		Assert.assertNotNull(packService.getPackage(pack.getId()));
+		Assert.assertNotNull(packService.getPackageWithId(pack.getId()));
 
-		packService.delete(pack.getId());
-		userService.delete(profile.getId());
-		userService.delete(profile1.getId());
-		userService.delete(profile2.getId());
+		packService.deletePackageWithId(pack.getId());
+		userService.deleteUserWithId(profile.getId());
+		userService.deleteUserWithId(profile1.getId());
+		userService.deleteUserWithId(profile2.getId());
 		recipientService.delete(recipient.getId());
 
 		Assert.assertNull(userService.getUser(profile.getId()));
 		Assert.assertNull(recipientService.getRecipient(recipient.getId()));
-		Assert.assertNull(packService.getPackage(pack.getId()));
+		Assert.assertNull(packService.getPackageWithId(pack.getId()));
 
 	}
 
@@ -266,7 +266,7 @@ public class UserServiceTest {
 		// List<UserCredentials> allCred = new ArrayList<>();
 		List<UserProfile> all = userService.getAll();
 		for (UserProfile user : all) {
-			userService.delete(user.getId());
+			userService.deleteUserWithId(user.getId());
 		}
 
 		UserProfile profile;
@@ -287,18 +287,18 @@ public class UserServiceTest {
 		filter.setFetchPackages(true);
 		filter.setLimit(5);
 		filter.setOffset(0);
-		all = userService.find(filter);
+		all = userService.findUser(filter);
 
 		Assert.assertEquals(all.size(), 5);
 
 		filter.setLogin("Admin4");
-		all = userService.find(filter);
+		all = userService.findUser(filter);
 
 		Assert.assertEquals(all.size(), 1);
 
 		filter.setLogin(null);
 		filter.setEmail("4@gmail.com");
-		all = userService.find(filter);
+		all = userService.findUser(filter);
 
 		System.out.println(all.size());
 		Assert.assertEquals(all.size(), 1);
@@ -318,7 +318,7 @@ public class UserServiceTest {
 		userCredentials.setLastName("Durov");
 		userCredentials.setRank(Ranks.INSPECTOR_FIRST);
 		userCredentials.setStatus(StatusUser.OFFICER);
-		userService.register(profile, userCredentials);
+		userService.registerUser(profile, userCredentials);
 	}
 
 	@Test
@@ -346,18 +346,18 @@ public class UserServiceTest {
 		filter.setLimit(5);
 		filter.setOffset(0);
 		filter.setFetchPackages(true);
-		allRecipients = recipientService.find(filter);
+		allRecipients = recipientService.findRecipient(filter);
 
 		Assert.assertEquals(allRecipients.size(), 5);
 
 		filter.setName("Иванов Иван 6");
-		allRecipients = recipientService.find(filter);
+		allRecipients = recipientService.findRecipient(filter);
 
 		Assert.assertEquals(allRecipients.size(), 1);
 
 		filter.setName(null);
 		filter.setCity("Гродно");
-		allRecipients = recipientService.find(filter);
+		allRecipients = recipientService.findRecipient(filter);
 
 		Assert.assertEquals(allRecipients.size(), 5);
 	}
@@ -367,7 +367,7 @@ public class UserServiceTest {
 		recipient.setCity("Гродно");
 		recipient.setName("Иванов Иван " + i);
 
-		recipientService.register(recipient);
+		recipientService.registerRecipient(recipient);
 	}
 
 	@Test
@@ -392,15 +392,15 @@ public class UserServiceTest {
 		Type type2 = new Type();
 
 		type.setTypeName("Техника");
-		typesService.register(type);
+		typesService.registerType(type);
 
 		type1.setTypeName("Аудио-видео");
-		typesService.register(type1);
+		typesService.registerType(type1);
 		type1.setParentType(type);
 		typesService.update(type1);
 
 		type2.setTypeName("Компьютеры");
-		typesService.register(type2);
+		typesService.registerType(type2);
 		type2.setParentType(type);
 		typesService.update(type2);
 
@@ -408,7 +408,7 @@ public class UserServiceTest {
 		product.setPriceProduct(new BigDecimal(300000));
 		product.setWeight(4.0);
 		product.setStatus(true);
-		productsService.register(product);
+		productsService.registerProduct(product);
 		product.setTypes(type);
 		product.setTypes(type2);
 		productsService.update(product);
@@ -417,7 +417,7 @@ public class UserServiceTest {
 		product1.setPriceProduct(new BigDecimal(500000));
 		product1.setWeight(4.0);
 		product1.setStatus(true);
-		productsService.register(product1);
+		productsService.registerProduct(product1);
 		product1.setTypes(type);
 		product1.setTypes(type1);
 		productsService.update(product1);
@@ -426,7 +426,7 @@ public class UserServiceTest {
 		product2.setPriceProduct(new BigDecimal(200000));
 		product2.setWeight(4.0);
 		product2.setStatus(true);
-		productsService.register(product2);
+		productsService.registerProduct(product2);
 		product2.setTypes(type);
 		product2.setTypes(type2);
 		productsService.update(product2);
@@ -441,12 +441,12 @@ public class UserServiceTest {
 		pFilter.setFetchType(true);
 		pFilter.setLimit(2);
 		pFilter.setOffset(0);
-		allProducts = productsService.find(pFilter);
+		allProducts = productsService.findProduct(pFilter);
 
 		Assert.assertEquals(allProducts.size(), 2);
 
 		pFilter.setNameProduct("Принтер");
-		allProducts = productsService.find(pFilter);
+		allProducts = productsService.findProduct(pFilter);
 
 		Assert.assertEquals(allProducts.size(), 1);
 
@@ -454,12 +454,12 @@ public class UserServiceTest {
 		tFilter.setFetchParentType(true);
 		tFilter.setLimit(2);
 		tFilter.setOffset(0);
-		allTypes = typesService.find(tFilter);
+		allTypes = typesService.findType(tFilter);
 
 		Assert.assertEquals(allTypes.size(), 2);
 
 		tFilter.setTypeName("Компьютеры");
-		allTypes = typesService.find(tFilter);
+		allTypes = typesService.findType(tFilter);
 
 		Assert.assertEquals(allTypes.size(), 1);
 
@@ -472,12 +472,12 @@ public class UserServiceTest {
 
 		List<Package> allPack = packService.getAll();
 		for (Package p : allPack) {
-			packService.delete(p.getId());
+			packService.deletePackageWithId(p.getId());
 		}
 
 		List<UserProfile> all = userService.getAll();
 		for (UserProfile user : all) {
-			userService.delete(user.getId());
+			userService.deleteUserWithId(user.getId());
 		}
 
 		List<Recipient> allRecipients = recipientService.getAll();
@@ -510,17 +510,17 @@ public class UserServiceTest {
 		type = new Type();
 
 		type.setTypeName("Техника");
-		typesService.register(type);
+		typesService.registerType(type);
 
 		type1 = new Type();
 		type1.setTypeName("Аудио-видео");
-		typesService.register(type1);
+		typesService.registerType(type1);
 		type1.setParentType(type);
 		typesService.update(type1);
 
 		type2 = new Type();
 		type2.setTypeName("Компьютеры");
-		typesService.register(type2);
+		typesService.registerType(type2);
 		type2.setParentType(type);
 		typesService.update(type2);
 
@@ -528,7 +528,7 @@ public class UserServiceTest {
 		product.setPriceProduct(new BigDecimal(300000));
 		product.setWeight(4.0);
 		product.setStatus(true);
-		productsService.register(product);
+		productsService.registerProduct(product);
 		product.setTypes(type);
 		product.setTypes(type2);
 		productsService.update(product);
@@ -538,7 +538,7 @@ public class UserServiceTest {
 		product1.setPriceProduct(new BigDecimal(500000));
 		product1.setWeight(4.0);
 		product1.setStatus(true);
-		productsService.register(product1);
+		productsService.registerProduct(product1);
 		product1.setTypes(type);
 		product1.setTypes(type1);
 		productsService.update(product1);
@@ -548,7 +548,7 @@ public class UserServiceTest {
 		product2.setPriceProduct(new BigDecimal(200000));
 		product2.setWeight(4.0);
 		product2.setStatus(true);
-		productsService.register(product2);
+		productsService.registerProduct(product2);
 		product2.setTypes(type);
 		product2.setTypes(type2);
 		productsService.update(product2);
@@ -569,18 +569,18 @@ public class UserServiceTest {
 			userCredentials.setPost("Post");
 			userCredentials.setRank(Ranks.INSPECTOR_SECOND);
 
-			userService.register(user, userCredentials);
+			userService.registerUser(user, userCredentials);
 
 			recipient.setAddress("Болдина " + i);
 			recipient.setCity("Гродно");
 			recipient.setName("Иванов Иван " + i);
 
-			recipientService.register(recipient);
+			recipientService.registerRecipient(recipient);
 
 			pack.setCountrySender("China");
 			pack.setDescription("description" + i);
-			pack.setIdRecipient(recipient);
-			pack.setFine(new BigDecimal(0));
+			pack.setRecipient(recipient);
+			pack.setPenalty(new BigDecimal(0));
 			pack.setIdUser(user);
 			pack.setPaid(false);
 			pack.setPaymentDeadline(i + " май 2016");
@@ -588,12 +588,12 @@ public class UserServiceTest {
 			pack.setId(System.currentTimeMillis() + i);
 			pack.setWeight(2.0);
 
-			packService.register(pack);
+			packService.registerPackage(pack);
 
 			// List<Product> products = productsService.getAll();
 			// pack.setProducts(products);
 
-			packService.update(pack);
+			packService.updatePackage(pack);
 
 		}
 
@@ -603,24 +603,24 @@ public class UserServiceTest {
 
 		PackageFilter pFilter = new PackageFilter();
 		pFilter.setCountrySender("China");
-		allPack = packService.find(pFilter);
+		allPack = packService.findPackage(pFilter);
 
 		Assert.assertEquals(allPack.size(), 10);
 
 		pFilter.setCountrySender(null);
 		pFilter.setDate(new Date(116, 3, 28));
-		allPack = packService.find(pFilter);
+		allPack = packService.findPackage(pFilter);
 
 		Assert.assertEquals(allPack.size(), 0);
 
 		allPack = packService.getAll();
 		for (Package p : allPack) {
-			packService.delete(p.getId());
+			packService.deletePackageWithId(p.getId());
 		}
 
 		all = userService.getAll();
 		for (UserProfile userr : all) {
-			userService.delete(userr.getId());
+			userService.deleteUserWithId(userr.getId());
 		}
 
 		allRecipients = recipientService.getAll();

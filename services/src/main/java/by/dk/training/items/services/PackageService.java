@@ -11,33 +11,33 @@ import by.dk.training.items.datamodel.Package;
 public interface PackageService {
 
 	@Transactional
-	void register(Package pack);
+	void registerPackage(Package pack);
 
-	Package getPackage(Long id);
-
-	@Transactional
-	void update(Package pack);
+	Package getPackageWithId(Long id);
 
 	@Transactional
-	void delete(Long trackingCode);
+	void updatePackage(Package pack);
 
-	List<Package> find(PackageFilter packageFilter);
+	@Transactional
+	void deletePackageWithId(Long trackingCode);
+
+	List<Package> findPackage(PackageFilter packageFilter);
 
 	List<Package> getAll();
 
-	Long count(PackageFilter filter);
+	Long overallNumberOfPackages(PackageFilter filter);
 
-	List<Package> betweenDates(Date startDate, Date endDate);
+	List<Package> getPackagesBetweenDates(Date startDate, Date endDate);
 
-	Long countBetweenDatesRecipient(PackageFilter packageFilter);
+	Long numberOfPacksWithRecipientBetweenDates(PackageFilter packageFilter);
 
 	List<Package> betweenDatesRecipient(PackageFilter packageFilter);
 
-	Package maxPrice();
+	Package maxPricePackage();
 
-	long countPack();
+	long overallNumberOfPackages();
 
-	long countPackBetweenDates(Date startDate, Date endDate);
+	long numberOfPackagesBetweenDates(Date startDate, Date endDate);
 
-	String oftenCountry();
+	String getMostPopularCountry();
 }

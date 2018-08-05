@@ -34,7 +34,7 @@ public class TypeProductsInfo extends Panel {
 
 	@Override
 	protected void onInitialize() {
-		List<Product> allProductsType = productService.find(productFilter);
+		List<Product> allProductsType = productService.findProduct(productFilter);
 
 		List<Product> prodType = new ArrayList<>();
 		for (Product p : allProductsType) {

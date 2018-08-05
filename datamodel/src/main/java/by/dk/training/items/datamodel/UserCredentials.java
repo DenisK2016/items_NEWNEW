@@ -1,15 +1,12 @@
 package by.dk.training.items.datamodel;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,30 +14,34 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "user_credentials")
-public class UserCredentials implements Serializable {
+public class UserCredentials extends EntityItem {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique = true)
-	private Long id;
+	private static final long serialVersionUID = -3808406645617943068L;
+
 	@Column(name = "first_name", nullable = false, length = 100)
 	private String firstName;
+
 	@Column(name = "last_name", nullable = false, length = 100)
 	private String lastName;
+
 	@Column
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date created;
+
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatusUser status;
+
 	@Column(length = 200)
 	private String post;
+
 	@Column
 	@Enumerated(EnumType.STRING)
 	private Ranks rank;
+
 	@Column(nullable = false, unique = true, updatable = false)
 	private String email;
+
 	@OneToOne(mappedBy = "userCredentials")
 	private UserProfile user;
 
@@ -62,14 +63,6 @@ public class UserCredentials implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -122,7 +115,7 @@ public class UserCredentials implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UserCredentials [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", created="
+		return "UserCredentials [id=" + getId() + ", firstName=" + firstName + ", lastName=" + lastName + ", created="
 				+ created + ", status=" + status + ", post=" + post + ", rank=" + rank + ", email=" + email
 				+ ", userProfile=" + user + "]";
 	}

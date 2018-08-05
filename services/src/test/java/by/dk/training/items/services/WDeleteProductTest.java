@@ -14,7 +14,7 @@ import by.dk.training.items.datamodel.Recipient;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
-public class DeleteProductTest {
+public class WDeleteProductTest {
 
 	@Inject
 	private RecipientService recipientService;
@@ -30,7 +30,7 @@ public class DeleteProductTest {
 			recipient.setCity("Гродно" + i);
 			recipient.setName("Иванов Иван " + i);
 
-			recipientService.register(recipient);
+			recipientService.registerRecipient(recipient);
 
 			Product product1 = new Product();
 
@@ -38,7 +38,7 @@ public class DeleteProductTest {
 			product1.setNameProduct("TVset" + i);
 			product1.setPriceProduct(new BigDecimal(1000000));
 			product1.setStatus(true);
-			productService.register(product1);
+			productService.registerProduct(product1);
 
 		}
 	}

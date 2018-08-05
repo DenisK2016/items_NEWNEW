@@ -1,15 +1,11 @@
 package by.dk.training.items.datamodel;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,24 +13,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "recipient")
-public class Recipient implements Serializable {
+public class Recipient extends EntityItem {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, unique = true)
-	private Long id;
+	private static final long serialVersionUID = -714929996431432981L;
+
 	@Column(nullable = false, length = 100)
 	private String name;
+
 	@Column(nullable = false, length = 100)
 	private String city;
+
 	@Column(nullable = false, length = 100)
 	private String address;
-	@OneToMany(mappedBy = "idRecipient", fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "recipient", fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<Package> packages = new HashSet<>();
-	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idUser")
 	private UserProfile idUser;
+
 	@Column(name = "counter_packages")
 	private Integer counterPackages = new Integer(0);
 
@@ -58,20 +56,16 @@ public class Recipient implements Serializable {
 		this.idUser = idUser;
 	}
 
+	public void setPackages(Set<Package> packages) {
+		this.packages = packages;
+	}
+
 	public Set<Package> getPackages() {
 		return packages;
 	}
 
 	public void setPackages(Package pack) {
 		this.packages.add(pack);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -100,7 +94,7 @@ public class Recipient implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Recipient [id=" + id + ", name=" + name + ", city=" + city + ", address=" + address + ", packages="
+		return "Recipient [id=" + getId() + ", name=" + name + ", city=" + city + ", address=" + address + ", packages="
 				+ packages + "]";
 	}
 

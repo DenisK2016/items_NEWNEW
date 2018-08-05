@@ -31,7 +31,7 @@ public class UserServiceProfileImpl implements UserProfileService {
 	private Date date;
 
 	@Override
-	public void register(UserProfile user, UserCredentials userCredentials) {
+	public void registerUser(UserProfile user, UserCredentials userCredentials) {
 		resetDate(userCredentials);
 		userCredentials.setCreated(date);
 		userCredentials.setStatus(StatusUser.CONFIRMATION);
@@ -55,13 +55,13 @@ public class UserServiceProfileImpl implements UserProfileService {
 	}
 
 	@Override
-	public void update(UserProfile user) {
+	public void updateUserProfile(UserProfile user) {
 		LOGGER.info("User update, new and old: {}", user, userDao.get(user.getId()));
 		userDao.update(user);
 	}
 
 	@Override
-	public void update(UserCredentials userCredentials) {
+	public void updateUserCredentials(UserCredentials userCredentials) {
 		LOGGER.info("UserCredentials update, new and old: {}", userCredentials,
 				userCredentialsDao.get(userCredentials.getId()));
 		resetDate(userCredentials);
@@ -85,16 +85,16 @@ public class UserServiceProfileImpl implements UserProfileService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void deleteUserWithId(Long id) {
 		LOGGER.info("User delete: {}", userDao.get(id), userCredentialsDao.get(id));
 		userDao.delete(id);
 		userCredentialsDao.delete(id);
 	}
 
 	@Override
-	public List<UserProfile> find(UserFilter userFilter) {
+	public List<UserProfile> findUser(UserFilter userFilter) {
 		LOGGER.info("User find by filter: {}", userFilter);
-		return userDao.find(userFilter);
+		return userDao.findUser(userFilter);
 	}
 
 	@Override
@@ -104,14 +104,14 @@ public class UserServiceProfileImpl implements UserProfileService {
 	}
 
 	@Override
-	public Long count(UserFilter filter) {
+	public Long overallNumberOfUsers(UserFilter filter) {
 		LOGGER.info("User count(): {}", filter);
-		return userDao.count(filter);
+		return userDao.overallNumberOfUsers(filter);
 	}
 
 	@Override
-	public UserProfile getByNameAndPassword(String login, String password) {
-		return userDao.find(login, password);
+	public UserProfile getUserByNameAndPassword(String login, String password) {
+		return userDao.findUserByLoginAndPassword(login, password);
 	}
 
 	@Override

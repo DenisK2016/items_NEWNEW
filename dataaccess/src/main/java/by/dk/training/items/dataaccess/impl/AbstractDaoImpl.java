@@ -47,7 +47,7 @@ public class AbstractDaoImpl<T, ID> implements AbstractDao<T, ID> {
 
 	@Override
 	public void delete(ID id) {
-		entityManager.createQuery(String.format("delete from %s e where e.id = :id", entityClass.getSimpleName()))
+		entityManager.createQuery(String.format("DELETE FROM %s e WHERE e.id = :id", entityClass.getSimpleName()))
 				.setParameter("id", id).executeUpdate();
 	}
 

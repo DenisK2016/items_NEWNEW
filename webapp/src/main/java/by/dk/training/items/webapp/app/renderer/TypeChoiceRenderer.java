@@ -6,7 +6,7 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 
 public class TypeChoiceRenderer extends ChoiceRenderer<String> {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4356747416052379242L;
 	private List<String> list;
 
 	public TypeChoiceRenderer(List<String> list) {

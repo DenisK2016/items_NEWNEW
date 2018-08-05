@@ -6,10 +6,7 @@ import by.dk.training.items.datamodel.Package;
 
 public class PackageChoiceRenderer extends ChoiceRenderer<Package> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5914991141613751751L;
 	public static final PackageChoiceRenderer INSTANCE = new PackageChoiceRenderer();
 
 	private PackageChoiceRenderer() {

@@ -151,7 +151,7 @@ public class ListPackagesPanel extends Panel {
 				} finally {
 					if (pack.getPaid()) {
 						pack.setPaymentDeadline(getString("page.packages.list.paid"));
-						packageService.update(pack);
+						packageService.updatePackage(pack);
 						deadline = new Label("deadline", pack.getPaymentDeadline());
 						deadline.add(AttributeModifier.append("style", "color: green;"));
 					}
@@ -160,7 +160,7 @@ public class ListPackagesPanel extends Panel {
 								+ Long.valueOf(SystemSettings.getPaymentDeadline()) * 24 * 60 * 60 * 1000)
 								- (new Date().getTime())) / 1000 / 60 / 60 / 24) + 1;
 						pack.setPaymentDeadline(String.valueOf(SystemSettings.getPaymentDeadline()));
-						packageService.update(pack);
+						packageService.updatePackage(pack);
 						deadline = new Label("deadline", l);
 						if (l < 0) {
 							deadline.add(AttributeModifier.append("style", "color: red;"));
@@ -169,7 +169,7 @@ public class ListPackagesPanel extends Panel {
 					item.add(deadline);
 				}
 				if (l < 0 && !deadline.getDefaultModelObjectAsString().equals(getString("page.packages.list.paid"))) {
-					BigDecimal multiply = pack.getPercentFine().divide(new BigDecimal("100"))
+					BigDecimal multiply = pack.getPercentPenalty().divide(new BigDecimal("100"))
 							.multiply(new BigDecimal(l)); /// Количество
 					/// процентов,
 					/// в
@@ -185,13 +185,13 @@ public class ListPackagesPanel extends Panel {
 																				/// завасимости
 																				/// от
 																				/// процента
-					pack.setFine(multiply2.abs());
-					packageService.update(pack);
+					pack.setPenalty(multiply2.abs());
+					packageService.updatePackage(pack);
 				} else {
-					pack.setFine(new BigDecimal("0"));
-					packageService.update(pack);
+					pack.setPenalty(new BigDecimal("0"));
+					packageService.updatePackage(pack);
 				}
-				item.add(new Label("fine", pack.getFine()));
+				item.add(new Label("fine", pack.getPenalty()));
 				AjaxCheckBox chkb = new AjaxCheckBox("paid", Model.of(pack.getPaid())) {
 
 					/**
@@ -202,7 +202,7 @@ public class ListPackagesPanel extends Panel {
 					@Override
 					protected void onUpdate(AjaxRequestTarget target) {
 						pack.setPaid(!pack.getPaid());
-						packageService.update(pack);
+						packageService.updatePackage(pack);
 						target.add(wmc);
 					}
 				};
@@ -218,7 +218,7 @@ public class ListPackagesPanel extends Panel {
 
 					@Override
 					public void onClick() {
-						packageService.delete(pack.getId());
+						packageService.deletePackageWithId(pack.getId());
 						setResponsePage(new PackagesPage());
 					}
 				};
@@ -246,7 +246,7 @@ public class ListPackagesPanel extends Panel {
 		wmc.add(new OrderByBorder("orderByTax", Package_.tax, dataProvider));
 		wmc.add(new OrderByBorder("orderByWeight", Package_.weight, dataProvider));
 		wmc.add(new OrderByBorder("orderByDead", Package_.paymentDeadline, dataProvider));
-		wmc.add(new OrderByBorder("orderByFine", Package_.fine, dataProvider));
+		wmc.add(new OrderByBorder("orderByFine", Package_.penalty, dataProvider));
 		wmc.add(new OrderByBorder("orderByPaid", Package_.paid, dataProvider));
 		wmc.add(new PagingNavigator("navigator", dataView));
 		TextField<Long> idFilt = new TextField<Long>("idFilter", new PropertyModel<Long>(this, "idFilter"));
@@ -561,7 +561,7 @@ public class ListPackagesPanel extends Panel {
 			protected void onUpdate(AjaxRequestTarget target) {
 				ProductFilter filter = new ProductFilter();
 				filter.setNameProduct(productFilter);
-				List<Product> find = productService.find(filter);
+				List<Product> find = productService.findProduct(filter);
 				Product product = null;
 				if (productFilter != null && !find.isEmpty()) {
 					product = find.get(0);
@@ -608,10 +608,10 @@ public class ListPackagesPanel extends Panel {
 			boolean ff = (fineFilter != null && fineFilter == true);
 			boolean npf = (notPaidFilter != null && notPaidFilter == true);
 			if (ff & npf) {
-				return packageService.find(packageFilter).iterator();
+				return packageService.findPackage(packageFilter).iterator();
 			}
 			if (ff) {
-				for (Package p : packageService.find(packageFilter)) {
+				for (Package p : packageService.findPackage(packageFilter)) {
 					try {
 						long l = (((p.getDate().getTime() + Long.valueOf(p.getPaymentDeadline()) * 24 * 60 * 60 * 1000)
 								- (new Date().getTime())) / 1000 / 60 / 60 / 24) + 1;
@@ -625,7 +625,7 @@ public class ListPackagesPanel extends Panel {
 				return lis.iterator();
 			}
 			if (npf) {
-				for (Package p : packageService.find(packageFilter)) {
+				for (Package p : packageService.findPackage(packageFilter)) {
 					try {
 						long l = (((p.getDate().getTime() + Long.valueOf(p.getPaymentDeadline()) * 24 * 60 * 60 * 1000)
 								- (new Date().getTime())) / 1000 / 60 / 60 / 24) + 1;
@@ -638,12 +638,12 @@ public class ListPackagesPanel extends Panel {
 				}
 				return lis.iterator();
 			}
-			return packageService.find(packageFilter).iterator();
+			return packageService.findPackage(packageFilter).iterator();
 		}
 
 		@Override
 		public long size() {
-			return packageService.count(packageFilter);
+			return packageService.overallNumberOfPackages(packageFilter);
 		}
 
 		@Override

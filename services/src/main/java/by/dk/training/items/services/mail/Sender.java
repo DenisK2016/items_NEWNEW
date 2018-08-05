@@ -36,15 +36,15 @@ public class Sender {
 		});
 		try {
 			Message message = new MimeMessage(session);
-			// от кого
+			// from
 			message.setFrom(new InternetAddress(username));
-			// кому
+			// to
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-			// Заголовок письма
+			// title
 			message.setSubject(subject);
-			// Содержимое
+			// text
 			message.setText(text);
-			// Отправляем сообщение
+			// send message
 			Transport.send(message);
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);

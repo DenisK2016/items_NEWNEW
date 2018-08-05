@@ -31,25 +31,25 @@ public class PackageServiceImpl implements PackageService {
 	private Date date;
 
 	@Override
-	public void register(Package pack) {
+	public void registerPackage(Package pack) {
 		dateReset(pack);
 		pack.setDate(date);
 		packDao.insert(pack);
-		Recipient rec = pack.getIdRecipient();
+		Recipient rec = pack.getRecipient();
 		rec.setCounterPackages(1);
 		recipientDao.update(rec);
 		userDao.update(pack.getIdUser());
-		LOGGER.info("Package regirstred: {}", pack);
+		LOGGER.info("Package was registered: {}", pack);
 	}
 
 	@Override
-	public Package getPackage(Long id) {
-		LOGGER.info("Package select: {}", packDao.get(id));
+	public Package getPackageWithId(Long id) {
+		LOGGER.info("Package was selected: {}", packDao.get(id));
 		return packDao.get(id);
 	}
 
 	@Override
-	public void update(Package pack) {
+	public void updatePackage(Package pack) {
 		LOGGER.info("Package update, new and old: {}", pack, packDao.get(pack.getId()));
 		dateReset(pack);
 		pack.setDate(date);
@@ -72,15 +72,15 @@ public class PackageServiceImpl implements PackageService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void deletePackageWithId(Long id) {
 		LOGGER.info("Package delete: {}", packDao.get(id));
 		packDao.delete(id);
 	}
 
 	@Override
-	public List<Package> find(PackageFilter packageFilter) {
-		LOGGER.info("Package find() by filter: {}", packageFilter);
-		return packDao.find(packageFilter);
+	public List<Package> findPackage(PackageFilter packageFilter) {
+		LOGGER.info("Package find by filter: {}", packageFilter);
+		return packDao.findPackage(packageFilter);
 	}
 
 	@Override
@@ -90,43 +90,44 @@ public class PackageServiceImpl implements PackageService {
 	}
 
 	@Override
-	public Long count(PackageFilter packagefilter) {
+	public Long overallNumberOfPackages(PackageFilter packagefilter) {
 		LOGGER.info("Package count(): {}", packagefilter);
-		return packDao.count(packagefilter);
+		return packDao.overallNumberOfPackages(packagefilter);
 	}
 
 	@Override
-	public List<Package> betweenDates(Date startDate, Date endDate) {
-		return packDao.betweenDates(startDate, endDate);
+	public List<Package> getPackagesBetweenDates(Date startDate, Date endDate) {
+		return packDao.extractPackagesBetweenDates(startDate, endDate);
 	}
 
 	@Override
-	public Package maxPrice() {
-		LOGGER.info("Package maxPrice(): {}");
-		if (packDao.maxPrice() == null) {
+	public Package maxPricePackage() {
+		LOGGER.info("Package with maxPrice: {}");
+		Package extractPackageWithMaxPrice = packDao.extractPackageWithMaxPrice();
+		if (extractPackageWithMaxPrice == null) {
 			return new Package();
 		}
-		return packDao.maxPrice();
+		return extractPackageWithMaxPrice;
 	}
 
 	@Override
-	public Long countBetweenDatesRecipient(PackageFilter packageFilter) {
-		return packDao.countBetweenDatesRecipient(packageFilter);
+	public Long numberOfPacksWithRecipientBetweenDates(PackageFilter packageFilter) {
+		return packDao.numberOfPacksWithRecipientBetweenDates(packageFilter);
 	}
 
 	@Override
-	public long countPack() {
-		return packDao.countPack();
+	public long overallNumberOfPackages() {
+		return packDao.overallNumberOfPackages();
 	}
 
 	@Override
-	public long countPackBetweenDates(Date startDate, Date endDate) {
-		return packDao.countPackBetweenDates(startDate, endDate);
+	public long numberOfPackagesBetweenDates(Date startDate, Date endDate) {
+		return packDao.numberOfPackagesBetweenDates(startDate, endDate);
 	}
 
 	@Override
-	public String oftenCountry() {
-		return packDao.oftenCountry();
+	public String getMostPopularCountry() {
+		return packDao.getMostPopularCountry();
 	}
 
 	@Override

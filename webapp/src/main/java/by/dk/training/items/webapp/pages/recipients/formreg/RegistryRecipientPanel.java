@@ -87,9 +87,9 @@ public class RegistryRecipientPanel extends Panel {
 					filter.setAddress(recipient.getAddress());
 					filter.setCity(recipient.getCity());
 					filter.setName(recipient.getName());
-					if (recipientService.checkDuplicate(filter).isEmpty()) {
+					if (recipientService.getDuplicate(filter).isEmpty()) {
 						recipient.setIdUser(AuthorizedSession.get().getUser());
-						recipientService.register(recipient);
+						recipientService.registerRecipient(recipient);
 						setResponsePage(new RecipientPage());
 					} else {
 						notification.error(target, getString("page.recipients.create.error"));

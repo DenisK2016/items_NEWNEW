@@ -32,7 +32,7 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	}
 
 	@Override
-	public List<Package> betweenDates(Date startDate, Date endDate) {
+	public List<Package> extractPackagesBetweenDates(Date startDate, Date endDate) {
 		EntityManager em = getEntityManager();
 
 		@SuppressWarnings("unchecked")
@@ -45,105 +45,98 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public List<Package> find(PackageFilter filter) {
+	public List<Package> findPackage(PackageFilter filter) {
 		EntityManager em = getEntityManager();
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Package> cq = cb.createQuery(Package.class);
-		Root<Package> from = cq.from(Package.class);
-		cq.select(from);
+		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+		CriteriaQuery<Package> criteriaQuery = criteriaBuilder.createQuery(Package.class);
+		Root<Package> packageRoot = criteriaQuery.from(Package.class);
+		criteriaQuery.select(packageRoot);
 
-		boolean price = (filter.getPrice() != null);
-		boolean weight = (filter.getWeight() != null);
-		boolean date = (filter.getDate() != null);
-		boolean description = (filter.getDescription() != null);
-		boolean cSender = (filter.getCountrySender() != null);
-		boolean paymentDead = (filter.getPaymentDeadline() != null);
-		boolean fine = (filter.getFine() != null);
-		boolean paid = (filter.getPaid() != null);
-		boolean user = (filter.getUser() != null);
-		boolean recipient = (filter.getRecipint() != null);
-		boolean product = (filter.getProduct() != null);
-		boolean id = (filter.getId() != null);
-		boolean tax = filter.getTax() != null;
-		boolean f = filter.getStartDate() != null;
-		boolean t = filter.getEndDate() != null;
-		boolean filt = (user || recipient || product || price || weight || date || description || cSender || paymentDead
-				|| fine || paid || id || tax || f || t);
-		if (filt) {
-			Predicate taxEqualCondition = cb.equal(from.get(Package_.tax), filter.getTax());
-			Predicate idEqualCondition = cb.equal(from.get(Package_.id), filter.getId());
-			Predicate priceEqualCondition = cb.equal(from.get(Package_.price), filter.getPrice());
-			Predicate weightEqualCondition = cb.equal(from.get(Package_.weight), filter.getWeight());
-			Predicate dateEqualCondition = cb.equal(from.get(Package_.date), filter.getDate());
-			Predicate descrEqualCondition = cb.equal(from.get(Package_.description), filter.getDescription());
-			Predicate countryEqualCondition = cb.equal(from.get(Package_.countrySender), filter.getCountrySender());
-			Predicate paymentEqualCondition = cb.equal(from.get(Package_.paymentDeadline), filter.getPaymentDeadline());
-			Predicate fineEqualCondition = cb.equal(from.get(Package_.fine), filter.getFine());
-			Predicate paidEqualCondition = cb.equal(from.get(Package_.paid), filter.getPaid());
-			Predicate userEqualCondition = cb.equal(from.get(Package_.idUser), filter.getUser());
-			Predicate recipientEqualCondition = cb.equal(from.get(Package_.idRecipient), filter.getRecipint());
+		boolean isCorrectFilter = isCorrectPackageFilter(filter);
+		if (isCorrectFilter) {
+			Predicate taxEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.tax), filter.getTax());
+			Predicate idEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.id), filter.getId());
+			Predicate priceEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.price), filter.getPrice());
+			Predicate weightEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.weight),
+					filter.getWeight());
+			Predicate dateEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.date), filter.getDate());
+			Predicate descrEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.description),
+					filter.getDescription());
+			Predicate countryEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.countrySender),
+					filter.getCountrySender());
+			Predicate paymentEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.paymentDeadline),
+					filter.getPaymentDeadline());
+			Predicate fineEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.penalty), filter.getFine());
+			Predicate paidEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.paid), filter.getPaid());
+			Predicate userEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.idUser), filter.getUser());
+			Predicate recipientEqualCondition = criteriaBuilder.equal(packageRoot.get(Package_.recipient),
+					filter.getRecipint());
 			Predicate betweenDate = null;
 			if ((filter.getStartDate() != null) && (filter.getEndDate() != null)) {
-				betweenDate = cb.between(from.get(Package_.date), filter.getStartDate(), filter.getEndDate());
+				betweenDate = criteriaBuilder.between(packageRoot.get(Package_.date), filter.getStartDate(),
+						filter.getEndDate());
 			}
 			if ((filter.getStartDate() == null) && (filter.getEndDate() != null)) {
 				startDate = new Date(0, 0, 0);
 				endDate = filter.getEndDate();
-				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
+				betweenDate = criteriaBuilder.between(packageRoot.get(Package_.date), startDate, endDate);
 			}
 			if ((filter.getStartDate() != null) && (filter.getEndDate() == null)) {
 				endDate = new Date();
 				startDate = filter.getStartDate();
-				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
+				betweenDate = criteriaBuilder.between(packageRoot.get(Package_.date), startDate, endDate);
 			}
 
-			if (product == true) {
-				Predicate productEqualCondition = cb.isMember(filter.getProduct(), from.get(Package_.products));
+			if (filter.getProduct() != null) {
+				Predicate productEqualCondition = criteriaBuilder.isMember(filter.getProduct(),
+						packageRoot.get(Package_.products));
 				if (betweenDate != null) {
-					cq.where(cb.or(priceEqualCondition, weightEqualCondition, dateEqualCondition, descrEqualCondition,
-							countryEqualCondition, paymentEqualCondition, fineEqualCondition, paidEqualCondition,
-							userEqualCondition, recipientEqualCondition, productEqualCondition, idEqualCondition,
-							taxEqualCondition, betweenDate)).distinct(true);
+					criteriaQuery
+							.where(criteriaBuilder.or(priceEqualCondition, weightEqualCondition, dateEqualCondition,
+									descrEqualCondition, countryEqualCondition, paymentEqualCondition,
+									fineEqualCondition, paidEqualCondition, userEqualCondition, recipientEqualCondition,
+									productEqualCondition, idEqualCondition, taxEqualCondition, betweenDate))
+							.distinct(true);
 				} else {
-					cq.where(cb.or(priceEqualCondition, weightEqualCondition, dateEqualCondition, descrEqualCondition,
-							countryEqualCondition, paymentEqualCondition, fineEqualCondition, paidEqualCondition,
-							userEqualCondition, recipientEqualCondition, productEqualCondition, idEqualCondition,
-							taxEqualCondition)).distinct(true);
+					criteriaQuery.where(criteriaBuilder.or(priceEqualCondition, weightEqualCondition,
+							dateEqualCondition, descrEqualCondition, countryEqualCondition, paymentEqualCondition,
+							fineEqualCondition, paidEqualCondition, userEqualCondition, recipientEqualCondition,
+							productEqualCondition, idEqualCondition, taxEqualCondition)).distinct(true);
 				}
 			} else {
 				if (betweenDate != null) {
-					cq.where(cb.or(priceEqualCondition, weightEqualCondition, dateEqualCondition, descrEqualCondition,
-							countryEqualCondition, paymentEqualCondition, fineEqualCondition, paidEqualCondition,
-							userEqualCondition, recipientEqualCondition, idEqualCondition, taxEqualCondition,
-							betweenDate)).distinct(true);
+					criteriaQuery.where(criteriaBuilder.or(priceEqualCondition, weightEqualCondition,
+							dateEqualCondition, descrEqualCondition, countryEqualCondition, paymentEqualCondition,
+							fineEqualCondition, paidEqualCondition, userEqualCondition, recipientEqualCondition,
+							idEqualCondition, taxEqualCondition, betweenDate)).distinct(true);
 				} else {
-					cq.where(cb.or(priceEqualCondition, weightEqualCondition, dateEqualCondition, descrEqualCondition,
-							countryEqualCondition, paymentEqualCondition, fineEqualCondition, paidEqualCondition,
-							userEqualCondition, recipientEqualCondition, idEqualCondition, taxEqualCondition))
-							.distinct(true);
+					criteriaQuery.where(criteriaBuilder.or(priceEqualCondition, weightEqualCondition,
+							dateEqualCondition, descrEqualCondition, countryEqualCondition, paymentEqualCondition,
+							fineEqualCondition, paidEqualCondition, userEqualCondition, recipientEqualCondition,
+							idEqualCondition, taxEqualCondition)).distinct(true);
 				}
 			}
 		}
 
 		// set fetching
 		if (filter.isFetchUser()) {
-			from.fetch(Package_.idUser, JoinType.LEFT);
+			packageRoot.fetch(Package_.idUser, JoinType.LEFT);
 		}
 
 		if (filter.isFetchRecipient()) {
-			from.fetch(Package_.idRecipient, JoinType.LEFT);
+			packageRoot.fetch(Package_.recipient, JoinType.LEFT);
 		}
 
 		if (filter.isFetchProduct()) {
-			from.fetch(Package_.products, JoinType.LEFT);
+			packageRoot.fetch(Package_.products, JoinType.LEFT);
 		}
 
 		// set sort params
 		if (filter.getSortProperty() != null) {
-			cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
+			criteriaQuery.orderBy(new OrderImpl(packageRoot.get(filter.getSortProperty()), filter.isSortOrder()));
 		}
 
-		TypedQuery<Package> q = em.createQuery(cq);
+		TypedQuery<Package> q = em.createQuery(criteriaQuery);
 
 		// set paging
 		if (filter.getOffset() != null && filter.getLimit() != null) {
@@ -152,13 +145,34 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 		}
 
 		// set execute query
-		List<Package> allitems = q.getResultList();
+		List<Package> packages = q.getResultList();
 
-		return allitems;
+		return packages;
+	}
+
+	private boolean isCorrectPackageFilter(PackageFilter filter) {
+		boolean price = (filter.getPrice() != null);
+		boolean weight = (filter.getWeight() != null);
+		boolean date = (filter.getDate() != null);
+		boolean description = (filter.getDescription() != null);
+		boolean cSender = (filter.getCountrySender() != null);
+		boolean paymentDeadline = (filter.getPaymentDeadline() != null);
+		boolean penalty = (filter.getFine() != null);
+		boolean paid = (filter.getPaid() != null);
+		boolean user = (filter.getUser() != null);
+		boolean recipient = (filter.getRecipint() != null);
+		boolean product = (filter.getProduct() != null);
+		boolean id = (filter.getId() != null);
+		boolean tax = filter.getTax() != null;
+		boolean startDate = filter.getStartDate() != null;
+		boolean endDate = filter.getEndDate() != null;
+		boolean isCorrect = (user || recipient || product || price || weight || date || description || cSender
+				|| paymentDeadline || penalty || paid || id || tax || startDate || endDate);
+		return isCorrect;
 	}
 
 	@Override
-	public Long count(PackageFilter filter) {
+	public Long overallNumberOfPackages(PackageFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
@@ -176,7 +190,7 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	}
 
 	@Override
-	public Package maxPrice() {
+	public Package extractPackageWithMaxPrice() {
 		EntityManager em = getEntityManager();
 		Package pack = (Package) em.createQuery("SELECT e FROM Package e WHERE e.price=(SELECT MAX(price) FROM e)")
 				.setMaxResults(1).getSingleResult();
@@ -185,28 +199,30 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public Long countBetweenDatesRecipient(PackageFilter filter) {
+	public Long numberOfPacksWithRecipientBetweenDates(PackageFilter filter) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
 		Root<Package> from = cq.from(Package.class);
 		cq.select(cb.count(from));
-		boolean f = filter.getStartDate() != null;
-		boolean t = filter.getEndDate() != null;
+
+		boolean sDate = filter.getStartDate() != null;
+		boolean eDate = filter.getEndDate() != null;
 		boolean recipient = (filter.getRecipint() != null);
-		boolean filt = (recipient || f || t);
-		if (filt) {
-			Predicate recipientEqualCondition = cb.equal(from.get(Package_.idRecipient), filter.getRecipint());
+		boolean isFilterCorrect = (recipient || sDate || eDate);
+
+		if (isFilterCorrect) {
+			Predicate recipientEqualCondition = cb.equal(from.get(Package_.recipient), filter.getRecipint());
 			Predicate betweenDate = null;
-			if ((filter.getStartDate() != null) && (filter.getEndDate() != null)) {
+			if ((sDate) && (eDate)) {
 				betweenDate = cb.between(from.get(Package_.date), filter.getStartDate(), filter.getEndDate());
 			}
-			if ((filter.getStartDate() == null) && (filter.getEndDate() != null)) {
+			if ((!sDate) && (eDate)) {
 				startDate = new Date(0, 0, 0);
 				endDate = filter.getEndDate();
 				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
 			}
-			if ((filter.getStartDate() != null) && (filter.getEndDate() == null)) {
+			if ((sDate) && (!eDate)) {
 				endDate = new Date();
 				startDate = filter.getStartDate();
 				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
@@ -218,7 +234,7 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	}
 
 	@Override
-	public long countPack() {
+	public long overallNumberOfPackages() {
 		EntityManager em = getEntityManager();
 		String sql = "SELECT COUNT(*) FROM Package";
 		Query q = em.createQuery(sql);
@@ -227,7 +243,7 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	}
 
 	@Override
-	public long countPackBetweenDates(Date start, Date end) {
+	public long numberOfPackagesBetweenDates(Date start, Date end) {
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
@@ -240,7 +256,7 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 	}
 
 	@Override
-	public String oftenCountry() {
+	public String getMostPopularCountry() {
 		EntityManager em = getEntityManager();
 		String sql = "SELECT p.countrySender FROM Package p GROUP BY p.countrySender ORDER BY COUNT(*) DESC";
 		Query q = em.createQuery(sql).setMaxResults(1);
@@ -256,22 +272,23 @@ public class PackageDaoImpl extends AbstractDaoImpl<Package, Long> implements Pa
 		CriteriaQuery<Package> cq = cb.createQuery(Package.class);
 		Root<Package> from = cq.from(Package.class);
 		cq.select(from);
-		boolean f = filter.getStartDate() != null;
-		boolean t = filter.getEndDate() != null;
+
+		boolean sDate = filter.getStartDate() != null;
+		boolean eDate = filter.getEndDate() != null;
 		boolean recipient = (filter.getRecipint() != null);
-		boolean filt = (recipient || f || t);
-		if (filt) {
-			Predicate recipientEqualCondition = cb.equal(from.get(Package_.idRecipient), filter.getRecipint());
+		boolean isFilterCorrect = (recipient || sDate || eDate);
+		if (isFilterCorrect) {
+			Predicate recipientEqualCondition = cb.equal(from.get(Package_.recipient), filter.getRecipint());
 			Predicate betweenDate = null;
-			if ((filter.getStartDate() != null) && (filter.getEndDate() != null)) {
+			if ((sDate) && (eDate)) {
 				betweenDate = cb.between(from.get(Package_.date), filter.getStartDate(), filter.getEndDate());
 			}
-			if ((filter.getStartDate() == null) && (filter.getEndDate() != null)) {
+			if ((!sDate) && (eDate)) {
 				startDate = new Date(0, 0, 0);
 				endDate = filter.getEndDate();
 				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);
 			}
-			if ((filter.getStartDate() != null) && (filter.getEndDate() == null)) {
+			if ((sDate) && (!eDate)) {
 				endDate = new Date();
 				startDate = filter.getStartDate();
 				betweenDate = cb.between(from.get(Package_.date), startDate, endDate);

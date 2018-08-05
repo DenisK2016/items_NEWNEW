@@ -167,7 +167,7 @@ public class ListUsersPanel extends Panel {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
 						try {
-							userProfileService.delete(userProfile.getId());
+							userProfileService.deleteUserWithId(userProfile.getId());
 							setResponsePage(new UserPage());
 						} catch (PersistenceException e) {
 							errorDialog.open(target);
@@ -419,13 +419,13 @@ public class ListUsersPanel extends Panel {
 
 			userFilter.setLimit((int) count);
 			userFilter.setOffset((int) first);
-			return userProfileService.find(userFilter).iterator();
+			return userProfileService.findUser(userFilter).iterator();
 
 		}
 
 		@Override
 		public long size() {
-			return userProfileService.count(userFilter);
+			return userProfileService.overallNumberOfUsers(userFilter);
 		}
 
 		@Override

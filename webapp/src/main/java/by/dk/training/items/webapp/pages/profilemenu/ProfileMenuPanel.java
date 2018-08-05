@@ -50,7 +50,7 @@ public class ProfileMenuPanel extends Panel {
 		filt = new UserFilter();
 		filt.setFetchCredentials(true);
 		filt.setLogin(userProfile.getLogin());
-		this.userProfile = userProfileService.find(filt).get(0);
+		this.userProfile = userProfileService.findUser(filt).get(0);
 	}
 
 	private static final long serialVersionUID = 1L;

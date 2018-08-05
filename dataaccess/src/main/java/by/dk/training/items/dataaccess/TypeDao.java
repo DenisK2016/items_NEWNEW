@@ -7,7 +7,7 @@ import by.dk.training.items.datamodel.Type;
 
 public interface TypeDao extends AbstractDao<Type, Long> {
 	
-	Long count(TypeFilter filter);
+	Long overallNumberOfTypes(TypeFilter filter);
 	
 	List<Type> find(TypeFilter filter);
 }

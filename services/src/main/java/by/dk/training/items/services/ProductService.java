@@ -10,9 +10,9 @@ import by.dk.training.items.datamodel.Product;
 public interface ProductService {
 
 	@Transactional
-	void register(Product products);
+	void registerProduct(Product products);
 
-	Product get(Long id);
+	Product getProductWithId(Long id);
 
 	@Transactional
 	void update(Product products);
@@ -20,10 +20,10 @@ public interface ProductService {
 	@Transactional
 	void delete(Long id);
 	
-	List<Product> find(ProductFilter productsFilter);
+	List<Product> findProduct(ProductFilter productsFilter);
 
 	List<Product> getAll();
 	
-	Long count(ProductFilter filter);
+	Long overallNumberOfProducts(ProductFilter filter);
 
 }

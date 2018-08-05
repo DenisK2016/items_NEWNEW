@@ -40,7 +40,7 @@ public class PackageInfo extends Panel {
 		packageFilter.setFetchRecipient(true);
 		packageFilter.setFetchUser(true);
 		packageFilter.setId(pack.getId());
-		this.pack = packageService.find(packageFilter).get(0);
+		this.pack = packageService.findPackage(packageFilter).get(0);
 		this.modalWindow = modalWindow;
 	}
 
@@ -49,7 +49,7 @@ public class PackageInfo extends Panel {
 		super.onInitialize();
 
 		add(new Label("id", pack.getId()));
-		add(new Label("idRec", pack.getIdRecipient().getId()));
+		add(new Label("idRec", pack.getRecipient().getId()));
 		add(new Label("price", pack.getPrice()));
 		add(new Label("weight", pack.getWeight()));
 		add(new Label("tax", pack.getTax()));
@@ -63,7 +63,7 @@ public class PackageInfo extends Panel {
 
 		add(new Label("country", pack.getCountrySender()));
 		add(new Label("payment", pack.getPaymentDeadline()));
-		add(new Label("fine", pack.getFine()));
+		add(new Label("fine", pack.getPenalty()));
 		add(new CheckBox("paid", Model.of(pack.getPaid())).setEnabled(false));
 
 		List<String> listProduct = new ArrayList<>();

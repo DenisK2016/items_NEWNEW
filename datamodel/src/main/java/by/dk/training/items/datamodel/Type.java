@@ -1,6 +1,5 @@
 package by.dk.training.items.datamodel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,23 +14,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "type")
-public class Type implements Serializable {
+public class Type extends EntityItem {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -698861429701533260L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-	private Long id;
 	@Column(name = "type_name", nullable = false, unique = true)
 	private String typeName;
-	@ManyToOne(targetEntity = Type.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_type", referencedColumnName = "id")
 	private Type parentType;
-	@OneToMany(mappedBy = "parentType", fetch = FetchType.LAZY)
-	private List<Type> childTypes = new ArrayList<>();
+
+	@OneToMany(mappedBy = "parentType", orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<Type> childTypes = new ArrayList<>(); // https://stackoverflow.com/questions/3393515/jpa-how-to-have-one-to-many-relation-of-the-same-entity-type
+
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "idUser")
 	private UserProfile idUser;
 
 	public List<Type> getChildTypes() {
@@ -43,10 +38,6 @@ public class Type implements Serializable {
 
 	public void setChildTypes(Type childTypes) {
 		this.childTypes.add(childTypes);
-	}
-
-	public Type() {
-		super();
 	}
 
 	public UserProfile getIdUser() {
@@ -65,14 +56,6 @@ public class Type implements Serializable {
 		this.parentType = parentType;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getTypeName() {
 		return typeName;
 	}
@@ -83,14 +66,14 @@ public class Type implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Type [id=" + id + ", typeName=" + typeName + ", parentType=" + parentType + "]";
+		return "Type [id=" + getId() + ", typeName=" + typeName + ", parentType=" + parentType + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
 		result = prime * result + ((parentType == null) ? 0 : parentType.hashCode());
 		result = prime * result + ((typeName == null) ? 0 : typeName.hashCode());
 		return result;
@@ -108,11 +91,11 @@ public class Type implements Serializable {
 			return false;
 		}
 		Type other = (Type) obj;
-		if (id == null) {
-			if (other.id != null) {
+		if (getId() == null) {
+			if (other.getId() != null) {
 				return false;
 			}
-		} else if (!id.equals(other.id)) {
+		} else if (!getId().equals(other.getId())) {
 			return false;
 		}
 		if (parentType == null) {

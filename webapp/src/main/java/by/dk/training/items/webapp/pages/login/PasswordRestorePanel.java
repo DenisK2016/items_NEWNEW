@@ -24,13 +24,18 @@ import by.dk.training.items.services.mail.Sender;
 
 public class PasswordRestorePanel extends Panel {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4463263609129122149L;
+
+	private static final String EMAIL = "sample1denis1@gmail.com";
+	private static final String PASSWORD = "12345678qwertyui";
+
 	private String emailStr;
 	private ModalWindow modalWindow;
-	@Inject
-	private UserProfileService userProfileService;
 	private UserFilter userFilter;
 	private String text;
+
+	@Inject
+	private UserProfileService userProfileService;
 
 	public PasswordRestorePanel(ModalWindow modalWindow) {
 		super(modalWindow.getContentId());
@@ -42,31 +47,50 @@ public class PasswordRestorePanel extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+
 		Form<UserProfile> form = new Form<UserProfile>("formRestorePass");
+
+		addEmailFieldToForm(form);
+		addSubmitLinkToForm(form);
+		addCancelLinkToForm(form);
+
+		add(form);
+	}
+
+	private void addCancelLinkToForm(Form<UserProfile> form) {
+		form.add(new AjaxLink<Object>("cancel") {
+
+			private static final long serialVersionUID = -8722237129605316386L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				modalWindow.close(target);
+			}
+		});
+	}
+
+	private void addSubmitLinkToForm(Form<UserProfile> form) {
+
 		FeedbackPanel feedBackPanel = new FeedbackPanel("feedback");
 		form.add(feedBackPanel.setOutputMarkupId(true));
 		feedBackPanel.setVisible(false);
+
 		Notification notification = new Notification("notification");
 		add(notification);
-		TextField<String> email = new TextField<String>("email", new PropertyModel<String>(this, "emailStr"));
-		email.add(AttributeModifier.append("title", getString("restore.title.field")));
-		email.add(EmailAddressValidator.getInstance());
-		email.setRequired(true);
-		form.add(email);
+
 		form.add(new AjaxSubmitLink("request") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+
+			private static final long serialVersionUID = -4688438991243598737L;
 
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
+
 				userFilter.setEmail(emailStr);
-				if (!userProfileService.find(userFilter).isEmpty()) {
-					textMessage();
-					new Sender("denisov27111990@gmail.com", "php948409php").send(getString("restore.title"), text,
-							emailStr);
+
+				if (!userProfileService.findUser(userFilter).isEmpty()) {
+					initTextMessage();
+					new Sender(EMAIL, PASSWORD).send(getString("restore.title"), text, emailStr);
 					notification.info(target, getString("send.message.info"));
 				} else {
 					notification.error(target, getString("restore.error"));
@@ -81,23 +105,19 @@ public class PasswordRestorePanel extends Panel {
 				super.onError(target, form);
 			}
 		});
-		form.add(new AjaxLink<Object>("cancel") {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-				modalWindow.close(target);
-			}
-		});
-		add(form);
 	}
 
-	private void textMessage() {
+	private void addEmailFieldToForm(Form<UserProfile> form) {
+		TextField<String> email = new TextField<String>("email", new PropertyModel<String>(this, "emailStr"));
+		email.add(AttributeModifier.append("title", getString("restore.title.field")));
+		email.add(EmailAddressValidator.getInstance());
+		email.setRequired(true);
+		form.add(email);
+	}
+
+	private void initTextMessage() {
 		text = String.format("%s: %s \n%s: %s", getString("newlogin.login"),
-				userProfileService.find(userFilter).get(0).getLogin(), getString("newlogin.password"),
-				userProfileService.find(userFilter).get(0).getPassword());
+				userProfileService.findUser(userFilter).get(0).getLogin(), getString("newlogin.password"),
+				userProfileService.findUser(userFilter).get(0).getPassword());
 	}
 }

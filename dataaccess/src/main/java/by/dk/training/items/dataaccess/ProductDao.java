@@ -7,7 +7,7 @@ import by.dk.training.items.datamodel.Product;
 
 public interface ProductDao extends AbstractDao<Product, Long> {
 	
-	Long count(ProductFilter filter);
+	Long overallNumberOfProducts(ProductFilter filter);
 	
-	List<Product> find(ProductFilter filter);
+	List<Product> findProducts(ProductFilter filter);
 }

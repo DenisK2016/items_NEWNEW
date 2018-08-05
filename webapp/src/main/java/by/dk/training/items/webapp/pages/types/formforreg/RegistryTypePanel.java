@@ -179,7 +179,7 @@ public class RegistryTypePanel extends Panel {
 
 					if (type.getId() == null) {
 						type.setIdUser(AuthorizedSession.get().getUser());
-						typeService.register(type);
+						typeService.registerType(type);
 					} else {
 						typeService.update(type);
 					}
